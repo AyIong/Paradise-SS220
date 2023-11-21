@@ -1,12 +1,23 @@
 name: "Label"
 
 on:
-- pull_request_target
+  pull_request_target:
+    branches:
+      - master
 
 jobs:
   labeler:
     runs-on: ubuntu-latest
     steps:
+    - name: Check Target Branch
+      run: |
+        target_branch=${{ github.event.pull_request.base.ref }}
+        if [ "$target_branch" != "master220" ]; then
+          echo "Pull Request is not targeting the master branch. Skipping label."
+          exit 0
+        fi
+      shell: bash
+
     - uses: actions/labeler@v4
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
