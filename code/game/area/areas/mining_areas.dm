@@ -16,7 +16,7 @@
 	flags = NONE
 	sound_environment = SOUND_AREA_STANDARD_STATION
 	min_ambience_cooldown = 70 SECONDS
-	max_ambience_cooldown = 220 SECONDS
+	max_ambience_cooldown = 220 SECONDSddddddddd
 
 /area/mine/dangerous/explored/golem
 	name = "Small Asteroid"
