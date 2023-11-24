@@ -1,0 +1,6 @@
+/obj/effect/spawner/window/grilled : /obj/structure/window/full/basic, /obj/structure/grille
+/obj/effect/spawner/window/reinforced/grilled : /obj/structure/window/full/reinforced, /obj/structure/grille
+/obj/effect/spawner/window/reinforced/polarized/grilled : /obj/structure/window/full/reinforced, /obj/structure/grille
+/obj/effect/spawner/window/plasma/grilled : /obj/structure/window/full/plasma, /obj/structure/grille
+/obj/effect/spawner/window/reinforced/plasma/grilled : /obj/structure/window/full/plasmareinforced, /obj/structure/grille
+/obj/effect/spawner/window/reinforced/tinted/grilled : /obj/structure/window/full/reinforced/tinted, /obj/structure/grille
