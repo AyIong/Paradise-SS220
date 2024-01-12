@@ -104,7 +104,7 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/choice = input(user, "Something to change?", "Magical Grooming") as null|anything in options
+	var/choice = tgui_input_list(user, "Something to change?", "Magical Grooming", options)
 
 	switch(choice)
 		if("Name")
@@ -139,7 +139,7 @@
 			AC.ui_interact(user)
 
 		if("Voice")
-			var/voice_choice = input(user, "Perhaps...", "Voice effects") as null|anything in list("Comic Sans", "Wingdings", "Swedish", "Chav", "Mute")
+			var/voice_choice = tgui_input_list(user, "Perhaps...", "Voice effects", list("Comic Sans", "Wingdings", "Swedish", "Chav", "Mute"))
 			var/voice_mutation
 			switch(voice_choice)
 				if("Comic Sans")
@@ -162,6 +162,8 @@
 
 			if(voice_choice)
 				curse(user)
+
+	tts_choose(choice, H) // SS220 ADD
 
 /obj/structure/mirror/magic/ui_close(mob/user)
 	curse(user)

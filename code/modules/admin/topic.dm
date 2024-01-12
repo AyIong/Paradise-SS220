@@ -2678,8 +2678,8 @@
 		if(!paths)
 			alert("The path list you sent is empty")
 			return
-		if(length(paths) > 5)
-			alert("Select fewer object types, (max 5)")
+		if(length(paths) > 20)
+			alert("Select fewer object types, (max 20)")
 			return
 
 		var/list/offset = splittext(href_list["offset"],",")
@@ -3505,8 +3505,8 @@
 	N.target = H
 	N.point_at(N.target)
 	N.modelocked = TRUE
-	if(!locate(/obj/item/implant/dust, hunter_mob))
-		var/obj/item/implant/dust/D = new /obj/item/implant/dust(hunter_mob)
+	if(!locate(/obj/item/bio_chip/dust, hunter_mob))
+		var/obj/item/bio_chip/dust/D = new /obj/item/bio_chip/dust(hunter_mob)
 		D.implant(hunter_mob)
 	if(killthem)
 		var/datum/objective/assassinate/kill_objective = new
