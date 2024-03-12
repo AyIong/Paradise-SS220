@@ -15,10 +15,6 @@
 /area/station/bridge/checkpoint/south
 	name = "\improper South Command Checkpoint"
 
-/area/station/engineering/aitransit
-	name = "\improper AI Satellite Transfer Point"
-	icon_state = "engi"
-
 /area/station/engineering/hallway
 	name = "\improper Engineering Hallway"
 	icon_state = "engine_hallway"
@@ -79,6 +75,27 @@
 /area/station/hallway/secondary/exit/maintenance
 	name = "\improper Abandoned Escape Shuttle Hallway"
 	icon_state = "escape"
+
+/area/station/public/sleep_male
+	name = "\improper Male Dorm"
+	icon_state = "Sleep"
+
+/area/station/public/sleep_female
+	name = "\improper Female Dorm"
+	icon_state = "Sleep"
+
+/area/station/public/toilet/male
+	name = "\improper Male Toilets"
+
+/area/station/public/toilet/female
+	name = "\improper Female Toilets"
+
+/area/station/security/interrogation/observation
+	name = "Interrogation Observation"
+
+/area/station/service/bar/atrium
+	name = "Atrium"
+	icon_state = "bar"
 
 /* CentCom */
 /area/centcom/ss220
@@ -174,3 +191,7 @@
 /area/syndicate_mothership/cargo
 	name = "\improper Syndicate Cargo"
 	icon_state = "syndie-cargo"
+
+/* Misc */
+/area/holodeck
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED

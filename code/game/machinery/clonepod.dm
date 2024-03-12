@@ -3,19 +3,17 @@
 
 //Potential replacement for genetics revives or something I dunno (?)
 
-#define CLONE_BIOMASS 150
-
 #define BIOMASS_BASE_AMOUNT 50 // How much biomass a BIOMASSABLE item gives the cloning pod
 
 // Not a comprehensive list: Further PRs should add appropriate items here.
 // Meat as usual, monstermeat covers goliath, xeno, spider, bear meat
 GLOBAL_LIST_INIT(cloner_biomass_items, list(\
-/obj/item/reagent_containers/food/snacks/meat,\
-/obj/item/reagent_containers/food/snacks/monstermeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/salmonmeat,
-/obj/item/reagent_containers/food/snacks/catfishmeat,
-/obj/item/reagent_containers/food/snacks/tofurkey))
+/obj/item/food/snacks/meat,\
+/obj/item/food/snacks/monstermeat,
+/obj/item/food/snacks/carpmeat,
+/obj/item/food/snacks/salmonmeat,
+/obj/item/food/snacks/catfishmeat,
+/obj/item/food/snacks/tofurkey))
 
 #define MINIMUM_HEAL_LEVEL 40
 #define CLONE_INITIAL_DAMAGE 190
@@ -61,7 +59,7 @@ GLOBAL_LIST_INIT(cloner_biomass_items, list(\
 		set_light(0)
 
 /obj/machinery/clonepod/biomass
-	biomass = CLONE_BIOMASS
+	biomass = CLONER_BIOMASS_REQUIRED
 
 /obj/machinery/clonepod/Initialize(mapload)
 	. = ..()
@@ -95,7 +93,7 @@ GLOBAL_LIST_INIT(cloner_biomass_items, list(\
 	component_parts += new /obj/item/stack/sheet/glass(null)
 	component_parts += new /obj/item/stack/cable_coil(null, 1)
 	component_parts += new /obj/item/stack/cable_coil(null, 1)
-	biomass = CLONE_BIOMASS
+	biomass = CLONER_BIOMASS_REQUIRED
 	RefreshParts()
 
 /obj/machinery/clonepod/Destroy()
@@ -236,8 +234,8 @@ GLOBAL_LIST_INIT(cloner_biomass_items, list(\
 		if(!G)
 			return 0
 
-	if(biomass >= CLONE_BIOMASS)
-		biomass -= CLONE_BIOMASS
+	if(biomass >= CLONER_BIOMASS_REQUIRED)
+		biomass -= CLONER_BIOMASS_REQUIRED
 	else
 		return 0
 
@@ -427,6 +425,7 @@ GLOBAL_LIST_INIT(cloner_biomass_items, list(\
 
 /obj/machinery/clonepod/emag_act(user)
 	malfunction()
+	return TRUE
 
 /obj/machinery/clonepod/cmag_act(mob/user)
 	if(HAS_TRAIT(src, TRAIT_CMAGGED))
@@ -630,3 +629,6 @@ GLOBAL_LIST_INIT(cloner_biomass_items, list(\
 */
 
 #undef MINIMUM_HEAL_LEVEL
+#undef BIOMASS_BASE_AMOUNT
+#undef CLONE_INITIAL_DAMAGE
+#undef BRAIN_INITIAL_DAMAGE

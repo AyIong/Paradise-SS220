@@ -1,5 +1,3 @@
-#define WALL_DENT_HIT 1
-#define WALL_DENT_SHOT 2
 #define MAX_DENT_DECALS 15
 
 /turf/simulated/wall
@@ -86,7 +84,8 @@
 
 	if(rotting)
 		. += "<span class='warning'>There is fungus growing on [src].</span>"
-	. += "<span class='notice'>Using a lit welding tool on this item will allow you to slice through it, eventually removing the outer layer.</span>"
+	if(can_dismantle_with_welder)
+		. += "<span class='notice'>Using a lit welding tool on this item will allow you to slice through it, eventually removing the outer layer.</span>"
 
 /// Apply rust effects to the wall
 /turf/simulated/wall/proc/rust()
@@ -209,7 +208,7 @@
 	if(prob(50))
 		dismantle_wall()
 	else
-		add_dent(WALL_DENT_HIT)
+		add_dent(PROJECTILE_IMPACT_WALL_DENT_HIT)
 
 /turf/simulated/wall/rpd_act(mob/user, obj/item/rpd/our_rpd)
 	if(our_rpd.mode == RPD_ATMOS_MODE)
@@ -234,7 +233,7 @@
 				dismantle_wall(1)
 				playsound(src, 'sound/effects/meteorimpact.ogg', 100, TRUE)
 			else
-				add_dent(WALL_DENT_HIT)
+				add_dent(PROJECTILE_IMPACT_WALL_DENT_HIT)
 		if(BURN)
 			playsound(src, 'sound/items/welder.ogg', 100, TRUE)
 		if(TOX)
@@ -332,7 +331,7 @@
 		dismantle_wall(TRUE)
 	else
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
-		add_dent(WALL_DENT_HIT)
+		add_dent(PROJECTILE_IMPACT_WALL_DENT_HIT)
 		to_chat(user, "<span class='notice'>You punch the wall.</span>")
 	return TRUE
 
@@ -543,9 +542,9 @@
 
 	var/mutable_appearance/decal = mutable_appearance('icons/effects/effects.dmi', "", BULLET_HOLE_LAYER)
 	switch(denttype)
-		if(WALL_DENT_SHOT)
+		if(PROJECTILE_IMPACT_WALL_DENT_SHOT)
 			decal.icon_state = "bullet_hole"
-		if(WALL_DENT_HIT)
+		if(PROJECTILE_IMPACT_WALL_DENT_HIT)
 			decal.icon_state = "impact[rand(1, 3)]"
 
 	decal.pixel_x = x

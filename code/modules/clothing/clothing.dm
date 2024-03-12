@@ -238,16 +238,10 @@
 	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !Adjacent(user) || !istype(user))
 		return
 
-	var/action_fluff = "You adjust \the [src]"
-	if(user.glasses == src)
-		if(!user.canUnEquip(src))
-			to_chat(user, "<span class='warning'>[src] is stuck to you!</span>")
-			return
-		if(attack_hand(user)) //Remove the glasses for this action. Prevents logic-defying instances where glasses phase through your mask as it ascends/descends to another plane of existence.
-			action_fluff = "You remove \the [src] and adjust it"
-
 	over_mask = !over_mask
-	to_chat(user, "<span class='notice'>[action_fluff] to be worn [over_mask ? "over" : "under"] a mask.</span>")
+	if(user.glasses == src)
+		user.update_inv_glasses()
+	to_chat(user, "<span class='notice'>You adjust [src] to be worn [over_mask ? "over" : "under"] a mask.</span>")
 
 //Gloves
 /obj/item/clothing/gloves
@@ -313,14 +307,15 @@
 		return
 
 	var/list/modes = list("Off", "Binary sensors", "Vitals tracker", "Tracking beacon")
-	var/switchMode = input("Select a sensor mode:", "Suit Sensor Mode", modes[sensor_mode + 1]) in modes
+	var/switchMode = tgui_input_list(user, "Select a sensor mode:", "Suit Sensor Mode", modes, modes[sensor_mode + 1])
 	if(!user.Adjacent(src))
 		to_chat(user, "<span class='warning'>You have moved too far away!</span>")
 		return
 	if(!ishuman(user) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		to_chat(user, "<span class='warning'>You can't use your hands!</span>")
 		return
-
+	if(!switchMode)
+		return
 	sensor_mode = modes.Find(switchMode) - 1
 
 	if(loc == user)
@@ -492,6 +487,8 @@
 	if(!no_slip)
 		return
 	var/mob/living/carbon/human/H = user
+	if(!user)
+		return
 	if(H.get_item_by_slot(SLOT_HUD_SHOES) == src)
 		REMOVE_TRAIT(H, TRAIT_NOSLIP, UID())
 
@@ -557,6 +554,19 @@
 	var/list/hide_tail_by_species = null
 	/// Maximum weight class of an item in the suit storage slot.
 	var/max_suit_w = WEIGHT_CLASS_BULKY
+
+/obj/item/clothing/suit/Initialize(mapload)
+	. = ..()
+	setup_shielding()
+
+/**
+ * Wrapper proc to apply shielding through AddComponent().
+ * Called in /obj/item/clothing/Initialize().
+ * Override with an AddComponent(/datum/component/shielded, args) call containing the desired shield statistics.
+ * See /datum/component/shielded documentation for a description of the arguments
+ **/
+/obj/item/clothing/suit/proc/setup_shielding()
+	return
 
 //Proc that opens and closes jackets.
 /obj/item/clothing/suit/proc/adjustsuit(mob/user)
@@ -731,7 +741,7 @@
 	var/mob/living/carbon/human/H = user
 	if(H.get_item_by_slot(SLOT_HUD_JUMPSUIT) == src)
 		for(var/obj/item/clothing/accessory/A in accessories)
-			A.attached_unequip()
+			A.attached_unequip(user) // SS220 EDIT - FIX
 
 /obj/item/clothing/under/equipped(mob/user, slot, initial)
 	..()
@@ -739,7 +749,7 @@
 		return
 	if(slot == SLOT_HUD_JUMPSUIT)
 		for(var/obj/item/clothing/accessory/A in accessories)
-			A.attached_equip()
+			A.attached_equip(user) // SS220 EDIT - FIX
 
 /*
   * # can_attach_accessory

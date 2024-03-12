@@ -23,11 +23,6 @@
 			prefs.active_character.autohiss_mode = AUTOHISS_OFF
 			to_chat(src, "Auto-hiss is now OFF.")
 
-/datum/species
-	var/list/autohiss_basic_map = null
-	var/list/autohiss_extra_map = null
-	var/list/autohiss_exempt = null
-
 /datum/species/unathi
 	autohiss_basic_map = list(
 			"s" = list("ss", "sss", "ssss")
@@ -81,11 +76,11 @@
 
 	. = list()
 
-	while(length_char(message))														// SS220 EDIT - ORIGINAL: length
+	while(length_char(message))
 		var/min_index = 10000 // if the message is longer than this, the autohiss is the least of your problems
 		var/min_char = null
 		for(var/char in map)
-			var/i = findtext_char(message, char)									// SS220 EDIT - ORIGINAL: findtext
+			var/i = findtext_char(message, char)
 			if(!i) // no more of this character anywhere in the string, don't even bother searching next time
 				map -= char
 			else if(i < min_index)
@@ -94,12 +89,12 @@
 		if(!min_char) // we didn't find any of the mapping characters
 			. += message
 			break
-		. += copytext_char(message, 1, min_index)									// SS220 EDIT - ORIGINAL: copytext
-		if(copytext_char(message, min_index, min_index + 1) == uppertext(min_char))	// SS220 EDIT - ORIGINAL: copytext
+		. += copytext_char(message, 1, min_index)
+		if(copytext_char(message, min_index, min_index + 1) == uppertext(min_char))
 			. += uppertext(pick(map[min_char]))
 		else
 			. += pick(map[min_char])
-		message = copytext_char(message, min_index + 1)								// SS220 EDIT - ORIGINAL: copytext
+		message = copytext_char(message, min_index + 1)
 
 	return jointext(., "")
 

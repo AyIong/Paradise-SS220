@@ -110,17 +110,22 @@
 	updatemodules()
 	ui_interact(user)
 
-/obj/machinery/computer/cloning/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+/obj/machinery/computer/cloning/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/computer/cloning/ui_interact(mob/user, datum/tgui/ui = null)
 	if(stat & (NOPOWER|BROKEN))
 		return
 
-	var/datum/asset/cloning/assets = get_asset_datum(/datum/asset/cloning)
-	assets.send(user)
-
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "CloningConsole", "Cloning Console", 640, 520)
+		ui = new(user, src, "CloningConsole", "Cloning Console")
 		ui.open()
+
+/obj/machinery/computer/cloning/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/simple/cloning)
+	)
 
 /obj/machinery/computer/cloning/ui_data(mob/user)
 	var/data[0]
@@ -171,7 +176,7 @@
 		temprecords.Add(list(list("record" = "\ref[R]", "realname" = sanitize(tempRealName))))
 	data["records"] = temprecords
 
-	if(selected_pod && (selected_pod in pods) && selected_pod.biomass >= CLONE_BIOMASS)
+	if(selected_pod && (selected_pod in pods) && selected_pod.biomass >= CLONER_BIOMASS_REQUIRED)
 		data["podready"] = 1
 	else
 		data["podready"] = 0
@@ -275,7 +280,7 @@
 						set_temp("Error: No cloning pod selected.", "danger")
 					else if(pod.occupant)
 						set_temp("Error: The cloning pod is currently occupied.", "danger")
-					else if(pod.biomass < CLONE_BIOMASS)
+					else if(pod.biomass < CLONER_BIOMASS_REQUIRED)
 						set_temp("Error: Not enough biomass.", "danger")
 					else if(pod.mess)
 						set_temp("Error: The cloning pod is malfunctioning.", "danger")

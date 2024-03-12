@@ -223,6 +223,9 @@
 	var/travelDir = 0				//direction the shuttle would travel in
 	var/rebuildable = 0				//can build new shuttle consoles for this one
 
+	/// The speed factor for this shuttle. Higher means faster.
+	var/shuttle_speed_factor = 1
+
 	var/mob/last_caller				// Who called the shuttle the last time
 
 	var/obj/docking_port/stationary/destination
@@ -694,8 +697,8 @@
 	if(divisor <= 0)
 		divisor = 10
 	if(!timer)
-		return round(callTime/divisor, 1)
-	return max( round((timer+callTime-world.time)/divisor,1), 0 )
+		return round((callTime / shuttle_speed_factor) / divisor, 1)
+	return max(round(((timer + callTime - world.time) / divisor) / shuttle_speed_factor, 1), 0)
 
 // returns 3-letter mode string, used by status screens and mob status panel
 /obj/docking_port/mobile/proc/getModeStr()
@@ -806,10 +809,13 @@
 	add_fingerprint(user)
 	ui_interact(user)
 
-/obj/machinery/computer/shuttle/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/computer/shuttle/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/computer/shuttle/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "ShuttleConsole", name, 350, 150, master_ui, state)
+		ui = new(user, src, "ShuttleConsole", name)
 		ui.open()
 
 /obj/machinery/computer/shuttle/ui_data(mob/user)
@@ -843,7 +849,7 @@
 	if(action == "move")
 		var/destination = params["move"]
 		if(!options.Find(destination))//figure out if this translation works
-			message_admins("<span class='boldannounce'>EXPLOIT:</span> [ADMIN_LOOKUPFLW(usr)] attempted to move [src] to an invalid location! [ADMIN_COORDJMP(src)]")
+			message_admins("<span class='boldannounceooc'>EXPLOIT:</span> [ADMIN_LOOKUPFLW(usr)] attempted to move [src] to an invalid location! [ADMIN_COORDJMP(src)]")
 			return
 		switch(SSshuttle.moveShuttle(shuttleId, destination, TRUE, usr))
 			if(0)
@@ -866,6 +872,7 @@
 		src.req_access = list()
 		emagged = TRUE
 		to_chat(user, "<span class='notice'>You fried the consoles ID checking system.</span>")
+		return TRUE
 
 //for restricting when the computer can be used, needed for some console subtypes.
 /obj/machinery/computer/shuttle/proc/can_call_shuttle(mob/user, action)

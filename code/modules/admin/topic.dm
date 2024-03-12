@@ -343,13 +343,12 @@
 			if("2")
 				if(SSshuttle.emergency.mode >= SHUTTLE_DOCKED)
 					return
+				SSshuttle.emergency.cancel(byCC = TRUE)
 				switch(SSshuttle.emergency.mode)
 					if(SHUTTLE_CALL)
-						SSshuttle.emergency.cancel()
 						log_admin("[key_name(usr)] sent the Emergency Shuttle back")
 						message_admins("<span class='adminnotice'>[key_name_admin(usr)] sent the Emergency Shuttle back</span>")
 					else
-						SSshuttle.emergency.cancel()
 						log_admin("[key_name(usr)] called the Emergency Shuttle")
 						message_admins("<span class='adminnotice'>[key_name_admin(usr)] called the Emergency Shuttle to the station</span>")
 
@@ -1072,9 +1071,9 @@
 		var/painame = "Default"
 		var/name = ""
 		if(alert(usr, "Do you want to set their name or let them choose their own name?", "Name Choice", "Set Name", "Let them choose") == "Set Name")
-			name = sanitize(copytext_char(input(usr, "Enter a name for the new pAI. Default name is [painame].", "pAI Name", painame),1,MAX_NAME_LEN))					// SS220 EDIT - ORIGINAL: copytext
+			name = sanitize(copytext_char(input(usr, "Enter a name for the new pAI. Default name is [painame].", "pAI Name", painame), 1, MAX_NAME_LEN))
 		else
-			name = sanitize(copytext_char(input(H, "An admin wants to make you into a pAI. Choose a name. Default is [painame].", "pAI Name", painame),1,MAX_NAME_LEN))	// SS220 EDIT - ORIGINAL: copytext
+			name = sanitize(copytext_char(input(H, "An admin wants to make you into a pAI. Choose a name. Default is [painame].", "pAI Name", painame), 1, MAX_NAME_LEN))
 
 		if(!name)
 			name = painame
@@ -1786,10 +1785,10 @@
 			to_chat(usr, "<span class='warning'>This can only be used on instances of type /mob/living/carbon/human</span>")
 			return
 
-		H.equip_to_slot_or_del( new /obj/item/reagent_containers/food/snacks/cookie(H), SLOT_HUD_LEFT_HAND )
-		if(!(istype(H.l_hand,/obj/item/reagent_containers/food/snacks/cookie)))
-			H.equip_to_slot_or_del( new /obj/item/reagent_containers/food/snacks/cookie(H), SLOT_HUD_RIGHT_HAND )
-			if(!(istype(H.r_hand,/obj/item/reagent_containers/food/snacks/cookie)))
+		H.equip_to_slot_or_del( new /obj/item/food/snacks/cookie(H), SLOT_HUD_LEFT_HAND )
+		if(!(istype(H.l_hand,/obj/item/food/snacks/cookie)))
+			H.equip_to_slot_or_del( new /obj/item/food/snacks/cookie(H), SLOT_HUD_RIGHT_HAND )
+			if(!(istype(H.r_hand,/obj/item/food/snacks/cookie)))
 				log_admin("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(src.owner)].")
 				message_admins("[key_name_admin(H)] has [H.p_their()] hands full, so [H.p_they()] did not receive [H.p_their()] cookie, spawned by [key_name_admin(src.owner)].")
 				return
@@ -2017,7 +2016,7 @@
 						D.assignment = "Pet"
 						C.access_id = D
 					spawn(30)
-						var/newname = sanitize(copytext_char(input(P, "You are [P], special event pet of [H]. Change your name to something else?", "Name change", P.name) as null|text,1,MAX_NAME_LEN))	// SS220 EDIT - ORIGINAL: copytext
+						var/newname = sanitize(copytext_char(input(P, "You are [P], special event pet of [H]. Change your name to something else?", "Name change", P.name) as null|text, 1, MAX_NAME_LEN))
 						if(newname && newname != P.name)
 							P.name = newname
 							if(P.mind)
@@ -2119,7 +2118,7 @@
 				ADD_TRAIT(H, TRAIT_BADDNA, "smiting")
 				logmsg = "cluwned."
 			if("Mutagen Cookie")
-				var/obj/item/reagent_containers/food/snacks/cookie/evilcookie = new /obj/item/reagent_containers/food/snacks/cookie
+				var/obj/item/food/snacks/cookie/evilcookie = new /obj/item/food/snacks/cookie
 				evilcookie.reagents.add_reagent("mutagen", 10)
 				evilcookie.desc = "It has a faint green glow."
 				evilcookie.bitesize = 100
@@ -2128,7 +2127,7 @@
 				H.equip_to_slot_or_del(evilcookie, SLOT_HUD_LEFT_HAND)
 				logmsg = "a mutagen cookie."
 			if("Hellwater Cookie")
-				var/obj/item/reagent_containers/food/snacks/cookie/evilcookie = new /obj/item/reagent_containers/food/snacks/cookie
+				var/obj/item/food/snacks/cookie/evilcookie = new /obj/item/food/snacks/cookie
 				evilcookie.reagents.add_reagent("hell_water", 25)
 				evilcookie.desc = "Sulphur-flavored."
 				evilcookie.bitesize = 100
@@ -2192,7 +2191,7 @@
 
 			if("Bread")
 				var/mob/living/simple_animal/shade/sword/bread/breadshade = new(H.loc)
-				var/bready = pick(/obj/item/reagent_containers/food/snacks/customizable/cook/bread, /obj/item/reagent_containers/food/snacks/sliceable/meatbread, /obj/item/reagent_containers/food/snacks/sliceable/xenomeatbread, /obj/item/reagent_containers/food/snacks/sliceable/spidermeatbread, /obj/item/reagent_containers/food/snacks/sliceable/bananabread, /obj/item/reagent_containers/food/snacks/sliceable/tofubread, /obj/item/reagent_containers/food/snacks/sliceable/bread, /obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread, /obj/item/reagent_containers/food/snacks/sliceable/banarnarbread, /obj/item/reagent_containers/food/snacks/flatbread, /obj/item/reagent_containers/food/snacks/baguette)
+				var/bready = pick(/obj/item/food/snacks/customizable/cook/bread, /obj/item/food/snacks/sliceable/meatbread, /obj/item/food/snacks/sliceable/xenomeatbread, /obj/item/food/snacks/sliceable/spidermeatbread, /obj/item/food/snacks/sliceable/bananabread, /obj/item/food/snacks/sliceable/tofubread, /obj/item/food/snacks/sliceable/bread, /obj/item/food/snacks/sliceable/creamcheesebread, /obj/item/food/snacks/sliceable/banarnarbread, /obj/item/food/snacks/flatbread, /obj/item/food/snacks/baguette)
 				var/obj/item/bread = new bready(get_turf(H))
 				breadshade.forceMove(bread)
 				breadshade.key = H.key
@@ -2950,7 +2949,7 @@
 					return
 				if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 					return
-				var/objective = sanitize(copytext_char(input("Enter an objective"),1,MAX_MESSAGE_LEN))	// SS220 EDIT - ORIGINAL: copytext
+				var/objective = sanitize(copytext_char(input("Enter an objective"), 1, MAX_MESSAGE_LEN))
 				if(!objective)
 					return
 				SSblackbox.record_feedback("tally", "admin_secrets_fun_used", 1, "Traitor All ([objective])")
@@ -2981,7 +2980,7 @@
 
 				GLOB.configuration.general.bomb_cap = newBombCap
 
-				message_admins("<span class='boldannounce'>[key_name_admin(usr)] changed the bomb cap to [GLOB.configuration.general.bomb_cap / 4], [GLOB.configuration.general.bomb_cap / 2], [GLOB.configuration.general.bomb_cap]</span>")
+				message_admins("<span class='boldannounceooc'>[key_name_admin(usr)] changed the bomb cap to [GLOB.configuration.general.bomb_cap / 4], [GLOB.configuration.general.bomb_cap / 2], [GLOB.configuration.general.bomb_cap]</span>")
 				log_admin("[key_name(usr)] changed the bomb cap to [GLOB.configuration.general.bomb_cap / 4], [GLOB.configuration.general.bomb_cap / 2], [GLOB.configuration.general.bomb_cap]")
 
 			if("flicklights")
@@ -3345,7 +3344,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 		var/text = html_decode(href_list["showdetails"])
-		usr << browse("<html><meta charset='utf-8'><HEAD><TITLE>Details</TITLE></HEAD><BODY><TT>[replacetext(text, "\n", "<BR>")]</TT></BODY></HTML>",
+		usr << browse("<html><meta charset='utf-8'><head><title>Details</title></head><body><tt>[replacetext(text, "\n", "<BR>")]</tt></body></html>",
 			"window=show_details;size=500x200")
 
 	else if(href_list["create_outfit_finalize"])
