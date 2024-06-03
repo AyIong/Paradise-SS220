@@ -87,6 +87,18 @@
 	icon_state = "ntsc_uniform"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 
+/obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
+	name = "армированная мантия офицера флота Нанотрейзен"
+	desc = "Один из вариантов торжественного одеяния сотрудников Верховного Командования Нанотрейзен, подойдет для официальной встречи или важного вылета. Сшита из лёгкой и сверхпрочной ткани."
+	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
+	icon_state = "ntsc_cloak"
+	icon_override = 'modular_ss220/clothing/icons/mob/cloaks.dmi'
+
+/obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/coat_nt
+	name = "полевой плащ офицера флота Нанотрейзен"
+	desc = "Парадный плащ нового образца, внедряемый на объектах компании в последнее время. Отличительной чертой является стоячий воротник и резаный подол. Невысокие показатели защиты нивелируются пафосом, источаемым этим плащом."
+	icon_state = "ntsc_coat"
+
 /obj/item/clothing/suit/hooded/vi_arcane
 	name = "куртка Вай"
 	desc = "Слегка потрёпанный жакет боевой девчушки Вай."
@@ -201,6 +213,7 @@
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
 		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
 		)
 
 /datum/supply_packs/misc/soundhand
@@ -210,3 +223,18 @@
 					/obj/item/clothing/suit/storage/soundhand_brown_jacket)
 	cost = 600
 	containername = "soundhand fan crate"
+
+/* Space Battle */
+/obj/item/clothing/suit/space/hardsuit/security
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "hardsuit-sec-old"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
+/obj/item/clothing/head/helmet/space/hardsuit/security
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "hardsuit0-sec"
+	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
+
+/* SOO jacket */
+/obj/item/clothing/suit/space/deathsquad/officer/soo_brown
+	icon_state = "brtrenchcoat_open"

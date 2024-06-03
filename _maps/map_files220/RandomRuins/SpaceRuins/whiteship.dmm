@@ -2002,7 +2002,7 @@
 /area/shuttle/abandoned)
 "VU" = (
 /obj/structure/table,
-/obj/item/flashlight/lamp,
+/obj/item/salvage/ruin/nanotrasen,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbluefull"
@@ -2595,7 +2595,7 @@ Ia
 Kt
 Ts
 Ts
-Ts
+aA
 vk
 Kr
 dr
@@ -2671,7 +2671,7 @@ Rf
 aA
 Ts
 Ts
-Ts
+aA
 lO
 RT
 nQ

@@ -25,7 +25,7 @@
 	if(!reclined)
 		return ..()
 
-	to_chat(user, "<span class='danger'>*click*</span>")
+	to_chat(user, span_danger("*click*"))
 	playsound(user, dry_fire_sound, 100, 1)
 
 // Colt Anaconda .44
@@ -401,6 +401,7 @@
 	var/icon_state_on = "stylet_1"
 	var/extend_sound = 'modular_ss220/objects/sound/weapons/styletext.ogg'
 	attack_verb = list("hit", "poked")
+	sharp = TRUE
 	var/list/attack_verb_on = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/melee/stylet/update_icon_state()
@@ -437,5 +438,5 @@
 	add_fingerprint(user)
 
 /obj/effect/spawner/lootdrop/maintenance/Initialize(mapload)
-	loot += list(/obj/item/melee/stylet = 3)
+	loot += list(/obj/item/melee/stylet = 5)
 	return ..()
