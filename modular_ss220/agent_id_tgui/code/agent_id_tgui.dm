@@ -16,7 +16,7 @@
 							"virologist",
 							"chemist",
 							"paramedic",
-							"psychiastrist",
+							"psychiatrist",
 							"research",
 							"roboticist",
 							"quartermaster",
