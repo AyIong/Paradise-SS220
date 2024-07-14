@@ -55,7 +55,7 @@
 'НЕ МОДУЛЬНО':
   - all:
       - changed-files:
-          - all-glob-to-any-file: ['code/**']
+          - all-globs-to-any-file: ['code/**']
       - base-branch: 'master'
 
 'Перевод':
