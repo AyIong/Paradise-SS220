@@ -10,13 +10,13 @@
   - changed-files:
       - any-glob-to-any-file: ['**/*.dmm']
 
-'Керберос':
-  - changed-files:
-      - any-glob-to-any-file: ['_maps/map_files220/stations/deltastation.dmm']
-
 'Кибериада':
   - changed-files:
       - any-glob-to-any-file: ['_maps/map_files220/stations/boxstation.dmm']
+
+'Керберос':
+  - changed-files:
+      - any-glob-to-any-file: ['_maps/map_files220/stations/deltastation.dmm']
 
 'Цереброн':
   - changed-files:

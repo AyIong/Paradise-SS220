@@ -9,7 +9,7 @@
 "aac" = (
 /obj/structure/extinguisher_cabinet/directional/east,
 /turf/simulated/floor/plasteel{
-	icon_state = "whitepurplecorner"
+	icon_state = "whitepudrplecorner"
 	},
 /area/station/science/hallway)
 "aad" = (

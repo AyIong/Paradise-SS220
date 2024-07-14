@@ -21,7 +21,7 @@
 	dwidth = 8;
 	height = 22;
 	id = "syndicate_nw";
-	name = "northwest of station";
+	name = "northwest of stadtion";
 	width = 18
 	},
 /turf/space,

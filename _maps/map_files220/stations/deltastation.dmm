@@ -15,7 +15,7 @@
 /mob/living/simple_animal/pet/dog/security/warden,
 /turf/simulated/floor/plasteel{
 	dir = 4;
-	icon_state = "darkredcorners"
+	icon_state = "darkreddcorners"
 	},
 /area/station/security/warden)
 "aaH" = (
