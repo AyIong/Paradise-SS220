@@ -76,7 +76,7 @@
 	/// If true, prevent saying sales pitches
 	var/shut_up = FALSE
 	///can we access the hidden inventory?
-	var/extended_inventory = FALSE
+	var/extended_inventory = TRUE
 	var/last_reply = 0
 	var/last_slogan = 0			//When did we last pitch?
 	var/slogan_delay = 10 MINUTES		//How long until we can pitch again?

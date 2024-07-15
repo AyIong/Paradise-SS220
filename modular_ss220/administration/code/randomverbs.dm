@@ -1,5 +1,5 @@
 /client/proc/cmd_admin_offer_control(mob/M as mob in GLOB.mob_list)
-	set name = "\[Admin\] Offer Control To Ghosts"
+	set name = "\[Badmin\] Offer Control To Ghosts"
 	set category = null
 
 	if(!check_rights(R_ADMIN))
