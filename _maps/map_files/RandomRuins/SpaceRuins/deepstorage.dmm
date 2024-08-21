@@ -6371,7 +6371,7 @@
 /area/ruin/space/deepstorage)
 "PE" = (
 /obj/structure/rack,
-/obj/machinery/disco,
+/obj/machinery/jukebox/disco,
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/plasteel{
 	dir = 6;

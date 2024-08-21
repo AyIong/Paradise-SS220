@@ -136,7 +136,7 @@
 /turf/simulated/floor/wood,
 /area/ruin/powered/beach)
 "ax" = (
-/obj/machinery/disco/immobile,
+/obj/machinery/jukebox/disco/immobile,
 /turf/simulated/floor/light,
 /area/ruin/powered/beach)
 "ay" = (

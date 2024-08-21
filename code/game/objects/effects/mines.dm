@@ -129,7 +129,7 @@
 	if(!istype(victim) || !victim.client)
 		return
 	to_chat(victim, "<span class='reallybig redtext'>RIP AND TEAR</span>")
-	SEND_SOUND(victim, sound('sound/misc/e1m1.ogg'))
+	SEND_SOUND(victim, sound('sound/music/e1m1.ogg'))
 	var/red_splash = list(1,0,0,0.8,0.2,0, 0.8,0,0.2,0.1,0,0)
 
 	new /obj/effect/hallucination/delusion(get_turf(victim), victim, 'icons/mob/mob.dmi', "daemon")

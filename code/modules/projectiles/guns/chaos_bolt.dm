@@ -373,7 +373,7 @@
 		if("banana grenade")
 			item_to_summon = /obj/item/grenade/clown_grenade
 		if("disco ball")
-			new /obj/machinery/disco/chaos_staff(get_turf(target))
+			new /obj/machinery/jukebox/disco/chaos_staff(get_turf(target))
 			target.visible_message("<span class='chaosverygood'>DANCE TILL YOU'RE DEAD!</span>")
 		if("syndicate minibomb")
 			item_to_summon = /obj/item/grenade/syndieminibomb
