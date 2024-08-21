@@ -134,9 +134,7 @@
 
 	data["admin"] = check_rights(R_ADMIN, FALSE, user)
 	data["need_coin"] = need_coin
-	data["payment"] = payment
-	data["saveTrack"] = music_player.save_track
-	data["startTime"] = music_player.start_time
+	data["payment"] = !!payment
 	data["worldTime"] = world.time
 
 	return data
@@ -189,6 +187,10 @@
 			return TRUE
 
 		if("loop")
+			if(need_coin && !allowed(user))
+				to_chat(user, "<span class='biggerdanger'>Nice try.</span>")
+				return FALSE
+
 			music_player.sound_loops = !!params["looping"]
 			return TRUE
 
@@ -202,7 +204,7 @@
 			var/track_length = params["track_length"]
 			var/track_beat = params["track_beat"]
 			if(!track_name || !track_length || !track_beat)
-				to_chat(user, "<span class='warning'>Ошибка: Имеются не заполненные поля.</span>")
+				to_chat(user, "<span class='warning'>Error: There are unfilled fields.</span>")
 				return FALSE
 
 			var/track_file = upload_file(user)
@@ -283,8 +285,8 @@
 	if(!music_player.save_track)
 		return
 
-	if(tgui_alert(user, "WARNING: Track saving to the server is enabled. <br> \
-			By clicking “Yes” you confirm that the downloaded track does not violate any copyright. <br> \
+	if(tgui_alert(user, "WARNING: Track saving to the server is enabled. \
+			By clicking “Yes” you confirm that the downloaded track does not violate any copyright. \
 			Are you sure you want to save the track?", "Track saving", list("Yes", "No")) != "Yes")
 		music_player.save_track = !music_player.save_track
 		to_chat(user, "<span class='warning'>Track saving has been disabled.</span>")

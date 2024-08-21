@@ -132,9 +132,6 @@
 
 /**
  * Returns a set of general data relating to the jukebox for use in TGUI.
- *
- * Returns
- * * A list of UI data
  */
 /datum/jukebox/proc/get_ui_data(list/data)
 	var/list/songs_data = list()
@@ -145,14 +142,18 @@
 			"length" = one_song.song_length, \
 			"beat" = one_song.song_beat, \
 		))
+	data["songs"] = songs_data
+
+	if(selection)
+		data["selectedName"] = selection.song_name
+		data["selectedLength"] = selection.song_length
 
 	data["active"] = !!active_song_sound
-	data["songs"] = songs_data
-	data["track_selected"] = selection?.song_name
 	data["looping"] = sound_loops
 	data["volume"] = volume
-	data["max_volume"] = max_volume
-
+	data["maxVolume"] = max_volume
+	data["saveTrack"] = save_track
+	data["startTime"] = start_time
 	return data
 
 /**
