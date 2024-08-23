@@ -42,10 +42,10 @@
 	/// How far away vertically from the jukebox can you be before you stop hearing it.
 	VAR_PRIVATE/z_cutoff
 
+	/// Path to music folder.
+	var/static/songs_path = "config/jukebox_music/sounds/"
 	/// Whether the music loops when done.
 	var/sound_loops = FALSE
-	/// Path to music folder.
-	var/songs_path = "config/jukebox_music/sounds/"
 	/// Music start time.
 	var/start_time = 0
 	/// Whether the uploaded track will be saved on the server.

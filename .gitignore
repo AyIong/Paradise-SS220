@@ -41,6 +41,10 @@ stddef.dm
 # ignore midi2piano build cache
 /tools/midi2piano/midi2piano/obj/*
 
+# Ignore custom music (amend as appropriate)
+/config/jukebox_music/sounds/*
+!/config/jukebox_music/sounds/exclude
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

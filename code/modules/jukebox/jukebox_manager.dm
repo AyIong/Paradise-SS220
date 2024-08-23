@@ -38,8 +38,7 @@
 	switch(action)
 		if("delete")
 			var/track_path = params["path"]
-			var/track_path_prefix = "config/jukebox_music/sounds/"
-			if(findtext(track_path, track_path_prefix) && fexists(track_path))
+			if(findtext(track_path, parent.songs_path) && fexists(track_path))
 				fdel(track_path)
 				to_chat(user, "<span class='notice'>[params["name"]] successfully deleted.</span>")
 			else
