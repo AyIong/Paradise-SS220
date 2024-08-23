@@ -208,8 +208,9 @@
 				return FALSE
 
 			var/track_file = upload_file(user)
+			if(music_player.save_track)
+				try_save_file(user, track_name, track_length, track_beat, track_file)
 			upload_track(user, track_name, track_length, track_beat, track_file)
-			try_save_file(user, track_name, track_length, track_beat, track_file)
 			return TRUE
 
 		if("save_song")
@@ -264,6 +265,7 @@
 	new_track.song_length = length
 	new_track.song_beat = beat
 	new_track.song_path = file(file)
+	new_track.hosted = music_player.save_track
 
 	music_player.songs[name] = new_track
 	atom_say("New track uploaded: «[name]»")
@@ -276,30 +278,27 @@
 	if(tgui_alert(user, "Are you sure you want to save track on the server?", "Track saving", list("Yes", "No")) != "Yes")
 		return
 
-	if(tgui_alert(user, "Attention! ONLY the host will be able to delete the saved track! Please fill in the fields as responsibly as possible!", "Track saving", list("Got it", "I've changed my mind")) != "Got it")
+	if(tgui_alert(user, "Attention! You can delete uploaded track in Jukebox Manager, but please, fill in the fields as responsibly as possible!", "Track saving", list("Got it", "I've changed my mind")) != "Got it")
 		return
 
 	music_player.save_track = !music_player.save_track
 
 /obj/machinery/jukebox/proc/try_save_file(mob/user, name, length, beat, file)
-	if(!music_player.save_track)
-		return
-
 	if(tgui_alert(user, "WARNING: Track saving to the server is enabled. \
 			By clicking “Yes” you confirm that the downloaded track does not violate any copyright. \
 			Are you sure you want to save the track?", "Track saving", list("Yes", "No")) != "Yes")
 		music_player.save_track = !music_player.save_track
 		to_chat(user, "<span class='warning'>Track saving has been disabled.</span>")
-		return
 
-	var/config_file = "[name]" + "+" + "[length]" + "+" + "[beat]"
-	if(!fcopy(file, "config/jukebox_music/sounds/[config_file].ogg"))
-		to_chat(user, "<span class='warning'>For some reason, track was not saved, please try again. <br> Input file: [file] <br> Output file: [config_file].ogg</span>")
-		return
+	if(music_player.save_track)
+		var/config_file = "[name]" + "+" + "[length]" + "+" + "[beat]"
+		if(!fcopy(file, "config/jukebox_music/sounds/[config_file].ogg"))
+			to_chat(user, "<span class='warning'>For some reason, track was not saved, please try again. <br> Input file: [file] <br> Output file: [config_file].ogg</span>")
+			return
 
-	to_chat(user, "<span class='notice'>Your track has been successfully uploaded to the server under the following name: [config_file].ogg</span>")
-	message_admins("[key_name(user)] uploaded the track [config_file].ogg with the original name [file] on server")
-	log_admin("[key_name(user)] uploaded the track [config_file].ogg with the original name [file] on server")
+		to_chat(user, "<span class='notice'>Your track has been successfully uploaded to the server under the following name: [config_file].ogg</span>")
+		message_admins("[key_name(user)] uploaded the track [config_file].ogg with the original name [file] on server")
+		log_admin("[key_name(user)] uploaded the track [config_file].ogg with the original name [file] on server")
 
 /obj/machinery/jukebox/bar
 	need_coin = TRUE

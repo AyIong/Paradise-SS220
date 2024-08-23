@@ -177,3 +177,15 @@ export const buildQueryString = (obj) =>
   Object.keys(obj)
     .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]))
     .join('&');
+
+/**
+ * Converts a deciseconds into a formatted time string
+ * If input 600, it will be converted to 1:00
+ */
+export const formatTime = (deciseconds) => {
+  const seconds = Math.floor(deciseconds / 10);
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  const formattedTime = `${minutes}:${remainingSeconds > 9 ? remainingSeconds : '0' + remainingSeconds}`;
+  return formattedTime;
+};

@@ -17,8 +17,8 @@
 /datum/jukebox
 	/// Atom that hosts the jukebox. Can be a turf or a movable.
 	VAR_FINAL/atom/parent
-	/// List of /datum/tracks we can play. Set via get_songs().
-	VAR_FINAL/list/songs = list()
+	/// List of /datum/tracks we can play. Set via init_songs().
+	VAR_FINAL/static/list/songs = list()
 	/// Current song track selected
 	VAR_FINAL/datum/track/selection
 	/// Current song datum playing
@@ -114,13 +114,13 @@
 		new_track.song_name = track_data[1]
 		new_track.song_length = text2num(track_data[2])
 		new_track.song_beat = text2num(track_data[3])
+		new_track.hosted = TRUE
 		songs_list[new_track.song_name] = new_track
 
 	for(var/datum/track/default_song as anything in subtypesof(/datum/track/default))
 		songs_list[default_song.song_name] = new default_song (default_song.song_name, default_song.song_path, default_song.song_length, default_song.song_beat)
 
 	return songs_list
-
 
 /// Loads the config sounds once, and returns a copy of them.
 /datum/jukebox/proc/load_songs_from_config()
@@ -409,6 +409,8 @@
 	/// How long is a beat of the song in decisconds
 	/// Used to determine time between effects when played
 	var/song_beat = 0
+	/// Track exist in config folder? Used for Jukebox Manager to allow admins delete tracks
+	var/hosted = FALSE
 
 // Default tracks supplied for testing and also because it's a banger
 /datum/track/default/basic

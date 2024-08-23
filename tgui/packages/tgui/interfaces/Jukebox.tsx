@@ -1,5 +1,6 @@
 import { sortBy } from 'common/collections';
 import { flow } from 'common/fp';
+import { formatTime } from 'common/string';
 
 import { BooleanLike } from '../../common/react';
 import { useBackend, useLocalState } from '../backend';
@@ -40,14 +41,6 @@ type Song = {
 };
 
 const MAX_NAME_LENGTH = 35;
-
-const formatTime = (deciseconds) => {
-  const seconds = Math.floor(deciseconds / 10);
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
-  const formattedTime = `${minutes}:${remainingSeconds > 9 ? remainingSeconds : '0' + remainingSeconds}`;
-  return formattedTime;
-};
 
 export const Jukebox = (props, context) => {
   const { data } = useBackend<Data>(context);

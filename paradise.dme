@@ -1988,6 +1988,7 @@
 #include "code\modules\jukebox\_jukebox.dm"
 #include "code\modules\jukebox\jukebox_dances.dm"
 #include "code\modules\jukebox\jukebox_datum.dm"
+#include "code\modules\jukebox\jukebox_manager.dm"
 #include "code\modules\lavaland\lavaland_theme.dm"
 #include "code\modules\library\book.dm"
 #include "code\modules\library\library_admin.dm"
