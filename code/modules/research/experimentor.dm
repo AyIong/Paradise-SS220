@@ -99,8 +99,8 @@
 	return TRUE
 
 /obj/machinery/r_n_d/experimentor/attackby(obj/item/O, mob/user, params)
-	if(exchange_parts(user, O))
-		return
+	if(istype(O, /obj/item/storage/part_replacer))
+		return ..()
 
 	if(!checkCircumstances(O))
 		to_chat(user, "<span class='warning'>[O] is not yet valid for [src] and must be completed!</span>")
@@ -118,12 +118,15 @@
 		if(!O.origin_tech)
 			to_chat(user, "<span class='warning'>This doesn't seem to have a tech origin!</span>")
 			return
+
 		var/list/temp_tech = ConvertReqString2List(O.origin_tech)
 		if(length(temp_tech) == 0)
 			to_chat(user, "<span class='warning'>You cannot experiment on this item!</span>")
 			return
+
 		if(!user.drop_item())
 			return
+
 		loaded_item = O
 		O.loc = src
 		to_chat(user, "<span class='notice'>You add [O] to the machine.</span>")
@@ -571,8 +574,11 @@
 		if(dotype != FAIL)
 			if(process && process.origin_tech)
 				var/list/temp_tech = ConvertReqString2List(process.origin_tech)
+				var/datum/research/F = linked_console.get_files()
+				if(!F)
+					return
 				for(var/T in temp_tech)
-					linked_console.files.UpdateTech(T, temp_tech[T])
+					F.UpdateTech(T, temp_tech[T])
 	updateUsrDialog()
 	return
 

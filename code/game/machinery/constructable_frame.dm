@@ -92,8 +92,8 @@
 					to_chat(user, "<span class='warning'>You need five lengths of cable to wire the frame.</span>")
 				return
 
-			if(istype(P, /obj/item/wrench))
-				playsound(src.loc, P.usesound, 75, 1)
+			if(iswrench(P))
+				P.play_tool_sound(src)
 				to_chat(user, "<span class='notice'>You dismantle the frame.</span>")
 				deconstruct(TRUE)
 				return
@@ -294,13 +294,13 @@ to destroy them and players will be able to make replacements.
 	. = TRUE
 	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
 		return
-	var/choice = tgui_input_list(user, "Choose a new brand", "Select an Item", station_vendors)
+	var/choice = tgui_input_list(user, "Choose a new brand", "Select an Item", station_vendors + ss220_vendors) // SS220 ADDITION - ss220_vendors
 	if(!choice)
 		return
 	set_type(choice)
 
 /obj/item/circuitboard/vendor/proc/set_type(type)
-	var/static/list/buildable_vendors = station_vendors + unique_vendors
+	var/static/list/buildable_vendors = station_vendors + unique_vendors + ss220_vendors // SS220 ADDITION - ss220_vendors
 	var/obj/machinery/economy/vending/typepath = buildable_vendors[type]
 	build_path = typepath
 	board_name = "[type] Vendor"
@@ -549,6 +549,13 @@ to destroy them and players will be able to make replacements.
 							/obj/item/stock_parts/matter_bin = 1,
 							/obj/item/stock_parts/manipulator = 1)
 
+/obj/item/circuitboard/washing_machine
+	board_name = "Washing Machine"
+	icon_state = "generic"
+	build_path = /obj/machinery/washing_machine
+	board_type = "machine"
+	origin_tech = "programming=1"
+
 /obj/item/circuitboard/smartfridge
 	board_name = "Smartfridge"
 	build_path = /obj/machinery/smartfridge
@@ -565,6 +572,7 @@ to destroy them and players will be able to make replacements.
 							"Smart Chemical Storage" = /obj/machinery/smartfridge/secure/chemistry,
 							"Smart Virus Storage" = /obj/machinery/smartfridge/secure/chemistry/virology,
 							"Drink Showcase" = /obj/machinery/smartfridge/drinks,
+							"Disk Compartmentalizer" = /obj/machinery/smartfridge/disks,
 							"Identification Card Compartmentalizer" = /obj/machinery/smartfridge/id,
 							"Circuit Board Storage" = /obj/machinery/smartfridge/secure/circuits,
 							"AI Laws Storage" = /obj/machinery/smartfridge/secure/circuits/aiupload)
@@ -712,6 +720,10 @@ to destroy them and players will be able to make replacements.
 	name = "Circuit board (Syndi Autolathe)"
 	icon_state = "engineering"
 	build_path = /obj/machinery/autolathe/syndicate
+
+/obj/item/circuitboard/autolathe/trapped
+	board_name = "Modified Autolathe"
+	build_path = /obj/machinery/autolathe/trapped
 
 /obj/item/circuitboard/protolathe
 	board_name = "Protolathe"

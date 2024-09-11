@@ -64,7 +64,7 @@
 
 /obj/item/paper/examine(mob/user)
 	. = ..()
-	. += "<span class='info'><b>Alt-Click</b> [src] with a pen in hand to rename it.</span>"
+	. += "<span class='notice'><b>Alt-Click</b> [src] with a pen in hand to rename it.</span>"
 	if(user.is_literate())
 		if(in_range(user, src) || isobserver(user))
 			show_content(user)
@@ -141,11 +141,11 @@
 		dist = get_dist(src, user.current)
 	else //cyborg or AI not seeing through a camera
 		dist = get_dist(src, user)
+
 	if(dist < 2)
 		show_content(user, forceshow = 1)
 	else
 		show_content(user, forcestars = 1)
-	return
 
 /obj/item/paper/attack(mob/living/carbon/M, mob/living/carbon/user, def_zone)
 	if(!ishuman(M))
@@ -645,10 +645,6 @@
 /obj/item/paper/russiannuclearoperativeobj
 	name = "paper- 'Objectives of a Nuclear Operative'"
 	info = "<b>Objective #1</b>: Destroy the station with a nuclear device."
-
-/obj/item/paper/clownship
-	name = "paper- 'Note'"
-	info = "The call has gone out! Our ancestral home has been rediscovered! Not a small patch of land, but a true clown nation, a true Clown Planet! We're on our way home at last!"
 
 /obj/item/paper/syndicate
 	name = "paper"

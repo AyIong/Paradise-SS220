@@ -14,6 +14,7 @@
 	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
 	strip_delay = 60
 	dog_fashion = /datum/dog_fashion/head/helmet
+	dyeable = FALSE
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/helmet.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/helmet.dmi',
@@ -155,6 +156,7 @@
 	flags = null
 	item_state = "thunderdome"
 	armor = list(MELEE = 200, BULLET = 200, LASER = 50, ENERGY = 50, BOMB = INFINITY, RAD = INFINITY, FIRE = 450, ACID = 450)
+	flags_2 = RAD_PROTECT_CONTENTS_2
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	heat_protection = HEAD
