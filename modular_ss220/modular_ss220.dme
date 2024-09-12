@@ -62,6 +62,7 @@
 #include "jobs/_jobs.dme"
 #include "jukebox/_jukebox.dme"
 #include "instruments/_instruments.dme"
+#include "interactions/_interactions.dme"
 #include "keybindings/_keybindings.dme"
 #include "loadout/_loadout.dme"
 #include "logs/_logs.dme"
