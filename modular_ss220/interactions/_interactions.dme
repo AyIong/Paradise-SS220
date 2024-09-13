@@ -1,3 +1,6 @@
 #include "_interactions.dm"
 
-#include "code/interactions.dm"
+#include "code/_interactions_mob.dm"
+#include "code/interactions_datum.dm"
+#include "code/interactions_element.dm"
+#include "code/interactions_ui.dm"
