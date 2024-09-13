@@ -2,18 +2,16 @@
 @use 'sass:meta';
 
 @use '../colors.scss' with (
+  $color-bg: #e8e4c9,
+  $color-fg: #e8e4c9,
   $primary: #397439,
+  $color-bg-spread: 6%,
   $fg-map-keys: (),
   $bg-map-keys: ()
 );
-@use '../base.scss' with (
-  $color-bg: #e8e4c9,
-  $color-bg-grad-spread: 6%,
-  $border-radius: 2px
-);
 
 .theme-securestorage {
-  @include meta.load-css('../layouts/TitleBar.scss', $with: ('background-color': #e8e4c9, 'text-color': #191916));
+  @include meta.load-css('../layouts/TitleBar.scss', $with: ('text-color': #191916));
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/Window.scss');
   @include meta.load-css('../components/Section.scss');

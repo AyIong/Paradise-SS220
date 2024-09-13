@@ -4,22 +4,37 @@
  */
 
 @use 'sass:color';
+@use './colors.scss' as colors;
 
-$color-fg: #ffffff !default;
-$color-bg: #252525 !default;
-$color-bg-section: rgba(0, 0, 0, 0.33) !default;
-$color-bg-grad-spread: 2% !default;
-$color-bg-start: color.adjust($color-bg, $lightness: $color-bg-grad-spread) !default;
-$color-bg-end: color.adjust($color-bg, $lightness: -$color-bg-grad-spread) !default;
-
-$unit: 12px;
-$font-size: 1 * $unit !default;
-$border-radius: 0.16em !default;
-
+// Converts pixel values to em/rem
 @function em($px) {
-  @return 1em * calc($px / $unit);
+  @return 1em * calc($px / $base-font-size);
 }
 
 @function rem($px) {
-  @return 1rem * calc($px / $unit);
+  @return 1rem * calc($px / $base-font-size);
 }
+
+/* Misc */
+$base-font-size: 12px;
+$font-size: 1 * $base-font-size !default;
+
+/* Border radius */
+$border-radius-small: 0.25em !default;
+$border-radius-medium: $border-radius-small * 2 !default;
+$border-radius-large: $border-radius-medium * 2 !default;
+
+/* Border thickness */
+$thickness-small: em(1px) !default;
+$thickness-medium: em(2px) !default;
+$thickness-large: em(3px) !default;
+
+/* Shadows */
+$shadow-small: 0 0 0.15rem 0.15rem colors.$shadow-color;
+$shadow-medium: 0 0 0.25rem 0.25rem colors.$shadow-color;
+$shadow-large: 0 0 0.5rem 0.5rem colors.$shadow-color;
+
+/* Transitions */
+$transition-small: 0.1s !default;
+$transition-medium: 0.25s !default;
+$transition-large: 0.5s !default;

@@ -4,7 +4,7 @@
  */
 
 @use 'sass:meta';
-@use './base.scss';
+@use './colors.scss';
 
 // Core styles
 @include meta.load-css('./reset.scss');
@@ -13,7 +13,6 @@
 @include meta.load-css('./atomic/candystripe.scss');
 @include meta.load-css('./atomic/color.scss');
 @include meta.load-css('./atomic/debug-layout.scss');
-@include meta.load-css('./atomic/outline.scss');
 @include meta.load-css('./atomic/text.scss');
 
 // Components

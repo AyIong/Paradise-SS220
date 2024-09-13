@@ -7,7 +7,9 @@
 @use 'sass:meta';
 
 @use '~tgui/styles/colors.scss' with (
-  $primary: #ffffff,
+  $color-bg: #eeeeee,
+  $color-base: #ffffff,
+  $color-bg-spread: 0%,
   $bg-lightness: -25%,
   $fg-lightness: -10%,
   $label: #3b3b3b,
@@ -17,13 +19,12 @@
   // settings above, but will add extra 10KB to the theme.
   // $fg-map-keys: (),
   // $bg-map-keys: (),
+  $text-color: hsl(0, 0%, 0%),
+  $text-color-translucent: hsla(0, 0%, 0%, 0.5)
 );
-@use '~tgui/styles/base.scss' with (
-  $color-fg: #000000,
-  $color-bg: #eeeeee,
-  $color-bg-section: #ffffff,
-  $color-bg-grad-spread: 0%
-);
+
+$border-color: colors.fg(colors.$label);
+$color-fg: colors.$color-bg;
 
 // A fat warning to anyone who wants to use this: this only half works.
 // It was made almost purely for the nuke ui, and requires a good amount of manual hacks to get it working as intended.
@@ -35,7 +36,6 @@
   @include meta.load-css(
     '~tgui/styles/components/Tabs.scss',
     $with: (
-      'text-color': rgba(0, 0, 0, 0.5),
       'color-default': rgba(0, 0, 0, 1),
       'tab-color-selected': rgba(0, 0, 0, 0.125),
       'tab-color-hovered': rgba(0, 0, 0, 0.075)
@@ -49,14 +49,10 @@
       'color-disabled': #363636,
       'color-selected': #0668b8,
       'color-caution': #be6209,
-      'color-danger': #9a9d00,
-      'color-transparent-text': rgba(0, 0, 0, 0.5)
+      'color-danger': #9a9d00
     )
   );
-  @include meta.load-css(
-    '~tgui/styles/components/Input.scss',
-    $with: ('border-color': colors.fg(colors.$label), 'background-color': #e6e6e6)
-  );
+  @include meta.load-css('~tgui/styles/components/Input.scss', $with: ('background-color': #e6e6e6));
   @include meta.load-css('~tgui/styles/components/NumberInput.scss');
   @include meta.load-css('~tgui/styles/components/TextArea.scss');
   @include meta.load-css('~tgui/styles/components/Knob.scss');
@@ -71,11 +67,7 @@
   @include meta.load-css('~tgui/styles/layouts/Window.scss');
   @include meta.load-css(
     '~tgui/styles/layouts/TitleBar.scss',
-    $with: (
-      'text-color': rgba(0, 0, 0, 0.75),
-      'background-color': base.$color-bg,
-      'shadow-color-core': rgba(0, 0, 0, 0.25)
-    )
+    $with: ('text-color': rgba(0, 0, 0, 0.75), 'shadow-color-core': rgba(0, 0, 0, 0.25))
   );
 
   // Goonchat styles

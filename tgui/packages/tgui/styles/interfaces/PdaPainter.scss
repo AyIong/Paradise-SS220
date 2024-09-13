@@ -1,5 +1,4 @@
-@use '../base.scss';
-@use '../colors.scss';
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
 .PdaPainter__list {
@@ -15,7 +14,7 @@
     transition: background-color 50ms;
     &:hover,
     &:focus {
-      background-color: rgba(base.$color-bg, 1);
+      background-color: rgba($color-bg, 1);
     }
   }
 }

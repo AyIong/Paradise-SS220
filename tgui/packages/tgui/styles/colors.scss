@@ -7,31 +7,52 @@
 @use 'sass:map';
 @use 'sass:meta';
 
-// Base colors
-$red: #db2828 !default;
-$orange: #f2711c !default;
-$yellow: #fbd608 !default;
-$olive: #b5cc18 !default;
-$green: #20b142 !default;
-$teal: #00b5ad !default;
-$blue: #2185d0 !default;
-$violet: #6435c9 !default;
-$purple: #a333c8 !default;
-$pink: #e03997 !default;
-$brown: #a5673f !default;
-$grey: #767676 !default;
-$primary: #4972a1 !default;
-$label: #7e90a7 !default;
+/* Background colors */
+$color-bg: hsl(0, 0%, 15%) !default;
+$color-bg-darken: color.adjust($color-bg, $lightness: -10%) !default;
+$color-fg: hsl(0, 0%, 22.5%) !default;
+$color-fg-lighten: hsl(0, 0%, 22.5%) !default;
+$color-base: hsla(0, 0%, 0%, 0.33) !default;
+/* Background gradient */
+$color-bg-spread: 2% !default;
+$color-bg-start: color.adjust($color-bg, $lightness: $color-bg-spread) !default;
+$color-bg-end: color.adjust($color-bg, $lightness: -$color-bg-spread) !default;
 
-// State colors
-$good: #5baa27 !default;
-$average: #f08f11 !default;
-$bad: #db2828 !default;
-$black: #000000 !default;
-$white: #ffffff !default;
+/* Base colors */
+$red: hsl(0, 70%, 50%) !default;
+$orange: hsl(25, 90%, 50%) !default;
+$yellow: hsl(50, 95%, 50%) !default;
+$olive: hsl(70, 80%, 50%) !default;
+$green: hsl(135, 70%, 40%) !default;
+$teal: hsl(175, 100%, 35%) !default;
+$blue: hsl(205, 75%, 45%) !default;
+$violet: hsl(260, 60%, 50%) !default;
+$purple: hsl(285, 60%, 50%) !default;
+$pink: hsl(325, 70%, 55%) !default;
+$brown: hsl(25, 45%, 45%) !default;
+$grey: hsl(0, 0%, 45%) !default;
+$primary: hsl(210, 40%, 45%) !default;
+$label: hsl(215, 20%, 60%) !default;
+$gold: hsl(40, 90%, 50%) !default;
 
-// Custom colors
-$gold: #f2a918 !default;
+/* State colors */
+$good: hsl(95, 65%, 40%) !default;
+$average: hsl(35, 90%, 50%) !default;
+$bad: hsl(0, 70%, 50%) !default;
+$black: hsl(0, 0%, 0%) !default;
+$white: hsl(0, 0%, 100%) !default;
+
+/* Text colors */
+$text-color: hsl(0, 0%, 100%) !default;
+$text-color-translucent: rgba($text-color, 0.5) !default;
+
+/* Border colors */
+$border-color: hsla(0, 0%, 100%, 0.1) !default;
+$border-input-color: hsla(210, 100%, 75%, 0.75) !default;
+$border-input-disabled-color: color.adjust($border-input-color, $saturation: -100%, $lightness: -25%) !default;
+
+/* Shadow color */
+$shadow-color: rgba($black, 0.1) !default;
 
 // Background and foreground color lightness ratios
 $bg-lightness: -15% !default;
@@ -46,7 +67,6 @@ $fg-lightness: 10% !default;
 }
 
 // Mappings of color names
-
 $_gen_map: (
   'black': $black,
   'white': $white,
@@ -71,10 +91,11 @@ $_gen_map: (
 
 // Foreground color names for which to generate a color map
 $fg-map-keys: map.keys($_gen_map) !default;
+
 // Background color names for which to generate a color map
 $bg-map-keys: map.keys($_gen_map) !default;
 
-$fg-map: ();
+$fg-map: () !default;
 @each $color-name in $fg-map-keys {
   $fg-map: map-merge(
     $fg-map,
@@ -84,7 +105,7 @@ $fg-map: ();
   );
 }
 
-$bg-map: ();
+$bg-map: () !default;
 @each $color-name in $bg-map-keys {
   $bg-map: map-merge(
     $bg-map,

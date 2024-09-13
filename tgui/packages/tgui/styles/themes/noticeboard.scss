@@ -5,9 +5,11 @@ $window-color: #2b0f0c;
 $background-color: #824b28;
 $paper-color: #f2f2f2;
 
-@use '../base.scss' with (
+@use '../colors.scss' with (
   $color-bg: $window-color,
-  $color-bg-grad-spread: 0%
+  $color-fg: $window-color,
+  $color-base: $paper-color,
+  $color-bg-spread: 0%
 );
 
 .theme-noticeboard {
@@ -15,13 +17,13 @@ $paper-color: #f2f2f2;
   @include meta.load-css('../atomic/color.scss');
 
   // Components
-  @include meta.load-css('../components/Section.scss', $with: ('background-color': $paper-color));
+  @include meta.load-css('../components/Section.scss');
 
   // Layouts
   @include meta.load-css('../layouts/Window.scss');
   @include meta.load-css(
     '../layouts/TitleBar.scss',
-    $with: ('background-color': $window-color, 'shadow-color': $window-color, 'shadow-color-core': $window-color)
+    $with: ('shadow-color': $window-color, 'shadow-color-core': $window-color)
   );
 
   .Layout,

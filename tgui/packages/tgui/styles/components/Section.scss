@@ -4,19 +4,14 @@
  */
 
 @use 'sass:color';
-@use '../base.scss';
-@use '../colors.scss';
-@use '../functions.scss';
-
-$title-text-color: base.$color-fg !default;
-$background-color: base.$color-bg-section !default;
-$separator-color: colors.$primary !default;
+@use '../base.scss' as *;
+@use '../colors.scss' as *;
+@use '../functions.scss' as *;
 
 .Section {
   position: relative;
   margin-bottom: 0.5em;
-  background-color: functions.fake-alpha($background-color, base.$color-bg);
-  background-color: $background-color;
+  background-color: $color-base;
   box-sizing: border-box;
 
   &:last-child {
@@ -27,20 +22,20 @@ $separator-color: colors.$primary !default;
 .Section__title {
   position: relative;
   padding: 0.5em;
-  border-bottom: base.em(2px) solid $separator-color;
+  border-bottom: $thickness-medium solid $primary;
 }
 
 .Section__titleText {
-  font-size: base.em(14px);
+  font-size: em(14px);
   font-weight: bold;
-  color: $title-text-color;
+  color: $text-color;
 }
 
 .Section__buttons {
   position: absolute;
   display: inline-block;
   right: 0.5em;
-  margin-top: base.em(-1px);
+  margin-top: em(-1px);
 }
 
 .Section__rest {
@@ -114,10 +109,10 @@ $separator-color: colors.$primary !default;
 
 // Level 2 section title
 .Section .Section .Section__titleText {
-  font-size: base.em(13px);
+  font-size: em(13px);
 }
 
 // Level 3 section title
 .Section .Section .Section .Section__titleText {
-  font-size: base.em(12px);
+  font-size: em(12px);
 }

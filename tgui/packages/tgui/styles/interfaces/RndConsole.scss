@@ -1,4 +1,4 @@
-@import '../colors';
+@use '../colors.scss' as *;
 
 .RndConsole {
   position: relative;

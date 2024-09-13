@@ -7,14 +7,13 @@
 @use 'sass:meta';
 
 @use '../colors.scss' with (
+  $color-bg: #2a314a,
+  $color-fg: #9e1b46,
+  $color-bg-spread: 6%,
   $primary: #ad2350,
+  $border-input-color: #404b6e,
   $fg-map-keys: (),
   $bg-map-keys: ()
-);
-@use '../base.scss' with (
-  $color-bg: #2a314a,
-  $color-bg-grad-spread: 6%,
-  $border-radius: 2px
 );
 
 .theme-abductor {
@@ -36,9 +35,9 @@
     '../components/ImageButton.scss',
     $with: ('color-default': darken(colors.$primary, 20%), 'color-disabled': #363636, 'color-selected': #465899)
   );
-  @include meta.load-css('../components/Input.scss', $with: ('border-color': #404b6e));
+  @include meta.load-css('../components/Input.scss');
   @include meta.load-css('../components/NoticeBox.scss', $with: ('background-color': #a82d55));
-  @include meta.load-css('../components/NumberInput.scss', $with: ('border-color': #404b6e));
+  @include meta.load-css('../components/NumberInput.scss');
   @include meta.load-css(
     '../components/ProgressBar.scss',
     $with: ('background-color': rgba(0, 0, 0, 0.5), 'color-disabled': #363636)
@@ -49,7 +48,7 @@
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: ('background-color': #9e1b46));
+  @include meta.load-css('../layouts/TitleBar.scss');
 
   .Layout__content {
     background-image: none;

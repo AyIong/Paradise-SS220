@@ -4,23 +4,21 @@
  */
 
 @use 'sass:color';
-@use '../base.scss';
-@use '../colors.scss';
+@use '../base.scss' as *;
+@use '../colors.scss' as *;
 
-$color-default: color.scale(colors.fg(colors.$primary), $lightness: 75%) !default;
-$text-color: rgba(255, 255, 255, 0.5) !default;
+$color-default: color.scale(fg($primary), $lightness: 75%) !default;
 $text-color-selected: color.scale($color-default, $lightness: 25%) !default;
 $tab-color: transparent !default;
 $tab-color-hovered: rgba(255, 255, 255, 0.075) !default;
 $tab-color-selected: rgba(255, 255, 255, 0.125) !default;
-$border-radius: base.$border-radius !default;
-$fg-map: colors.$fg-map !default;
+$border-radius-small: $border-radius-small !default;
 
 .Tabs {
   display: flex;
   align-items: stretch;
   overflow: hidden;
-  background-color: base.$color-bg-section;
+  background-color: $color-base;
 }
 
 .Tabs--fill {
@@ -66,14 +64,17 @@ $fg-map: colors.$fg-map !default;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  user-select: none;
+  -ms-user-select: none; // Remove after Byond 516 release
   background-color: $tab-color;
-  color: $text-color;
+  color: $text-color-translucent;
   min-height: 2.25em;
   min-width: 4em;
   transition: background-color 50ms ease-out;
 }
 
 .Tab:not(.Tab--selected):hover {
+  cursor: pointer;
   background-color: $tab-color-hovered;
   transition: background-color 0;
 }

@@ -1,5 +1,4 @@
-@use '../base.scss';
-@use '../colors.scss';
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
 .SecurityRecords__list {
@@ -15,39 +14,39 @@
     transition: background-color 50ms;
     &:hover,
     &:focus {
-      background-color: rgba(base.$color-bg, 1);
+      background-color: rgba($color-bg, 1);
     }
   }
 }
 
 .SecurityRecords__listRow--arrest {
-  background-color: colors.bg(#890e26);
+  background-color: bg(#890e26);
 }
 
 .SecurityRecords__listRow--execute {
-  background-color: colors.bg(#7a49a5);
+  background-color: bg(#7a49a5);
 }
 
 .SecurityRecords__listRow--incarcerated {
-  background-color: colors.bg(#743b03);
+  background-color: bg(#743b03);
 }
 
 .SecurityRecords__listRow--parolled {
-  background-color: colors.bg(#008091);
+  background-color: bg(#008091);
 }
 
 .SecurityRecords__listRow--released {
-  background-color: colors.bg(#216489);
+  background-color: bg(#216489);
 }
 
 .SecurityRecords__listRow--demote {
-  background-color: colors.bg(#196400);
+  background-color: bg(#196400);
 }
 
 .SecurityRecords__listRow--search {
-  background-color: colors.bg(#b38f00);
+  background-color: bg(#b38f00);
 }
 
 .SecurityRecords__listRow--monitor {
-  background-color: colors.bg(#251496);
+  background-color: bg(#251496);
 }

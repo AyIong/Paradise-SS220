@@ -2,14 +2,12 @@
 @use 'sass:meta';
 
 @use '../colors.scss' with (
+  $color-bg: #2e2633,
+  $color-fg: #352d3b,
+  $color-bg-spread: 6%,
   $primary: #563d6b,
   $fg-map-keys: (),
   $bg-map-keys: ()
-);
-@use '../base.scss' with (
-  $color-bg: #2e2633,
-  $color-bg-grad-spread: 6%,
-  $border-radius: 2px
 );
 
 .theme-changeling {
@@ -31,7 +29,7 @@
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: ('background-color': #352d3b));
+  @include meta.load-css('../layouts/TitleBar.scss');
 
   .Layout__content {
     background-image: none;

@@ -4,33 +4,30 @@
  */
 
 @use 'sass:color';
-@use '../base.scss';
-@use '../colors.scss';
 
-$text-color: rgba(255, 255, 255, 0.75) !default;
-$background-color: #363636 !default;
-$shadow-color-core: #161616 !default;
-$shadow-color: rgba(0, 0, 0, 0.1) !default;
+@use '../base.scss' as *;
+@use '../colors.scss' as *;
+
+$shadow-color-core: color.scale($color-fg, $lightness: -50%) !default;
 
 .TitleBar {
-  background-color: $background-color;
-  border-bottom: 1px solid $shadow-color-core;
-  box-shadow: 0 2px 2px $shadow-color;
-  box-shadow: 0 base.rem(2px) base.rem(2px) $shadow-color;
+  background-color: $color-fg;
+  border-bottom: $thickness-small solid $shadow-color-core;
+  box-shadow: $shadow-small;
   user-select: none;
   -ms-user-select: none; // TODO: Remove with 516
 }
 
 .TitleBar__clickable {
-  color: color.change($text-color, $alpha: 0.5);
-  background-color: $background-color;
+  color: $text-color-translucent;
+  background-color: $color-fg;
   transition:
     color 250ms,
     background-color 250ms;
 
   &:hover {
-    color: rgba(255, 255, 255, 1);
-    background-color: #cc0000;
+    color: rgba($text-color, 0.75);
+    background-color: color.scale($red, $lightness: -10%);
     transition:
       color 0ms,
       background-color 0ms;
@@ -40,13 +37,10 @@ $shadow-color: rgba(0, 0, 0, 0.1) !default;
 .TitleBar__title {
   position: absolute;
   top: 0;
-  left: 46px;
-  left: base.rem(46px);
-  color: $text-color;
-  font-size: 14px;
-  font-size: base.rem(14px);
-  line-height: 31px;
-  line-height: base.rem(31px);
+  left: rem(46px);
+  font-size: rem(14px);
+  line-height: rem(31px);
+  color: rgba($text-color, 0.75);
   white-space: nowrap;
 }
 
@@ -55,48 +49,36 @@ $shadow-color: rgba(0, 0, 0, 0.1) !default;
   top: 0;
   left: 0;
   right: 0;
-  height: 32px;
-  height: base.rem(32px);
+  height: rem(32px);
 }
 
 .TitleBar__statusIcon {
   position: absolute;
   top: 0;
-  left: 12px;
-  left: base.rem(12px);
-  transition: color 0.5s;
-  font-size: 20px;
-  font-size: base.rem(20px);
-  line-height: 32px !important;
-  line-height: base.rem(32px) !important;
+  left: rem(12px);
+  transition: color $transition-large;
+  font-size: rem(20px);
+  line-height: rem(32px) !important;
 }
 
 .TitleBar__close {
   position: absolute;
   top: -1px;
   right: 0;
-  width: 45px;
-  width: base.rem(45px);
-  height: 32px;
-  height: base.rem(32px);
-  font-size: 20px;
-  font-size: base.rem(20px);
-  line-height: 31px;
-  line-height: base.rem(31px);
+  width: rem(45px);
+  height: rem(32px);
+  font-size: rem(20px);
+  line-height: rem(31px);
   text-align: center;
 }
 
 .TitleBar__devBuildIndicator {
   position: absolute;
-  top: 6px;
-  top: base.rem(6px);
-  right: 52px;
-  right: base.rem(52px);
-  min-width: 20px;
-  min-width: base.rem(20px);
-  padding: 2px 4px;
-  padding: base.rem(2px) base.rem(4px);
-  background-color: rgba(colors.$good, 0.75);
-  color: #fff;
+  top: rem(6px);
+  right: rem(52px);
+  min-width: rem(20px);
+  padding: rem(2px) rem(4px);
+  background-color: rgba($good, 0.75);
+  color: $white;
   text-align: center;
 }

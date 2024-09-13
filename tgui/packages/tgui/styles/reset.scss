@@ -3,14 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-@use './base.scss';
+@use './colors.scss' as *;
+@use './base.scss' as *;
 
 html,
 body {
   box-sizing: border-box;
   height: 100%;
   margin: 0;
-  font-size: base.$font-size;
+  font-size: $font-size;
 }
 
 html {

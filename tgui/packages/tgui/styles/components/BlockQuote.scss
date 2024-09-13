@@ -3,14 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-@use '../base.scss';
-@use '../colors.scss';
-
-$color-default: colors.fg(colors.$label) !default;
+@use '../base.scss' as *;
+@use '../colors.scss' as *;
+@use '../functions.scss' as *;
 
 .BlockQuote {
-  color: $color-default;
-  border-left: base.em(2px) solid $color-default;
+  color: $label;
+  border-left: $thickness-medium solid fg($label);
   padding-left: 0.5em;
   margin-bottom: 0.5em;
 

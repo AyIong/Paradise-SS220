@@ -3,12 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-@use '../base.scss';
-@use '../colors.scss';
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
-$bg-map: colors.$bg-map !default;
-$fg-map: colors.$fg-map !default;
+$bg-map: $bg-map !default;
+$fg-map: $fg-map !default;
 $ring-color: #6a96c9 !default;
 $knob-color: #333333 !default;
 $popup-background-color: #000000 !default;

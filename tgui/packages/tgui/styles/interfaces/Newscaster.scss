@@ -1,5 +1,5 @@
 @use 'sass:color';
-@use '../colors.scss';
+@use '../colors.scss' as *;
 
 .Newscaster__menu {
   width: 40px;
@@ -12,7 +12,7 @@
   }
 
   &Button {
-    color: colors.$grey;
+    color: $grey;
     cursor: pointer;
     position: relative;
     margin-left: 6px;
@@ -28,7 +28,7 @@
     }
 
     &--unread {
-      background-color: color.scale(colors.$bad, $lightness: 25%);
+      background-color: color.scale($bad, $lightness: 25%);
       color: white;
       font-size: 10px;
       text-align: center;
@@ -41,11 +41,11 @@
     }
 
     &--selected {
-      color: colors.$white;
+      color: $white;
 
       &:after {
         content: '';
-        background-color: colors.$primary;
+        background-color: $primary;
         width: 2px;
         height: 24px;
         position: absolute;
@@ -54,7 +54,7 @@
     }
 
     &--security {
-      color: colors.$primary;
+      color: $primary;
     }
 
     i {
@@ -67,10 +67,10 @@
     }
 
     &:hover {
-      color: colors.$white;
+      color: $white;
 
       &:before {
-        background-color: colors.$white;
+        background-color: $white;
       }
     }
 
@@ -125,7 +125,7 @@ $_gen_map: (
 }
 
 .Newscaster__emptyNotice {
-  color: colors.$label;
+  color: $label;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -140,13 +140,13 @@ $_gen_map: (
 .Newscaster__photo {
   cursor: pointer;
   width: 100px;
-  border: 1px solid colors.$black;
+  border: 1px solid $black;
   transition: border-color 0.3s;
   -ms-interpolation-mode: nearest-neighbor; // TODO: Remove with 516
   image-rendering: pixelated;
 
   &:hover {
-    border-color: color.scale(colors.$black, $lightness: 50%);
+    border-color: color.scale($black, $lightness: 50%);
   }
 }
 
@@ -170,10 +170,10 @@ $_gen_map: (
 
 .Newscaster__story {
   &--wanted {
-    background-color: rgba(colors.$bad, 0.1);
+    background-color: rgba($bad, 0.1);
 
     .Section__title {
-      color: colors.$bad;
+      color: $bad;
       border-bottom: 2px solid #a14c49 !important;
     }
   }

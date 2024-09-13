@@ -1,6 +1,6 @@
 @use 'sass:meta';
 @use 'sass:color';
-@use './colors.scss';
+@use './colors.scss' as *;
 
 // Core styles
 @include meta.load-css('~tgui/styles/reset.scss');
@@ -15,7 +15,7 @@
 @include meta.load-css('./textarea.scss');
 @include meta.load-css('./window.scss');
 
-@each $channel, $color in colors.$channel-map {
+@each $channel, $color in $channel-map {
   $darkened: darken($color, 20%);
 
   .button-#{$channel} {

@@ -5,6 +5,7 @@
   $primary: #49a149,
   $blue: #21d021,
   $label: #7ea77e,
+  $border-color: #88ff88,
   $fg-map-keys: (
     'label',
   ),
@@ -12,7 +13,6 @@
     'good',
   )
 );
-@use '../base.scss';
 
 .theme-hydroponics {
   // Atomic classes
@@ -20,7 +20,7 @@
 
   // Components
   @include meta.load-css('../components/Button.scss', $with: ('color-default': colors.$primary));
-  @include meta.load-css('../components/Input.scss', $with: ('border-color': #88ff88));
+  @include meta.load-css('../components/Input.scss');
   @include meta.load-css('../components/NoticeBox.scss');
   @include meta.load-css('../components/Section.scss');
 

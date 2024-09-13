@@ -1,8 +1,8 @@
 @use 'sass:color';
-@use './colors.scss';
+@use './colors.scss' as *;
 
 .window {
-  background-color: colors.$background;
+  background-color: $background;
   display: flex;
   flex-direction: column;
   max-width: 275px;
@@ -18,7 +18,7 @@
 }
 
 .window-lightMode {
-  background-color: colors.$lightMode;
+  background-color: $lightMode;
 }
 
 /** Window sizes */

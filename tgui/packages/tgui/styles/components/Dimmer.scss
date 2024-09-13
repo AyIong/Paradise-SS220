@@ -3,6 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
+@use '../colors.scss' as *;
+
+$background-color: darken(rgba($color-bg, 0.75), 10%) !default;
+
 .Dimmer {
   // Align everything in the middle.
   // A fat middle finger for anything less than IE11.
@@ -16,6 +20,6 @@
   left: 0;
   right: 0;
   // Dim everything around it
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: $background-color;
   z-index: 1;
 }

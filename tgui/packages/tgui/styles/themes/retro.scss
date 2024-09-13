@@ -7,14 +7,16 @@
 @use 'sass:meta';
 
 @use '../colors.scss' with (
+  $color-bg: #e8e4c9,
+  $color-fg: #585337,
   $primary: #000000,
+  $color-bg-spread: 0%,
   $fg-map-keys: (),
   $bg-map-keys: ()
 );
+
 @use '../base.scss' with (
-  $color-bg: #e8e4c9,
-  $color-bg-grad-spread: 0%,
-  $border-radius: 0
+  $border-radius-small: 0
 );
 
 // A fat warning to anyone who wants to use this: this only half works.
@@ -44,13 +46,13 @@
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: ('background-color': #585337));
+  @include meta.load-css('../layouts/TitleBar.scss');
 
   .Button {
     font-family: monospace;
     color: #161613;
-    border: base.em(2px) outset #e8e4c9;
-    outline: base.em(1px) solid #161613;
+    border: em(2px) outset #e8e4c9;
+    outline: em(1px) solid #161613;
   }
 
   .Layout__content {

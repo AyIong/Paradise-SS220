@@ -7,16 +7,16 @@
 @use 'sass:color';
 
 @use '~tgui/styles/colors.scss' with (
+  $color-bg: #800d33,
+  $color-base: rgba(0, 0, 0, 0.5),
+  $color-bg-start: #80014b,
+  $color-bg-end: #80460d,
   $primary: #208080,
-  $label: #805040
+  $label: #805040,
+  $border-color: #e65c2e
 );
 
-@use '~tgui/styles/base.scss' with (
-  $color-bg: #800d33,
-  $color-bg-section: rgba(0, 0, 0, 0.5),
-  $color-bg-start: #80014b,
-  $color-bg-end: #80460d
-);
+$color-fg: colors.$color-bg;
 
 // A fat warning to anyone who wants to use this: this only half works.
 // It was made almost purely for the nuke ui, and requires a good amount of manual hacks to get it working as intended.
@@ -30,10 +30,7 @@
     '~tgui/styles/components/Button.scss',
     $with: ('color-default': colors.$primary, 'color-selected': #bf6030, 'color-danger': #8c1eff)
   );
-  @include meta.load-css(
-    '~tgui/styles/components/Input.scss',
-    $with: ('border-color': #e65c2e, 'background-color': rgba(0, 0, 0, 0.25))
-  );
+  @include meta.load-css('~tgui/styles/components/Input.scss', $with: ('background-color': rgba(0, 0, 0, 0.25)));
   @include meta.load-css('~tgui/styles/components/NumberInput.scss');
   @include meta.load-css('~tgui/styles/components/TextArea.scss');
   @include meta.load-css('~tgui/styles/components/Knob.scss');
@@ -51,11 +48,7 @@
   @include meta.load-css('~tgui/styles/layouts/Window.scss');
   @include meta.load-css(
     '~tgui/styles/layouts/TitleBar.scss',
-    $with: (
-      'text-color': rgba(255, 0, 0, 0.75),
-      'background-color': base.$color-bg,
-      'shadow-color-core': rgba(0, 0, 0, 0.25)
-    )
+    $with: ('text-color': rgba(255, 0, 0, 0.75), 'shadow-color-core': rgba(0, 0, 0, 0.25))
   );
 
   // Goonchat styles

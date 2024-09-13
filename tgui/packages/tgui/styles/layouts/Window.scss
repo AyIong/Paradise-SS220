@@ -4,8 +4,8 @@
  */
 
 @use 'sass:color';
-@use '../base.scss';
-@use '../functions.scss' as *;
+@use '../base.scss' as *;
+@use '../colors.scss' as *;
 
 .Window {
   position: fixed;
@@ -13,26 +13,24 @@
   bottom: 0;
   left: 0;
   right: 0;
-  color: base.$color-fg;
-  background-color: base.$color-bg;
-  background-image: linear-gradient(to bottom, base.$color-bg-start 0%, base.$color-bg-end 100%);
+  color: $text-color;
+  background-color: $color-bg;
+  background-image: linear-gradient(to bottom, $color-bg-start 0%, $color-bg-end 100%);
 }
 
 .Window__titleBar {
   position: fixed;
-  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
-  height: 32px;
-  height: base.rem(32px);
+  height: rem(32px);
+  z-index: 1;
 }
 
 // Everything after the title bar
 .Window__rest {
   position: fixed;
-  top: 32px;
-  top: base.rem(32px);
+  top: rem(32px);
   bottom: 0;
   left: 0;
   right: 0;
@@ -40,8 +38,6 @@
 
 .Window__contentPadding {
   margin: 0.5rem;
-  // IE8: Calc not supported
-  height: 100%;
   // 0.01 is needed to make the scrollbar not appear
   // due to rem rendering inaccuracies in IE11.
   height: calc(100% - 1.01rem);
@@ -63,7 +59,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(lighten(base.$color-bg, 30%), 0.25);
+  background-color: rgba(lighten($color-bg, 30%), 0.25);
   pointer-events: none;
 }
 
@@ -71,10 +67,8 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 20px;
-  width: base.rem(20px);
-  height: 20px;
-  height: base.rem(20px);
+  width: rem(20px);
+  height: rem(20px);
   cursor: se-resize;
 }
 
@@ -83,8 +77,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 6px;
-  height: base.rem(6px);
+  height: rem(6px);
   cursor: s-resize;
 }
 
@@ -93,7 +86,6 @@
   top: 0;
   bottom: 0;
   right: 0;
-  width: 3px;
-  width: base.rem(3px);
+  width: rem(3px);
   cursor: e-resize;
 }

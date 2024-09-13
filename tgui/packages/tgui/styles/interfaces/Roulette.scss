@@ -1,5 +1,4 @@
-@use '../base.scss';
-@use '../colors.scss';
+@use '../colors.scss' as *;
 
 .Roulette {
   font-family: Palatino;
@@ -72,15 +71,15 @@
 }
 
 .Roulette__lowertable--spinresult-black {
-  background-color: colors.$black;
+  background-color: $black;
 }
 
 .Roulette__lowertable--spinresult-red {
-  background-color: colors.$red;
+  background-color: $red;
 }
 
 .Roulette__lowertable--spinresult-green {
-  background-color: colors.$green;
+  background-color: $green;
 }
 
 .Roulette__lowertable--spinbutton {

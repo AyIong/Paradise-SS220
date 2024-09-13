@@ -4,13 +4,11 @@
  */
 
 @use 'sass:color';
-@use '~tgui/styles/base.scss';
-@use '~tgui/styles/colors.scss';
+@use '~tgui/styles/colors.scss' as *;
 
 $text-color: #abc6ec !default;
-$color-bg-section: base.$color-bg-section !default;
-$color-bg-reconnect: $color-bg-section !default;
-$color-text-reconnect: colors.$red !default;
+$color-bg-reconnect: $color-base !default;
+$color-text-reconnect: $red !default;
 
 .Chat {
   color: $text-color;
@@ -64,7 +62,7 @@ $color-text-reconnect: colors.$red !default;
     content: '';
     display: block;
     margin-top: -0.75em;
-    border-bottom: calc(1em / 6) solid colors.$red;
+    border-bottom: calc(1em / 6) solid $red;
   }
 }
 

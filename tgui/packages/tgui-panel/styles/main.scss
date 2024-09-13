@@ -6,11 +6,10 @@
 @use 'sass:meta';
 @use 'sass:color';
 
-@use '~tgui/styles/colors.scss';
-@use '~tgui/styles/base.scss' with (
+@use '~tgui/styles/colors.scss' with (
   $color-bg: #202020,
-  $color-bg-section: color.adjust(#202020, $lightness: -5%),
-  $color-bg-grad-spread: 0%
+  $color-base: color.adjust(#202020, $lightness: -5%),
+  $color-bg-spread: 0%
 );
 
 // Core styles
@@ -20,7 +19,6 @@
 @include meta.load-css('~tgui/styles/atomic/candystripe.scss');
 @include meta.load-css('~tgui/styles/atomic/color.scss');
 @include meta.load-css('~tgui/styles/atomic/debug-layout.scss');
-@include meta.load-css('~tgui/styles/atomic/outline.scss');
 @include meta.load-css('~tgui/styles/atomic/text.scss');
 
 // Components

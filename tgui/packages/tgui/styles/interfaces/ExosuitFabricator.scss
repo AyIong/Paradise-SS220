@@ -1,4 +1,4 @@
-@use '../colors.scss';
+@use '../colors.scss' as *;
 
 .Exofab {
   .Dropdown__control {
@@ -40,7 +40,7 @@
   }
 
   &--name {
-    color: colors.$label;
+    color: $label;
     text-transform: capitalize;
   }
 
@@ -67,12 +67,12 @@
 
   &--time {
     text-align: center;
-    color: colors.$label;
+    color: $label;
   }
 
   &--deficit {
     text-align: center;
-    color: colors.$bad;
+    color: $bad;
     font-weight: bold;
 
     & > div:not(.Divider) {
@@ -106,7 +106,7 @@
   &--time {
     display: inline-block;
     margin-left: 0.5rem;
-    color: colors.$label;
+    color: $label;
 
     i {
       margin-right: 0.25rem;

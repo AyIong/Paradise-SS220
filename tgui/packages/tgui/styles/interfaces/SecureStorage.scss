@@ -1,9 +1,8 @@
-@use '../base.scss';
-@use '../colors.scss';
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
-$color-danger: colors.bg(colors.$red) !default;
-$color-caution: colors.bg(colors.$yellow) !default;
+$color-danger: bg($red) !default;
+$color-caution: bg($yellow) !default;
 
 $background-beige: #e8e4c9;
 
@@ -38,6 +37,7 @@ $background-beige: #e8e4c9;
   background-color: $background-beige;
   border-color: $background-beige;
   color: #a9a692;
+
   &:hover {
     background-color: lighten($background-beige, 15%);
     border-color: lighten($background-beige, 15%);
@@ -49,6 +49,7 @@ $background-beige: #e8e4c9;
   background-color: $color-caution;
   border-color: $color-caution;
   color: #ffffff;
+
   &:hover {
     background-color: lighten($color-caution, 20%);
     border-color: lighten($color-caution, 20%);
@@ -60,6 +61,7 @@ $background-beige: #e8e4c9;
   background-color: $color-danger;
   border-color: $color-danger;
   color: #ffffff;
+
   &:hover {
     background-color: lighten($color-danger, 20%);
     border-color: lighten($color-danger, 20%);

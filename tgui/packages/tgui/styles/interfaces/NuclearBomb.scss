@@ -1,9 +1,8 @@
-@use '../base.scss';
-@use '../colors.scss';
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
-$color-danger: colors.bg(colors.$red) !default;
-$color-caution: colors.bg(colors.$yellow) !default;
+$color-danger: bg($red) !default;
+$color-caution: bg($yellow) !default;
 
 $background-beige: #e8e4c9;
 

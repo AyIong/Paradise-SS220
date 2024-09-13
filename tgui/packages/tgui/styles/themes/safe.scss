@@ -2,13 +2,13 @@
 @use 'sass:meta';
 
 @use '../colors.scss' with (
+  $color-bg: #222b3a,
+  $color-fg: #35435a,
+  $color-bg-spread: 1%,
+  $color-base: hsl(55, 30%, 60%),
   $primary: #3d566b,
   $fg-map-keys: (),
   $bg-map-keys: ()
-);
-@use '../base.scss' with (
-  $color-bg: #222b3a,
-  $color-bg-grad-spread: 1%
 );
 
 .theme-safe {
@@ -16,11 +16,11 @@
   @include meta.load-css('../atomic/color.scss');
 
   // Components
-  @include meta.load-css('../components/Section.scss', $with: ('background-color': #b2ae74));
+  @include meta.load-css('../components/Section.scss');
 
   // Layouts
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: ('background-color': #35435a));
+  @include meta.load-css('../layouts/TitleBar.scss');
 
   // Interfaces
   @include meta.load-css('../interfaces/Safe.scss');

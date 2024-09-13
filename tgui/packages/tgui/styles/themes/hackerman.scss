@@ -6,14 +6,15 @@
 @use 'sass:color';
 @use 'sass:meta';
 
+@use '../functions.scss' as *;
 @use '../colors.scss' with (
+  $color-bg: #121b12,
+  $color-fg: #223d22,
+  $color-bg-spread: 0%,
   $primary: #00ff00,
+  $border-color: $primary,
   $fg-map-keys: (),
   $bg-map-keys: ()
-);
-@use '../base.scss' with (
-  $color-bg: #121b12,
-  $color-bg-grad-spread: 0%
 );
 
 .theme-hackerman {
@@ -23,17 +24,13 @@
   // Components
   @include meta.load-css(
     '../components/Button.scss',
-    $with: ('color-default': colors.$primary, 'color-disabled': #363636, 'color-selected': #00ff00)
+    $with: ('color-default': $primary, 'color-disabled': #363636, 'color-selected': #00ff00)
   );
   @include meta.load-css(
     '../components/ImageButton.scss',
-    $with: (
-      'color-default': darken(colors.$primary, 25%),
-      'color-disabled': #363636,
-      'color-selected': lighten(colors.$primary, 25%)
-    )
+    $with: ('color-default': darken($primary, 25%), 'color-disabled': #363636, 'color-selected': lighten($primary, 25%))
   );
-  @include meta.load-css('../components/Input.scss', $with: ('border-color': colors.$primary));
+  @include meta.load-css('../components/Input.scss');
   @include meta.load-css('../components/ProgressBar.scss', $with: ('color-disabled': #363636));
   @include meta.load-css('../components/Modal.scss');
   @include meta.load-css('../components/Section.scss');
@@ -41,7 +38,7 @@
   // Layouts
   @include meta.load-css('../layouts/Layout.scss');
   @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: ('background-color': #223d22));
+  @include meta.load-css('../layouts/TitleBar.scss');
 
   .Layout__content {
     background-image: none;
@@ -49,10 +46,10 @@
 
   .Button {
     font-family: monospace;
-    border-width: base.em(2px);
+    border-width: em(2px);
     border-style: outset;
     border-color: #00aa00;
-    outline: base.em(1px) solid rgb(0, 122, 0);
+    outline: em(1px) solid rgb(0, 122, 0);
   }
 
   .candystripe:nth-child(odd) {

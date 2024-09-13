@@ -4,26 +4,23 @@
  */
 
 @use 'sass:color';
-@use '../base.scss';
+@use '../colors.scss' as *;
+@use '../base.scss' as *;
 @use '../functions.scss' as *;
 @use './Input.scss';
 
-$text-color: Input.$text-color !default;
 $background-color: Input.$background-color !default;
-$border-color: Input.$border-color !default;
-$border-radius: Input.$border-radius !default;
 
 .NumberInput {
   position: relative;
   display: inline-block;
-  border: base.em(1px) solid $border-color;
-  border: base.em(1px) solid rgba($border-color, 0.75);
-  border-radius: $border-radius;
-  color: $border-color;
+  border: em(1px) solid $border-input-color;
+  border-radius: $border-radius-small;
+  color: $text-color;
   background-color: $background-color;
-  padding: 0 base.em(4px);
-  margin-right: base.em(2px);
-  line-height: base.em(17px);
+  padding: 0 em(4px);
+  margin-right: em(2px);
+  line-height: em(17px);
   text-align: right;
   overflow: visible;
   cursor: n-resize;
@@ -39,19 +36,19 @@ $border-radius: Input.$border-radius !default;
 
 .NumberInput__barContainer {
   position: absolute;
-  top: base.em(2px);
-  bottom: base.em(2px);
-  left: base.em(2px);
+  top: em(2px);
+  bottom: em(2px);
+  left: em(2px);
 }
 
 .NumberInput__bar {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: base.em(3px);
+  width: em(3px);
   box-sizing: border-box;
-  border-bottom: base.em(1px) solid $border-color;
-  background-color: $border-color;
+  border-bottom: em(1px) solid $border-input-color;
+  background-color: $border-input-color;
 }
 
 .NumberInput__input {
@@ -64,9 +61,9 @@ $border-radius: Input.$border-radius !default;
   border: 0;
   outline: 0;
   width: 100%;
-  font-size: base.em(12px);
-  line-height: base.em(17px);
-  height: base.em(17px);
+  font-size: em(12px);
+  line-height: em(17px);
+  height: em(17px);
   margin: 0;
   padding: 0 0.5em;
   font-family: Verdana, sans-serif;

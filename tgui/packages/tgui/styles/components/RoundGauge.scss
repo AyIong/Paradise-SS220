@@ -3,11 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-@use '../base.scss';
-@use '../colors.scss';
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
-$fg-map: colors.$fg-map !default;
+$fg-map: $fg-map !default;
 $ring-color: #6a96c9 !default;
 
 .RoundGauge {
@@ -43,7 +42,7 @@ $pi: 3.1416;
 
 .RoundGauge__needleLine,
 .RoundGauge__needleMiddle {
-  fill: colors.$bad;
+  fill: $bad;
 }
 
 .RoundGauge__alert {
@@ -55,7 +54,7 @@ $pi: 3.1416;
 }
 
 .RoundGauge__alert.max {
-  fill: colors.$bad;
+  fill: $bad;
 }
 
 @each $color-name, $color-value in $fg-map {

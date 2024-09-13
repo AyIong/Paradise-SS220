@@ -1,5 +1,4 @@
-@use '../base.scss';
-@use '../colors.scss';
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
 .Library__Booklist {
@@ -14,13 +13,13 @@
     transition: background-color 50ms;
     &:hover,
     &:focus {
-      background-color: rgba(base.$color-bg, 1);
+      background-color: rgba($color-bg, 1);
     }
   }
 }
 
 .Library__SearchContainer {
-  background-color: rgba(base.$color-bg, 0.5);
+  background-color: rgba($color-bg, 0.5);
   tr {
     td:first-child {
       width: 60%;

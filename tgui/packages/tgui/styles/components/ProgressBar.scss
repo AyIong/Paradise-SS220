@@ -3,22 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-@use '../base.scss';
-@use '../colors.scss';
+@use '../colors.scss' as *;
+@use '../base.scss' as *;
 @use '../functions.scss' as *;
 
-$color-default-fill: colors.bg(colors.$primary) !default;
+$color-default-fill: bg($primary) !default;
 $color-disabled: #999999 !default;
 $background-color: rgba(0, 0, 0, 0) !default;
-$border-radius: base.$border-radius !default;
-$bg-map: colors.$bg-map !default;
+$border-radius-small: $border-radius-small !default;
 
 .ProgressBar {
   display: inline-block;
   position: relative;
   width: 100%;
   padding: 0 0.5em;
-  border-radius: $border-radius;
+  border-radius: $border-radius-small;
   background-color: $background-color;
   transition: border-color 500ms;
 }
@@ -38,13 +37,13 @@ $bg-map: colors.$bg-map !default;
 
 .ProgressBar__content {
   position: relative;
-  line-height: base.em(17px);
+  line-height: em(17px);
   width: 100%;
   text-align: right;
 }
 
 .ProgressBar--color--default {
-  border: base.em(1px) solid $color-default-fill;
+  border: em(1px) solid $color-default-fill;
 
   .ProgressBar__fill {
     background-color: $color-default-fill;
@@ -60,7 +59,7 @@ $bg-map: colors.$bg-map !default;
 }
 @each $color-name, $color-value in $bg-map {
   .ProgressBar--color--#{$color-name} {
-    border: base.em(1px) solid $color-value !important;
+    border: em(1px) solid $color-value !important;
 
     .ProgressBar__fill {
       background-color: $color-value;

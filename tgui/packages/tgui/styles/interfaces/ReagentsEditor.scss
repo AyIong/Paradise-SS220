@@ -1,4 +1,4 @@
-@use '../colors.scss';
+@use '../colors.scss' as *;
 
 .reagents-table {
   border-collapse: separate;
@@ -20,7 +20,7 @@
 }
 
 .reagent-absent-name-cell {
-  color: colors.$grey;
+  color: $grey;
 }
 
 .reagent-row > *:last-child {

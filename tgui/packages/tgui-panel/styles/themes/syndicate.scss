@@ -7,12 +7,12 @@
 @use 'sass:meta';
 
 @use '~tgui/styles/colors.scss' with (
-  $primary: #397439
-);
-@use '~tgui/styles/base.scss' with (
   $color-bg: #4d0202,
-  $color-bg-section: #2b0101,
-  $color-bg-grad-spread: 0%
+  $color-fg: #910101,
+  $color-base: #2b0101,
+  $color-bg-spread: 0%,
+  $primary: #397439,
+  $border-input-color: #87ce87
 );
 
 // A fat warning to anyone who wants to use this: this only half works.
@@ -33,9 +33,9 @@
       'color-danger': #9a9d00
     )
   );
-  @include meta.load-css('~tgui/styles/components/Input.scss', $with: ('border-color': #87ce87));
+  @include meta.load-css('~tgui/styles/components/Input.scss');
   @include meta.load-css('~tgui/styles/components/NoticeBox.scss', $with: ('background-color': #910101));
-  @include meta.load-css('~tgui/styles/components/NumberInput.scss', $with: ('border-color': #87ce87));
+  @include meta.load-css('~tgui/styles/components/NumberInput.scss');
   @include meta.load-css('~tgui/styles/components/TextArea.scss');
   @include meta.load-css('~tgui/styles/components/Knob.scss');
   @include meta.load-css('~tgui/styles/components/Slider.scss');
@@ -47,7 +47,7 @@
   // Layouts
   @include meta.load-css('~tgui/styles/layouts/Layout.scss', $with: ('scrollbar-color-multiplier': 1));
   @include meta.load-css('~tgui/styles/layouts/Window.scss');
-  @include meta.load-css('~tgui/styles/layouts/TitleBar.scss', $with: ('background-color': #910101));
+  @include meta.load-css('~tgui/styles/layouts/TitleBar.scss');
 
   // Goonchat styles
   @include meta.load-css('../tgchat/chat-syndicate.scss');

@@ -1,4 +1,4 @@
-@use '../base.scss';
+@use '../functions.scss' as *;
 
 $background-color: rgba(0, 0, 0, 0.33) !default;
 
@@ -7,14 +7,14 @@ $background-color: rgba(0, 0, 0, 0.33) !default;
   top: 0;
   bottom: 0;
   left: 0;
-  width: base.em(220px);
+  width: em(220px);
 }
 
 .CameraConsole__right {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: base.em(220px);
+  left: em(220px);
   right: 0;
   background-color: $background-color;
 }
@@ -40,7 +40,7 @@ $background-color: rgba(0, 0, 0, 0.33) !default;
 
 .CameraConsole__map {
   position: absolute;
-  top: base.em(26px);
+  top: em(26px);
   bottom: 0;
   left: 0;
   right: 0;

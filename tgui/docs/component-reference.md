@@ -217,7 +217,7 @@ Buttons allow users to take actions, and make choices, with a single click.
 - See inherited props: [Box](#box)
 - `fluid: boolean` - Fill all available horizontal space.
 - `icon: string` - Adds an icon to the button.
-- `color: string` - Button color, as defined in `variables.scss`.
+- `color: string` - Button color, as defined in `colors.scss`.
   - There is also a special color `transparent` - makes the button
   transparent and slightly dim when inactive.
 - `disabled: boolean` - Disables and greys out the button.

@@ -3,15 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-@use '../base.scss';
-@use '../colors.scss';
-@use './Divider.scss';
+@use '../base.scss' as *;
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
-$color-default: colors.bg(base.$color-bg-section) !default;
+$color-default: bg($color-base) !default;
+$color-selected: bg($green) !default;
 $color-disabled: #631d1d !default;
-$color-selected: colors.bg(colors.$green) !default;
-$bg-map: colors.$bg-map !default;
 
 @mixin button-style(
   $color,
@@ -200,7 +198,7 @@ $bg-map: colors.$bg-map !default;
 
     &.divider {
       margin: 0 0.5em;
-      border-bottom: Divider.$thickness solid Divider.$color;
+      border-bottom: $thickness-medium solid $border-color;
     }
   }
 
@@ -253,7 +251,7 @@ $bg-map: colors.$bg-map !default;
       justify-content: center;
       text-align: center;
       white-space: pre-wrap;
-      line-height: base.em(14px);
+      line-height: em(14px);
       height: 100%;
       border-left: 1px solid rgba(255, 255, 255, 0.075);
     }

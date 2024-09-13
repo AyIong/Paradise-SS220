@@ -4,13 +4,13 @@
  */
 
 @use 'sass:color';
-@use '../base.scss';
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
 $scrollbar-color-multiplier: 1 !default;
-$luminance: luminance(base.$color-bg);
-$scrollbar-base: color.scale(base.$color-bg, $lightness: -25% * $scrollbar-color-multiplier);
-$scrollbar-face: color.scale(base.$color-bg, $lightness: if($luminance > 0.05, 30%, 10%) * $scrollbar-color-multiplier);
+$luminance: luminance($color-bg);
+$scrollbar-base: color.scale($color-bg, $lightness: -25% * $scrollbar-color-multiplier);
+$scrollbar-face: color.scale($color-bg, $lightness: if($luminance > 0.05, 30%, 10%) * $scrollbar-color-multiplier);
 
 // Fancy scrollbar
 html,
@@ -21,13 +21,13 @@ body {
 // Remove with 516, IE legacy code
 .Layout,
 .Layout * {
-  scrollbar-base-color: color.scale(base.$color-bg, $lightness: -25% * $scrollbar-color-multiplier);
-  scrollbar-face-color: color.scale(base.$color-bg, $lightness: 10% * $scrollbar-color-multiplier);
-  scrollbar-3dlight-color: color.scale(base.$color-bg, $lightness: 0% * $scrollbar-color-multiplier);
-  scrollbar-highlight-color: color.scale(base.$color-bg, $lightness: 0% * $scrollbar-color-multiplier);
-  scrollbar-track-color: color.scale(base.$color-bg, $lightness: -25% * $scrollbar-color-multiplier);
-  scrollbar-arrow-color: color.scale(base.$color-bg, $lightness: 50% * $scrollbar-color-multiplier);
-  scrollbar-shadow-color: color.scale(base.$color-bg, $lightness: 10% * $scrollbar-color-multiplier);
+  scrollbar-base-color: color.scale($color-bg, $lightness: -25% * $scrollbar-color-multiplier);
+  scrollbar-face-color: color.scale($color-bg, $lightness: 10% * $scrollbar-color-multiplier);
+  scrollbar-3dlight-color: color.scale($color-bg, $lightness: 0% * $scrollbar-color-multiplier);
+  scrollbar-highlight-color: color.scale($color-bg, $lightness: 0% * $scrollbar-color-multiplier);
+  scrollbar-track-color: color.scale($color-bg, $lightness: -25% * $scrollbar-color-multiplier);
+  scrollbar-arrow-color: color.scale($color-bg, $lightness: 50% * $scrollbar-color-multiplier);
+  scrollbar-shadow-color: color.scale($color-bg, $lightness: 10% * $scrollbar-color-multiplier);
 }
 
 .Layout__content {
