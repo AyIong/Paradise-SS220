@@ -7,12 +7,11 @@
 @use '../base.scss' as *;
 @use '../colors.scss' as *;
 
-$color-default: color.scale(fg($primary), $lightness: 75%) !default;
+$color-default: color.scale($default, $lightness: 75%) !default;
 $text-color-selected: color.scale($color-default, $lightness: 25%) !default;
 $tab-color: transparent !default;
 $tab-color-hovered: rgba(255, 255, 255, 0.075) !default;
 $tab-color-selected: rgba(255, 255, 255, 0.125) !default;
-$border-radius-small: $border-radius-small !default;
 
 .Tabs {
   display: flex;
@@ -105,8 +104,8 @@ $border-radius-small: $border-radius-small !default;
   .Tab {
     border-top: calc(1em / 6) solid transparent;
     border-bottom: calc(1em / 6) solid transparent;
-    border-top-left-radius: 0.25em;
-    border-top-right-radius: 0.25em;
+    border-top-left-radius: $border-radius-small;
+    border-top-right-radius: $border-radius-small;
   }
 
   .Tab--selected {
@@ -119,8 +118,8 @@ $border-radius-small: $border-radius-small !default;
     min-height: 2em;
     border-left: calc(1em / 6) solid transparent;
     border-right: calc(1em / 6) solid transparent;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
+    border-top-right-radius: $border-radius-small;
+    border-bottom-right-radius: $border-radius-small;
   }
 
   .Tab--selected {

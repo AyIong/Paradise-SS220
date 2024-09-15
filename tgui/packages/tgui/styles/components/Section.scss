@@ -3,10 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-@use 'sass:color';
 @use '../base.scss' as *;
 @use '../colors.scss' as *;
-@use '../functions.scss' as *;
 
 .Section {
   position: relative;
@@ -22,7 +20,7 @@
 .Section__title {
   position: relative;
   padding: 0.5em;
-  border-bottom: $thickness-medium solid $primary;
+  border-bottom: $thickness-medium solid fg($default);
 }
 
 .Section__titleText {
