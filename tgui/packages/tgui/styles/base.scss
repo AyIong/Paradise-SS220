@@ -30,9 +30,9 @@ $thickness-medium: em(2px) !default;
 $thickness-large: em(3px) !default;
 
 /* Shadows */
-$shadow-small: 0 0 0.15rem 0.15rem colors.$shadow-color;
-$shadow-medium: 0 0 0.25rem 0.25rem colors.$shadow-color;
-$shadow-large: 0 0 0.5rem 0.5rem colors.$shadow-color;
+$shadow-small: 0 0 0.15rem 0.15rem;
+$shadow-medium: 0 0 0.25rem 0.25rem;
+$shadow-large: 0 0 0.5rem 0.5rem;
 
 /* Transitions */
 $transition-small: 0.1s !default;

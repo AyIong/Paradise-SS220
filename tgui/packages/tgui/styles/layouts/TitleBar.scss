@@ -13,7 +13,7 @@ $shadow-color-core: color.scale($color-fg, $lightness: -50%) !default;
 .TitleBar {
   background-color: $color-fg;
   border-bottom: $thickness-small solid $shadow-color-core;
-  box-shadow: $shadow-small;
+  box-shadow: $shadow-small $shadow-color;
   user-select: none;
   -ms-user-select: none; // TODO: Remove with 516
 }

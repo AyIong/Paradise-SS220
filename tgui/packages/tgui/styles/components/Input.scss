@@ -4,34 +4,28 @@
  */
 
 @use 'sass:color';
-@use '../colors.scss' as *;
 @use '../base.scss' as *;
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
-$background-color: rgba(lighten($color-base, 5%), 1) !default;
+$background-color: darken($color-bg, 10%) !default;
 
 .Input {
-  position: relative;
   display: inline-block;
-  width: em(120px);
-  border: em(1px) solid $border-input-color;
-  border-radius: $border-radius-small;
-  color: $text-color;
-  background-color: $background-color;
-  color: #fff;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, 0.75);
-  padding: 0 em(4px);
-  margin-right: em(2px);
-  line-height: em(17px);
+  position: relative;
   overflow: visible;
   white-space: nowrap;
+  width: em(120px);
+  padding: 0 0.5em;
+  line-height: em(19px);
+  background-color: $background-color;
+  color: $text-color;
 
   &--disabled {
-    color: #777;
-    border-color: $border-input-disabled-color;
-    background-color: #333;
-    background-color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed !important;
+    background-color: color.adjust($background-color, $saturation: 0%, $lightness: 15%) !important;
+    color: $text-color-translucent !important;
+    border-color: $border-color-disabled !important;
   }
 }
 
@@ -55,56 +49,58 @@ $background-color: rgba(lighten($color-base, 5%), 1) !default;
   border: 0;
   outline: 0;
   width: 100%;
+  font-family: Verdana, sans-serif;
   font-size: em(12px);
   line-height: em(17px);
-  height: em(17px);
+  height: em(19px);
   margin: 0;
   padding: 0 0.5em;
-  font-family: Verdana, sans-serif;
   background-color: transparent;
   color: $text-color;
-  color: inherit;
+  border: em(1px) solid $border-color-input;
+  border-radius: $border-radius-small;
+  transition:
+    border $transition-medium,
+    background-color $transition-medium;
+
+  &:focus {
+    border-color: $selected;
+  }
 
   &::placeholder {
     font-style: italic;
-    color: #777;
-    color: rgba(255, 255, 255, 0.45);
+    color: $text-color-translucent;
   }
 
   // TODO: Remove with 516
-
   &:-ms-input-placeholder {
     font-style: italic;
-    color: #777;
-    color: rgba(255, 255, 255, 0.45);
+    color: $text-color-translucent;
   }
 }
 
 .Input__textarea {
-  border: 0;
-  width: calc(100% + 4px);
+  font-family: Verdana, sans-serif;
   font-size: em(12px);
   line-height: em(17px);
-  margin-left: em(-4px);
-  font-family: Verdana, sans-serif;
-  background-color: transparent;
-  color: #fff;
-  color: inherit;
-  resize: both;
   overflow: auto;
+  resize: none;
   white-space: pre-wrap;
+  width: calc(100% + 4px);
+  margin-left: em(-4px);
+  background-color: transparent;
+  color: $text-color;
+  border: 0;
 
   &::placeholder {
     font-style: italic;
-    color: #777;
-    color: rgba(255, 255, 255, 0.45);
+    color: $text-color-translucent;
   }
 
   // TODO: Remove with 516
   &:-ms-input-placeholder {
     font-style: italic;
-    color: #777;
-    color: rgba(255, 255, 255, 0.45);
+    color: $text-color-translucent;
   }
 }
 

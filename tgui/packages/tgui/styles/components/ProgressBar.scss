@@ -3,12 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-@use '../colors.scss' as *;
 @use '../base.scss' as *;
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 
 $color-default-fill: bg($primary) !default;
-$color-disabled: #999999 !default;
 $background-color: rgba(0, 0, 0, 0) !default;
 $border-radius-small: $border-radius-small !default;
 
@@ -51,10 +50,10 @@ $border-radius-small: $border-radius-small !default;
 }
 
 .ProgressBar--color--disabled {
-  border: 1px solid $color-disabled;
+  border: 1px solid $border-color-disabled;
 
   .ProgressBar__fill {
-    background-color: $color-disabled;
+    background-color: $disabled;
   }
 }
 @each $color-name, $color-value in $bg-map {

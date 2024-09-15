@@ -7,6 +7,18 @@
 @use 'sass:map';
 @use 'sass:meta';
 
+// Background and foreground color lightness ratios
+$bg-lightness: -15% !default;
+$fg-lightness: 10% !default;
+
+@function bg($color) {
+  @return color.scale($color, $lightness: $bg-lightness);
+}
+
+@function fg($color) {
+  @return color.scale($color, $lightness: $fg-lightness);
+}
+
 /* Background colors */
 $color-bg: hsl(0, 0%, 15%) !default;
 $color-bg-darken: color.adjust($color-bg, $lightness: -10%) !default;
@@ -42,29 +54,21 @@ $bad: hsl(0, 70%, 50%) !default;
 $black: hsl(0, 0%, 0%) !default;
 $white: hsl(0, 0%, 100%) !default;
 
+/* Elements colors */
+$disabled: fg($grey) !default;
+$selected: bg($green) !default;
+
 /* Text colors */
 $text-color: hsl(0, 0%, 100%) !default;
 $text-color-translucent: rgba($text-color, 0.5) !default;
 
 /* Border colors */
 $border-color: hsla(0, 0%, 100%, 0.1) !default;
-$border-input-color: hsla(210, 100%, 75%, 0.75) !default;
-$border-input-disabled-color: color.adjust($border-input-color, $saturation: -100%, $lightness: -25%) !default;
+$border-color-input: hsla(210, 100%, 75%, 0.75) !default;
+$border-color-disabled: $disabled !default;
 
 /* Shadow color */
 $shadow-color: rgba($black, 0.1) !default;
-
-// Background and foreground color lightness ratios
-$bg-lightness: -15% !default;
-$fg-lightness: 10% !default;
-
-@function bg($color) {
-  @return color.scale($color, $lightness: $bg-lightness);
-}
-
-@function fg($color) {
-  @return color.scale($color, $lightness: $fg-lightness);
-}
 
 // Mappings of color names
 $_gen_map: (

@@ -8,9 +8,7 @@
 @use '../functions.scss' as *;
 
 $color-default: bg($primary) !default;
-$color-disabled: #999999 !default;
-$color-disabled-translucent: #4d1717 !default;
-$color-selected: bg($green) !default;
+$color-disabled-translucent: hsla(0, 55%, 20%, 0.5) !default;
 $color-caution: bg($yellow) !default;
 $color-danger: bg($red) !default;
 
@@ -154,16 +152,16 @@ $color-danger: bg($red) !default;
 
 .Button--disabled {
   cursor: not-allowed !important;
-  background-color: $color-disabled !important;
+  background-color: $disabled !important;
   color: rgba($text-color-translucent, 0.75) !important;
 
   &--translucent {
-    background-color: rgba($color-disabled-translucent, 0.5) !important;
+    background-color: $color-disabled-translucent !important;
     color: $text-color-translucent !important;
   }
 }
 
 .Button--selected,
 .Button--selected--translucent {
-  @include button-color($color-selected);
+  @include button-color($selected);
 }

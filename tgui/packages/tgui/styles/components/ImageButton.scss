@@ -8,7 +8,6 @@
 @use '../functions.scss' as *;
 
 $color-default: bg($color-base) !default;
-$color-selected: bg($green) !default;
 $color-disabled: #631d1d !default;
 
 @mixin button-style(
@@ -67,7 +66,7 @@ $color-disabled: #631d1d !default;
 }
 
 .selected {
-  @include button-style($color-selected, $border-color: rgba($color-selected, 0.25), $border-width: 1px);
+  @include button-style($selected, $border-color: rgba($selected, 0.25), $border-width: 1px);
 }
 
 .contentColor__default {
@@ -85,7 +84,7 @@ $color-disabled: #631d1d !default;
 }
 
 .contentSelected {
-  @include button-style($color-selected, $border-color: lighten($color-selected, 25%), $opacity: 1, $hoverable: false);
+  @include button-style($selected, $border-color: lighten($selected, 25%), $opacity: 1, $hoverable: false);
 }
 
 .buttonsContainerColor__default {

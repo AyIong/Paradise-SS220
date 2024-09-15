@@ -14,9 +14,12 @@ export const meta = {
 
 const Story = (props, context) => {
   const [progress, setProgress] = useLocalState(context, 'progress', 0.5);
+  const [disabled, setDisabled] = useLocalState(context, 'disabled', false);
+
   return (
     <Section>
       <ProgressBar
+        color={disabled && 'disabled'}
         ranges={{
           good: [0.5, Infinity],
           bad: [-Infinity, 0.1],
@@ -31,6 +34,7 @@ const Story = (props, context) => {
       <Box mt={1}>
         <Button content="-0.1" onClick={() => setProgress(progress - 0.1)} />
         <Button content="+0.1" onClick={() => setProgress(progress + 0.1)} />
+        <Button content="Disable" onClick={() => setDisabled(!disabled)} />
       </Box>
     </Section>
   );

@@ -4,25 +4,25 @@
  */
 
 @use 'sass:color';
-@use '../colors.scss' as *;
 @use '../base.scss' as *;
+@use '../colors.scss' as *;
 @use '../functions.scss' as *;
 @use './Input.scss';
 
 $background-color: Input.$background-color !default;
 
 .NumberInput {
+  overflow: visible;
   position: relative;
   display: inline-block;
-  border: em(1px) solid $border-input-color;
-  border-radius: $border-radius-small;
-  color: $text-color;
-  background-color: $background-color;
   padding: 0 em(4px);
   margin-right: em(2px);
   line-height: em(17px);
+  background-color: $background-color;
+  color: $text-color;
+  border: em(1px) solid $border-color-input;
+  border-radius: $border-radius-small;
   text-align: right;
-  overflow: visible;
   cursor: n-resize;
 }
 
@@ -47,8 +47,8 @@ $background-color: Input.$background-color !default;
   left: 0;
   width: em(3px);
   box-sizing: border-box;
-  border-bottom: em(1px) solid $border-input-color;
-  background-color: $border-input-color;
+  border-bottom: em(1px) solid $border-color-input;
+  background-color: $border-color-input;
 }
 
 .NumberInput__input {

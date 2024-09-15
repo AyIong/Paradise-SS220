@@ -13,9 +13,6 @@ $background-color: Input.$background-color !default;
 .TextArea {
   position: relative;
   display: inline-block;
-  border: em(1px) solid $border-color;
-  border: em(1px) solid rgba($border-color, 0.75);
-  border-radius: $border-radius-small;
   background-color: $background-color;
   margin-right: em(2px);
   line-height: em(17px);
@@ -48,20 +45,28 @@ $background-color: Input.$background-color !default;
   font-family: inherit;
   background-color: transparent;
   color: inherit;
+  border: em(1px) solid rgba($border-color-input, 0.75);
+  border-radius: $border-radius-small;
   box-sizing: border-box;
+  transition:
+    border $transition-medium,
+    background-color $transition-medium;
   // Make sure the div and the textarea wrap words in the same way
   word-wrap: break-word;
   overflow: hidden;
 
+  &:focus {
+    border-color: $selected;
+  }
+
   &::placeholder {
     font-style: italic;
-    color: #777;
-    color: rgba(255, 255, 255, 0.45);
+    color: $text-color-translucent;
   }
 
   // TODO: Remove with 516
   &:-ms-input-placeholder {
     font-style: italic;
-    color: rgba(125, 125, 125, 0.75);
+    color: $text-color-translucent;
   }
 }
