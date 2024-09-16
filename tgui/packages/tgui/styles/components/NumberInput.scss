@@ -10,6 +10,7 @@
 @use './Input.scss';
 
 $background-color: Input.$background-color !default;
+$bar-color: rgba($border-color-input, 1) !default;
 
 .NumberInput {
   overflow: visible;
@@ -19,7 +20,7 @@ $background-color: Input.$background-color !default;
   margin-right: em(2px);
   line-height: em(17px);
   background-color: $background-color;
-  color: $text-color;
+  color: $bar-color;
   border: em(1px) solid $border-color-input;
   border-radius: $border-radius-small;
   text-align: right;
@@ -46,9 +47,9 @@ $background-color: Input.$background-color !default;
   bottom: 0;
   left: 0;
   width: em(3px);
+  min-height: em(1px);
   box-sizing: border-box;
-  border-bottom: em(1px) solid $border-color-input;
-  background-color: $border-color-input;
+  background-color: $bar-color;
 }
 
 .NumberInput__input {
