@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
+@use '~tgui/styles/base.scss' as *;
 @use '~tgui/styles/colors.scss' as *;
 
 $border-color: rgba(140, 140, 140, 0.5) !default;
@@ -10,8 +11,8 @@ $border-color: rgba(140, 140, 140, 0.5) !default;
 .Ping {
   position: relative;
   padding: 0.125em 0.25em;
-  border: calc(1em / 12) solid $border-color;
-  border-radius: 0.25em;
+  border: calc(1em / 12) solid rgba($border-color, 0.2);
+  border-radius: $border-radius-small;
   width: 3.75em;
   text-align: right;
   color: $text-color;

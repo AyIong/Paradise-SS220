@@ -20,10 +20,9 @@ $fg-lightness: 10% !default;
 }
 
 /* Background colors */
-$color-bg: hsl(0, 0%, 15%) !default;
+$color-bg: hsl(0, 0%, 14.5%) !default;
 $color-bg-darken: color.adjust($color-bg, $lightness: -10%) !default;
-$color-fg: hsl(0, 0%, 22.5%) !default;
-$color-fg-lighten: hsl(0, 0%, 22.5%) !default;
+$color-fg: color.adjust($color-bg, $lightness: 7.5%) !default;
 $color-base: hsla(0, 0%, 0%, 0.33) !default;
 /* Background gradient */
 $color-bg-spread: 2% !default;
