@@ -3,12 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
+@use '../base.scss' as *;
 @use '../colors.scss' as *;
-@use '../functions.scss' as *;
 
 $cursor-color: $white !default;
-$popup-background-color: #000000 !default;
-$popup-text-color: $white !default;
+$pointer-color: $white !default;
 
 .Slider:not(.Slider__disabled) {
   cursor: e-resize;
@@ -39,7 +38,7 @@ $popup-text-color: $white !default;
   height: 0;
   border-left: em(5px) solid transparent;
   border-right: em(5px) solid transparent;
-  border-bottom: em(5px) solid $cursor-color;
+  border-bottom: em(5px) solid $pointer-color;
 }
 
 .Slider__popupValue {
@@ -48,8 +47,8 @@ $popup-text-color: $white !default;
   top: -2rem;
   font-size: 1rem;
   padding: 0.25rem 0.5rem;
-  color: $popup-text-color;
-  background-color: $popup-background-color;
+  background-color: $color-bg-darken;
+  color: $text-color;
   transform: translateX(50%);
   white-space: nowrap;
 }
