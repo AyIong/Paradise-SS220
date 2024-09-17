@@ -27,6 +27,7 @@ $background-color: Input.$background-color !default;
 }
 
 .TextArea__textarea {
+  resize: none;
   display: block;
   position: absolute;
   top: 0;

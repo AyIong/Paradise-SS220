@@ -63,19 +63,32 @@ $tab-color-selected: rgba(255, 255, 255, 0.125) !default;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   user-select: none;
   -ms-user-select: none; // Remove after Byond 516 release
   background-color: $tab-color;
   color: $text-color-translucent;
   min-height: 2.25em;
   min-width: 4em;
-  transition: background-color $transition-small;
+  transition:
+    background-color $transition-medium,
+    color $transition-medium;
+  // Fix for "white dots" artifacts
+  backface-visibility: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background-color: $color-default;
+    transition:
+      width $transition-medium,
+      height $transition-medium;
+  }
 }
 
 .Tab:not(.Tab--selected):hover {
   cursor: pointer;
   background-color: $tab-color-hovered;
-  transition: background-color 0;
 }
 
 .Tab--selected {
@@ -85,7 +98,6 @@ $tab-color-selected: rgba(255, 255, 255, 0.125) !default;
 
 .Tab__text {
   flex-grow: 1;
-  margin: 0 0.5em;
 }
 
 .Tab__left {
@@ -102,28 +114,48 @@ $tab-color-selected: rgba(255, 255, 255, 0.125) !default;
 
 .Tabs--horizontal {
   .Tab {
-    border-top: calc(1em / 6) solid transparent;
-    border-bottom: calc(1em / 6) solid transparent;
     border-top-left-radius: $border-radius-small;
     border-top-right-radius: $border-radius-small;
+
+    &:before {
+      right: 50%;
+      bottom: 0;
+      width: 0;
+      height: calc(1em / 6);
+      transform: translateX(50%);
+    }
+
+    &__text {
+      margin: calc(1em / 6) 0.5em;
+    }
   }
 
-  .Tab--selected {
-    border-bottom: calc(1em / 6) solid $color-default;
+  .Tab--selected.Tab:before {
+    width: 100%;
   }
 }
 
 .Tabs--vertical {
   .Tab {
     min-height: 2em;
-    border-left: calc(1em / 6) solid transparent;
-    border-right: calc(1em / 6) solid transparent;
     border-top-right-radius: $border-radius-small;
     border-bottom-right-radius: $border-radius-small;
+
+    &:before {
+      bottom: 50%;
+      left: 0;
+      height: 0;
+      width: calc(1em / 6);
+      transform: translateY(50%);
+    }
+
+    &__text {
+      margin: 0 calc(1em / 6 + 0.5em);
+    }
   }
 
-  .Tab--selected {
-    border-left: calc(1em / 6) solid $color-default;
+  .Tab--selected.Tab:before {
+    height: 100%;
   }
 }
 
@@ -132,11 +164,11 @@ $tab-color-selected: rgba(255, 255, 255, 0.125) !default;
     color: color.scale($color-value, $lightness: 25%);
   }
 
-  .Tabs--horizontal .Tab--selected.Tab--color--#{$color-name} {
-    border-bottom-color: $color-value;
+  .Tabs--horizontal .Tab:before.Tab--color--#{$color-name} {
+    background-color: $color-value;
   }
 
-  .Tabs--vertical .Tab--selected.Tab--color--#{$color-name} {
-    border-left-color: $color-value;
+  .Tabs--vertical .Tab:before.Tab--color--#{$color-name} {
+    background-color: $color-value;
   }
 }
