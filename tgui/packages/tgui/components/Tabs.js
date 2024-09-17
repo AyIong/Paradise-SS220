@@ -17,7 +17,7 @@ export class Tabs extends Component {
     };
   }
 
-  // We don't want strange border height/width animation when making tabs vertical/non-vertical
+  // We don't want strange border height/width animation when change tabs verticality
   componentDidUpdate(prevProps) {
     if (prevProps.vertical !== this.props.vertical) {
       this.setState({ preventAnimations: true }, () => {
