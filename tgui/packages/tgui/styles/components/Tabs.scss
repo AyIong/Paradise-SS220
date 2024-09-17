@@ -69,7 +69,7 @@ $tab-color-selected: rgba(255, 255, 255, 0.125) !default;
   color: $text-color-translucent;
   min-height: 2.25em;
   min-width: 4em;
-  transition: background-color 50ms ease-out;
+  transition: background-color $transition-small;
 }
 
 .Tab:not(.Tab--selected):hover {
