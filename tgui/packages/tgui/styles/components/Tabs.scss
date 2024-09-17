@@ -7,7 +7,7 @@
 @use '../base.scss' as *;
 @use '../colors.scss' as *;
 
-$color-default: color.scale($default, $lightness: 75%) !default;
+$color-default: color.scale(bg($primary), $lightness: 75%) !default;
 $text-color-selected: color.scale($color-default, $lightness: 25%) !default;
 $tab-color: transparent !default;
 $tab-color-hovered: rgba(255, 255, 255, 0.075) !default;

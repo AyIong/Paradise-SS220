@@ -42,7 +42,6 @@ $purple: hsl(285, 60%, 50%) !default;
 $pink: hsl(325, 70%, 55%) !default;
 $brown: hsl(25, 45%, 45%) !default;
 $grey: hsl(0, 0%, 45%) !default;
-$primary: hsl(210, 40%, 45%) !default;
 $label: hsl(215, 20%, 60%) !default;
 $gold: hsl(40, 90%, 50%) !default;
 
@@ -54,7 +53,7 @@ $black: hsl(0, 0%, 0%) !default;
 $white: hsl(0, 0%, 100%) !default;
 
 /* Elements colors */
-$default: bg($primary) !default;
+$primary: hsl(210, 40%, 45%) !default;
 $selected: bg($green) !default;
 $disabled: fg($grey) !default;
 

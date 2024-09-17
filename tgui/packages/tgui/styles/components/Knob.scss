@@ -8,7 +8,7 @@
 
 $bg-map: $bg-map !default;
 $fg-map: $fg-map !default;
-$ring-color: #6a96c9 !default;
+$ring-color: fg($primary) !default;
 $knob-color: #333333 !default;
 $popup-background-color: #000000 !default;
 $popup-text-color: #ffffff !default;
@@ -82,6 +82,7 @@ $inner-padding: 0.1em;
   right: -50%;
 }
 .Knob__ring {
+  overflow: visible;
   position: absolute;
   top: 0;
   bottom: 0;

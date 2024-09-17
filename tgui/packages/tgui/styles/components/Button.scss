@@ -29,7 +29,7 @@ $color-danger: bg($red) !default;
     color: $dynamic-text-color;
 
     &:active {
-      box-shadow: inset $shadow-medium $shadow-color;
+      box-shadow: inset $shadow-small $shadow-color;
     }
   }
 }
@@ -127,7 +127,7 @@ $color-danger: bg($red) !default;
 }
 
 .Button--color--default {
-  @include button-color($default);
+  @include button-color(bg($primary));
 
   &--translucent {
     @include button-color(lighten($color-bg, 10%), $text-color-translucent, $translucent: true);
