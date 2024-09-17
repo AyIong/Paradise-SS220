@@ -59,6 +59,10 @@ $tab-color-selected: rgba(255, 255, 255, 0.125) !default;
   flex-grow: 1;
 }
 
+.Tabs--noAnim > .Tab:before {
+  transition-duration: 0s;
+}
+
 .Tab {
   display: flex;
   align-items: center;

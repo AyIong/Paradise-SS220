@@ -4,28 +4,50 @@
  * @license MIT
  */
 
+import { Component } from 'inferno';
 import { canRender, classes } from 'common/react';
 import { computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
 
-export const Tabs = (props) => {
-  const { className, vertical, fill, fluid, children, ...rest } = props;
-  return (
-    <div
-      className={classes([
-        'Tabs',
-        vertical ? 'Tabs--vertical' : 'Tabs--horizontal',
-        fill && 'Tabs--fill',
-        fluid && 'Tabs--fluid',
-        className,
-        computeBoxClassName(rest),
-      ])}
-      {...computeBoxProps(rest)}
-    >
-      {children}
-    </div>
-  );
-};
+export class Tabs extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      preventAnimations: false,
+    };
+  }
+
+  // We don't want strange border height/width animation when making tabs vertical/non-vertical
+  componentDidUpdate(prevProps) {
+    if (prevProps.vertical !== this.props.vertical) {
+      this.setState({ preventAnimations: true }, () => {
+        setTimeout(() => this.setState({ preventAnimations: false }), 200);
+      });
+    }
+  }
+
+  render() {
+    const { className, vertical, fill, fluid, children, ...rest } = this.props;
+    const { preventAnimations } = this.state;
+
+    return (
+      <div
+        className={classes([
+          'Tabs',
+          vertical ? 'Tabs--vertical' : 'Tabs--horizontal',
+          fill && 'Tabs--fill',
+          fluid && 'Tabs--fluid',
+          preventAnimations && 'Tabs--noAnim',
+          className,
+          computeBoxClassName(rest),
+        ])}
+        {...computeBoxProps(rest)}
+      >
+        {children}
+      </div>
+    );
+  }
+}
 
 const Tab = (props) => {
   const { className, selected, color, icon, leftSlot, rightSlot, children, ...rest } = props;
