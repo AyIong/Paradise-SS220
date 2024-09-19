@@ -3,9 +3,11 @@ on:
   push:
     branches:
       - master
+      - master220
   pull_request:
     branches:
       - master
+      - master220
   merge_group:
 
 jobs:
