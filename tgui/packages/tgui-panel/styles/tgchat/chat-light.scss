@@ -49,8 +49,7 @@ a.popt {
   text-decoration: none;
 }
 
-/* POPUPS */
-
+// MARK: POPUPS
 .popup {
   position: fixed;
   top: 50%;
@@ -153,7 +152,7 @@ a.popt {
   margin-top: 5px;
 }
 
-/* ADMIN CONTEXT MENU */
+// MARK: ADMIN CONTEXT MENU
 
 .contextMenu {
   background-color: #ddd;
@@ -173,8 +172,7 @@ a.popt {
   background-color: #ccc;
 }
 
-/* ADMIN FILTER MESSAGES MENU */
-
+// MARK: ADMIN FILTER MESSAGES MENU
 .filterMessages {
   padding: 5px;
 }
@@ -191,14 +189,11 @@ a.popt {
   margin-top: -2px;
 }
 
-/*****************************************
-*
-* OUTPUT ACTUALLY RELATED TO MESSAGES
-*
-******************************************/
+/**
+ * OUTPUT ACTUALLY RELATED TO MESSAGES
+ */
 
-/* MOTD */
-
+// MARK: MOTD
 .motd {
   color: #638500;
   font-family: Verdana, sans-serif;
@@ -222,16 +217,14 @@ a.popt {
   color: #638500;
 }
 
-/* ADD HERE FOR ITALIC */
-
+// MARK: ITALIC
 .italic,
 .italics,
 .emote {
   font-style: italic;
 }
 
-/* OUTPUT COLORS */
-
+// MARK: OUTPUT COLORS
 .highlight {
   background: yellow;
 }
@@ -601,7 +594,8 @@ h2.alert {
   font-weight: bold;
   font-style: italic;
 }
-/* /vg/ */
+
+// MARK: /vg/
 .blob {
   color: #006221;
   font-weight: bold;
@@ -903,7 +897,7 @@ h2.alert {
   font-weight: bold;
 }
 
-/* /vg/ */
+// MARK: /vg/
 .good {
   color: green;
 }
@@ -916,7 +910,7 @@ h2.alert {
   color: #ff0000;
 }
 
-/* /vg/ Saycode Rewrite */
+// MARK: /vg/ Saycode Rewrite
 .italics,
 .talkinto {
   font-style: italic;
@@ -927,7 +921,7 @@ h2.alert {
   color: #333333;
 }
 
-/* Recruiting stuff */
+// MARK: Recruiting stuff
 .recruit {
   color: #5c00e6;
   font-weight: bold;
@@ -971,7 +965,7 @@ h2.alert {
   text-decoration-color: white !important;
 }
 
-/* HELPER CLASSES */
+// MARK: HELPER CLASSES
 .text-normal {
   font-weight: normal;
   font-style: normal;
@@ -982,7 +976,7 @@ h2.alert {
   visibility: hidden;
 }
 
-/* MEGAFAUNA */
+// MARK: MEGAFAUNA
 .colossus {
   color: #7f282a;
   font-size: 175%;
@@ -999,14 +993,13 @@ h2.alert {
   font-style: italic;
 }
 
-/* EMOJI STUFF */
+// MARK: EMOJI STUFF
 .emoji {
   max-height: 16px;
   max-width: 16px;
 }
 
-/* ADMIN TICKETS */
-
+// MARK: ADMIN TICKETS
 .adminticket {
   color: #3e7336;
   font-weight: bold;
@@ -1017,7 +1010,7 @@ h2.alert {
   font-weight: bold;
 }
 
-/* Syndicate codewords */
+// MARK: Syndicate codewords
 span.body .codephrases {
   color: #0000ff;
 }
@@ -1026,6 +1019,32 @@ span.body .coderesponses {
   color: #ff0000;
 }
 
+// MARK: GASES
+.oxygen {
+  color: #006adb;
+}
+
+.nitrogen {
+  color: #d00a06;
+}
+
+.carbon_dioxide {
+  color: #1f1f1f;
+}
+
+.plasma {
+  color: #853c00;
+}
+
+.sleeping_agent {
+  color: #e82f2c;
+}
+
+.agent_b {
+  color: #004d4d;
+}
+
+// MARK: Announcements
 .announcement h1,
 .announcement h2 {
   color: #000;
@@ -1057,6 +1076,7 @@ span.body .coderesponses {
   font-weight: bold;
 }
 
+// MARK: Boxed messages
 .boxed_message {
   background: #f7fcff;
   border: 1px solid #111a26;
@@ -1091,30 +1111,4 @@ span.body .coderesponses {
 
 .boxed_message.thick_border {
   border-width: thick;
-}
-
-/* GASES */
-
-.oxygen {
-  color: #006adb;
-}
-
-.nitrogen {
-  color: #d00a06;
-}
-
-.carbon_dioxide {
-  color: #1f1f1f;
-}
-
-.plasma {
-  color: #853c00;
-}
-
-.sleeping_agent {
-  color: #e82f2c;
-}
-
-.agent_b {
-  color: #004d4d;
 }
