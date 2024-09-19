@@ -7,6 +7,10 @@
 @use 'sass:meta';
 
 @use '~tgui/styles/colors.scss' with (
+  $primary: #397439,
+  $label: #b08b8b
+);
+@use '~tgui/styles/base.scss' with (
   $color-bg: #4d0202,
   $color-fg: #910101,
   $color-base: #2b0101,
