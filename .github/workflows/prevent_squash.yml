@@ -1,4 +1,4 @@
-name: Prevent Squash Merge
+name: "Prevent Squash Merge"
 
 on:
   pull_request_target:
