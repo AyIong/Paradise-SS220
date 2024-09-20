@@ -1,0 +1,22 @@
+name: "Prevent Squash Merge"
+
+on:
+  pull_request_target:
+    types: [opened, reopened, edited, labeled, ready_for_review, draft]
+
+jobs:
+  prevent-squash:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check label
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const forbiddenLabel = "Merge Upstream"; // Замените на ваш лейбл
+            const { mergeable, labels } = context.payload.pull_request;
+            const hasForbiddenLabel = labels.some(label => label.name === forbiddenLabel);
+
+            if (hasForbiddenLabel && mergeable) {
+              throw new Error(`Ты долбоёб блять! Не сквош мерж апстрима!!!`);
+            }
