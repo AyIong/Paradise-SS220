@@ -741,7 +741,6 @@ GLOBAL_LIST_INIT(special_role_times, list( //minimum age (in days) for accounts 
 		total_cost += added_cost
 	return total_cost
 
-
 /datum/preferences/proc/init_keybindings(overrides, raw)
 	if(raw)
 		try
