@@ -32,26 +32,26 @@ GLOBAL_LIST_EMPTY(gear_tgui_info)
 	. = TRUE
 
 	var/mob/user = usr
-	var/datum/preferences/prefs = user.client.prefs
+	var/datum/character_save/active_character = user.client.prefs.active_character
 	switch(action)
 		if("toggle_gear")
 			var/datum/gear/gear = GLOB.gear_datums[text2path(params["gear"])]
-			if(gear && (gear.type in user.client.prefs.active_character.loadout_gear))
-				prefs.active_character.loadout_gear -= gear.type
+			if(gear && (gear.type in active_character.loadout_gear))
+				active_character.loadout_gear -= gear.type
 				return TRUE
 
 			if(gear.donator_tier && user.client.donator_level < gear.donator_tier)
 				to_chat(user, "<span class='warning'>That gear is only available at a higher donation tier than you are on.</span>")
 				return FALSE
 
-			prefs.build_loadout(gear)
+			user.client.prefs.build_loadout(gear)
 			return TRUE
 
 		if("clear_loadout")
-			user.client.prefs.active_character.loadout_gear.Cut()
+			active_character.loadout_gear.Cut()
 			return TRUE
 
 		if("set_tweak")
 			var/datum/gear/gear = GLOB.gear_datums[text2path(params["gear"])]
 			var/datum/gear_tweak/tweak = locate(text2path(params["tweak"])) in gear.gear_tweaks
-			prefs.active_character.loadout_gear[gear.type][tweak.type] = tweak.get_metadata(user, prefs.active_character.get_tweak_metadata(gear, tweak))
+			active_character.set_tweak_metadata(gear, tweak, tweak.get_metadata(user, active_character.get_tweak_metadata(gear, tweak)))
