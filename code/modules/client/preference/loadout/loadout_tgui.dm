@@ -37,7 +37,7 @@ GLOBAL_LIST_EMPTY(gear_tgui_info)
 		if("toggle_gear")
 			var/datum/gear/gear = GLOB.gear_datums[text2path(params["gear"])]
 			if(gear && (gear.type in active_character.loadout_gear))
-				active_character.loadout_gear -= gear.type
+				active_character.loadout_gear -= "[gear]"
 				return TRUE
 
 			if(gear.donator_tier && user.client.donator_level < gear.donator_tier)
@@ -52,6 +52,8 @@ GLOBAL_LIST_EMPTY(gear_tgui_info)
 			return TRUE
 
 		if("set_tweak")
+			if(!(params["gear"] in active_character.loadout_gear))
+				return
 			var/datum/gear/gear = GLOB.gear_datums[text2path(params["gear"])]
 			var/datum/gear_tweak/tweak = locate(text2path(params["tweak"])) in gear.gear_tweaks
 			active_character.set_tweak_metadata(gear, tweak, tweak.get_metadata(user, active_character.get_tweak_metadata(gear, tweak)))
