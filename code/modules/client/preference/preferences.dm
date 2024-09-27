@@ -737,7 +737,7 @@ GLOBAL_LIST_INIT(special_role_times, list( //minimum age (in days) for accounts 
 				type_blacklist += gear.main_typepath
 		if((total_cost + added_cost) > max_gear_slots)
 			continue // If the final cost is too high, don't add the item.
-		active_character.loadout_gear += gear.type
+		active_character.loadout_gear[item] = loadout_cache[item] ? loadout_cache[item] : list()
 		total_cost += added_cost
 	return total_cost
 

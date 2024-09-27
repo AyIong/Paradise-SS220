@@ -20,6 +20,11 @@
 	display_name = "Scarf"
 	path = /obj/item/clothing/accessory/scarf
 
+/datum/gear/accessory/scarf/New()
+	..()
+	gear_tweaks += new /datum/gear_tweak/color
+	gear_tweaks += new /datum/gear_tweak/rename
+
 /datum/gear/accessory/scarf/red
 	display_name = "Scarf, red"
 	path = /obj/item/clothing/accessory/scarf/red
