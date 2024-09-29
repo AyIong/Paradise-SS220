@@ -39,7 +39,7 @@
 	I.color = metadata
 
 /*
-* Raname
+* Rename
 */
 
 /datum/gear_tweak/rename
