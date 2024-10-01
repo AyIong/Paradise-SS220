@@ -2,7 +2,7 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { createSearch, decodeHtmlEntities } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Input, Section, Stack, Tabs, LabeledList } from '../components';
+import { Box, Button, DmIcon, Input, Section, Stack, StyleableSection, Tabs, LabeledList } from '../components';
 import { Window } from '../layouts';
 import { ComplexModal } from './common/ComplexModal';
 
@@ -163,7 +163,7 @@ const ItemsPage = (_properties, context) => {
           <Section fill scrollable>
             <Stack vertical>
               {uplinkItems.map((i) => (
-                <Stack.Item key={decodeHtmlEntities(i.name)} p={1} backgroundColor={'rgba(255, 0, 0, 0.1)'}>
+                <Stack.Item key={decodeHtmlEntities(i.name)}>
                   <UplinkItem i={i} showDecription={showDesc} key={decodeHtmlEntities(i.name)} />
                 </Stack.Item>
               ))}
@@ -204,7 +204,7 @@ const CartPage = (_properties, context) => {
           <Stack vertical>
             {cart ? (
               cart.map((i) => (
-                <Stack.Item key={decodeHtmlEntities(i.name)} p={1} mr={1} backgroundColor={'rgba(255, 0, 0, 0.1)'}>
+                <Stack.Item key={decodeHtmlEntities(i.name)}>
                   <UplinkItem i={i} showDecription={showDesc} buttons={<CartButtons i={i} />} />
                 </Stack.Item>
               ))
@@ -235,7 +235,7 @@ const Advert = (_properties, context) => {
             .map((number) => cats[number.cat].items[number.item])
             .filter((item) => item !== undefined && item !== null)
             .map((item, index) => (
-              <Stack.Item key={index} p={1} mb={1} ml={1} width={34} backgroundColor={'rgba(255, 0, 0, 0.15)'}>
+              <Stack.Item key={index} width={35}>
                 <UplinkItem grow i={item} />
               </Stack.Item>
             ))}
@@ -249,9 +249,38 @@ const UplinkItem = (props, context) => {
   const { i, showDecription = 1, buttons = <UplinkItemButtons i={i} /> } = props;
 
   return (
-    <Section title={decodeHtmlEntities(i.name)} showBottom={showDecription} buttons={buttons}>
-      {showDecription ? <Box italic>{decodeHtmlEntities(i.desc)}</Box> : null}
-    </Section>
+    <StyleableSection
+      title={
+        <Stack>
+          {!showDecription && (
+            <Stack.Item>
+              <DmIcon m={0.2} mr={0.5} width={2.1} icon={i.icon} icon_state={i.icon_state} />
+            </Stack.Item>
+          )}
+          <Stack.Item grow align="center">
+            {decodeHtmlEntities(i.name)}
+          </Stack.Item>
+        </Stack>
+      }
+      showBottom={showDecription}
+      titleSubtext={buttons}
+      titleStyle={{ 'border': !showDecription && '0', 'padding': !showDecription && '0' }}
+      style={{
+        'background-color': 'rgba(125, 0, 0, 0.3)',
+        'border-radius': '0.75em',
+        'border': '1px outset rgba(255, 255, 255,0.2)',
+      }}
+      contentStyle={{ 'padding': !showDecription && '0' }}
+    >
+      {showDecription && (
+        <Stack fill>
+          <Stack.Item m={-0.5} mr={1} align="center">
+            <DmIcon width={'48px'} icon={i.icon} icon_state={i.icon_state} />
+          </Stack.Item>
+          <Stack.Item italic>{decodeHtmlEntities(i.desc)}</Stack.Item>
+        </Stack>
+      )}
+    </StyleableSection>
   );
 };
 

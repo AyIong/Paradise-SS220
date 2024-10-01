@@ -65,21 +65,25 @@ GLOBAL_LIST_EMPTY(world_uplinks)
 
 	for(var/category in uplink_items)
 		cats[++cats.len] = list("cat" = category, "items" = list())
-		for(var/datum/uplink_item/I in uplink_items[category])
-			if(I.job && length(I.job))
-				if(!(I.job.Find(job)) && uplink_type != UPLINK_TYPE_ADMIN)
+		for(var/datum/uplink_item/item_info in uplink_items[category])
+			if(item_info.job && length(item_info.job))
+				if(!(item_info.job.Find(job)) && uplink_type != UPLINK_TYPE_ADMIN)
 					continue
-			if(length(I.species))
-				if(!(I.species.Find(species)) && uplink_type != UPLINK_TYPE_ADMIN)
+			if(length(item_info.species))
+				if(!(item_info.species.Find(species)) && uplink_type != UPLINK_TYPE_ADMIN)
 					continue
+			var/obj/item = item_info.item
 			cats[length(cats)]["items"] += list(list(
-				"name" = sanitize(I.name),
-				"desc" = sanitize(I.description()),
-				"cost" = I.cost,
-				"hijack_only" = I.hijack_only,
-				"obj_path" = I.reference,
-				"refundable" = I.refundable))
-			uplink_items[I.reference] = I
+				"name" = sanitize(item_info.name),
+				"desc" = sanitize(item_info.description()),
+				"cost" = item_info.cost,
+				"hijack_only" = item_info.hijack_only,
+				"obj_path" = item_info.reference,
+				"refundable" = item_info.refundable,
+				"icon" = item.icon,
+				"icon_state" = item.icon_state
+			))
+			uplink_items[item_info.reference] = item_info
 
 	uplink_cats = cats
 
