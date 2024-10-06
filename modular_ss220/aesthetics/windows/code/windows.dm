@@ -1,25 +1,38 @@
 /obj/structure/window/full/basic
 	icon = 'modular_ss220/aesthetics/windows/icons/window.dmi'
 	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/window_edges.dmi'
+	color = "#99ccff"
 
 /obj/structure/window/full/reinforced
 	icon = 'modular_ss220/aesthetics/windows/icons/reinforced_window.dmi'
 	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/reinforced_window_edges.dmi'
+	color = "#99ccff"
 
 /obj/structure/window/full/reinforced/tinted
-	icon = 'modular_ss220/aesthetics/windows/icons/tinted_window.dmi'
+	icon = 'modular_ss220/aesthetics/windows/icons/reinforced_window.dmi'
+	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/reinforced_window_edges.dmi'
+	icon_state = "reinforced_window-0"
+	base_icon_state = "reinforced_window"
+	color = "#5a6e82"
 
 /obj/structure/window/full/plasmabasic
-	icon = 'modular_ss220/aesthetics/windows/icons/plasma_window.dmi'
+	icon = 'modular_ss220/aesthetics/windows/icons/window.dmi'
 	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/window_edges.dmi'
+	icon_state = "window-0"
+	base_icon_state = "window"
+	color = "#e14dff"
 
 /obj/structure/window/full/plasmareinforced
-	icon = 'modular_ss220/aesthetics/windows/icons/rplasma_window.dmi'
+	icon = 'modular_ss220/aesthetics/windows/icons/reinforced_window.dmi'
 	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/reinforced_window_edges.dmi'
+	icon_state = "reinforced_window-0"
+	base_icon_state = "reinforced_window"
+	color = "#e14dff"
 
 /turf/simulated/wall/indestructible/fakeglass
 	icon = 'modular_ss220/aesthetics/windows/icons/reinforced_window.dmi'
 	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/reinforced_window_edges.dmi'
+	color = "#99ccff"
 
 //WINDOW SPAWNERS
 /obj/effect/spawner/window
