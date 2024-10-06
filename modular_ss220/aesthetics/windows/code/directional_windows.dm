@@ -1,17 +1,17 @@
 /obj/structure/holowindow
 	icon = 'modular_ss220/aesthetics/windows/icons/dirwindows.dmi'
 	icon_state = "window"
-	color = "#99ccff"
+	color = "#a6ccf2"
 
 /obj/structure/window/basic
 	icon = 'modular_ss220/aesthetics/windows/icons/dirwindows.dmi'
 	icon_state = "window"
-	color = "#99ccff"
+	color = "#a6ccf2"
 
 /obj/structure/window/reinforced
 	icon = 'modular_ss220/aesthetics/windows/icons/dirwindows.dmi'
 	icon_state = "rwindow"
-	color = "#99ccff"
+	color = "#a6ccf2"
 
 /obj/structure/window/reinforced/tinted
 	icon = 'modular_ss220/aesthetics/windows/icons/dirwindows.dmi'

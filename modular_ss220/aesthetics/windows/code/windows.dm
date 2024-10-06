@@ -1,12 +1,12 @@
 /obj/structure/window/full/basic
 	icon = 'modular_ss220/aesthetics/windows/icons/window.dmi'
 	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/window_edges.dmi'
-	color = "#99ccff"
+	color = "#a6ccf2"
 
 /obj/structure/window/full/reinforced
 	icon = 'modular_ss220/aesthetics/windows/icons/reinforced_window.dmi'
 	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/reinforced_window_edges.dmi'
-	color = "#99ccff"
+	color = "#a6ccf2"
 
 /obj/structure/window/full/reinforced/tinted
 	icon = 'modular_ss220/aesthetics/windows/icons/reinforced_window.dmi'
@@ -32,7 +32,7 @@
 /turf/simulated/wall/indestructible/fakeglass
 	icon = 'modular_ss220/aesthetics/windows/icons/reinforced_window.dmi'
 	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/reinforced_window_edges.dmi'
-	color = "#99ccff"
+	color = "#a6ccf2"
 
 //WINDOW SPAWNERS
 /obj/effect/spawner/window
