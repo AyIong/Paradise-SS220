@@ -11,7 +11,7 @@ import { BooleanLike, classes } from 'common/react';
 import { BoxProps, computeBoxProps } from './Box';
 import { Icon } from './Icon';
 import { Image } from './Image';
-import { DmIcon } from './DmIcon';
+import { type Direction, DmIcon } from './DmIcon';
 import { Stack } from './Stack';
 import { Tooltip } from './Tooltip';
 
@@ -47,7 +47,7 @@ type Props = Partial<{
   /** Parameter `icon_state` of component `DmIcon`. */
   dmIconState: string | null;
   /** Parameter `direction` of component `DmIcon`. */
-  dmDirection: number | null;
+  dmDirection: Direction;
   /**
    * Changes the layout of the button, making it fill the entire horizontally available space.
    * Allows the use of `title`
@@ -214,7 +214,7 @@ export const ImageButton = (props: Props) => {
           ])}
           style={{
             width: `calc(${imageSize}px + ${fluid ? 0 : 0.5}em)`,
-            maxWidth: !fluid && `calc(${imageSize}px +  0.5em)`,
+            maxWidth: !fluid ? `calc(${imageSize}px +  0.5em)` : '',
           }}
         >
           {buttonsAlt}

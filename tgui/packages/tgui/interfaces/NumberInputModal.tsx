@@ -9,9 +9,9 @@ import { Window } from '../layouts';
 type NumberInputData = {
   init_value: number;
   large_buttons: boolean;
-  max_value: number | null;
+  max_value: number;
   message: string;
-  min_value: number | null;
+  min_value: number;
   timeout: number;
   title: string;
   round_value: boolean;

@@ -7335,6 +7335,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tgui-core@npm:^1.8.4":
+  version: 1.8.4
+  resolution: "tgui-core@npm:1.8.4"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10/5f253bc1729e13a40b8ba96506ebdda3db1cd953f427217778787e1fb848f7946fe2e2df841c807fa66691335ee90fa26ce7d3b87fdcc6a580f3c6210792c466
+  languageName: node
+  linkType: hard
+
 "tgui-dev-server@workspace:*, tgui-dev-server@workspace:packages/tgui-dev-server":
   version: 0.0.0-use.local
   resolution: "tgui-dev-server@workspace:packages/tgui-dev-server"
@@ -7358,6 +7368,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     tgui: "workspace:*"
+    tgui-core: "npm:^1.8.4"
     tgui-dev-server: "workspace:*"
   languageName: unknown
   linkType: soft
@@ -7408,7 +7419,7 @@ __metadata:
     style-loader: "npm:^4.0.0"
     swc-loader: "npm:^0.2.3"
     terser-webpack-plugin: "npm:^5.3.10"
-    typescript: "npm:^5.5.3"
+    typescript: "npm:^5.6.3"
     webpack: "npm:^5.97.0"
     webpack-bundle-analyzer: "npm:^4.10.2"
     webpack-cli: "npm:^5.1.4"
@@ -7431,6 +7442,7 @@ __metadata:
     prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    tgui-core: "npm:^1.8.4"
     tgui-dev-server: "workspace:*"
   languageName: unknown
   linkType: soft
@@ -7597,7 +7609,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.5.3":
+"typescript@npm:^5.6.3":
   version: 5.8.3
   resolution: "typescript@npm:5.8.3"
   bin:
@@ -7607,7 +7619,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.5.3#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.6.3#optional!builtin<compat/typescript>":
   version: 5.8.3
   resolution: "typescript@patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"
   bin:

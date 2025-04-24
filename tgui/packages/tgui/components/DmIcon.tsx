@@ -1,10 +1,10 @@
 import { Component, ReactNode } from 'react';
 import { resolveAsset } from '../assets';
-import { fetchRetry } from '../http';
+import { fetchRetry } from 'tgui-core/http';
 import { BoxProps } from './Box';
 import { Image } from './Image';
 
-enum Direction {
+export enum Direction {
   NORTH = 1,
   SOUTH = 2,
   EAST = 4,

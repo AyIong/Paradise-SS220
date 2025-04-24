@@ -40,8 +40,8 @@ export class TguiSay extends Component<{}, State> {
   private lightMode: boolean;
   private maxLength: number;
   private messages: typeof byondMessages;
-   
-  state: State;
+
+  declare state: State;
 
   constructor(props: never) {
     super(props);
@@ -335,6 +335,7 @@ export class TguiSay extends Component<{}, State> {
             <button
               className={`button button-${theme}`}
               onClick={() =>
+                /* @ts-ignore */
                 this.handleButtonClick(this.innerRef.current.selectionStart, this.innerRef.current.selectionEnd)
               }
               type="button"

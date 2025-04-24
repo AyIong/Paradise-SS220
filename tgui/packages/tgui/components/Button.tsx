@@ -3,7 +3,6 @@
  * @copyright 2020 Aleksej Komarov
  * @license MIT
  */
-
 import { BooleanLike, classes } from 'common/react';
 import { Component, ReactNode, RefObject, createRef } from 'react';
 import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
@@ -228,9 +227,12 @@ export class ButtonInput extends Component<ButtonInputProps, ButtonInputState> {
     if (this.inputRef) {
       const input = this.inputRef.current;
       if (inInput) {
+        /** @ts-ignore */
         input.value = this.props.currentValue || '';
         try {
+          /** @ts-ignore */
           input.focus();
+          /** @ts-ignore */
           input.select();
         } catch {}
       }
@@ -240,14 +242,17 @@ export class ButtonInput extends Component<ButtonInputProps, ButtonInputState> {
   commitResult(e) {
     if (this.inputRef) {
       const input = this.inputRef.current;
+      /** @ts-ignore */
       const hasValue = input.value !== '';
       if (hasValue) {
+        /** @ts-ignore */
         this.props.onCommit(e, input.value);
         return;
       } else {
         if (!this.props.defaultValue) {
           return;
         }
+        /** @ts-ignore */
         this.props.onCommit(e, this.props.defaultValue);
       }
     }

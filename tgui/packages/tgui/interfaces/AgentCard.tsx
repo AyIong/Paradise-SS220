@@ -284,7 +284,7 @@ export const AgentCardInfo = (props) => {
 
 export const AgentCardAppearances = (props) => {
   const { act, data } = useBackend<Data>();
-  const [selectedAppearance, setSelectedAppearance] = useSharedState('selectedAppearance', null);
+  const [selectedAppearance, setSelectedAppearance] = useSharedState('selectedAppearance', '');
   const { appearances, id_icon } = data;
   return (
     <Stack.Item grow>

@@ -20,7 +20,7 @@ interface PathogenStrain {
   diseaseAgent: string;
   possibleTreatments?: string;
   transmissionRoute?: string;
-  symptoms?: PathogenSymptom[];
+  symptoms: PathogenSymptom[];
   isAdvanced: BooleanLike;
 }
 
@@ -30,8 +30,8 @@ interface PanDEMICData {
   beakerContainsBlood: BooleanLike;
   beakerContainsVirus: BooleanLike;
   selectedStrainIndex: number;
-  strains?: PathogenStrain[];
-  resistances?: string[];
+  strains: PathogenStrain[];
+  resistances: string[];
 }
 
 export const PanDEMIC = (props) => {

@@ -117,7 +117,7 @@ const LoadoutGears = (props) => {
   let contents;
   if (searchText.length > 2) {
     contents = Object.entries(data.gears)
-      .reduce((a, [key, gears]) => {
+      .reduce<{ key: string; gear: Gear }[]>((a, [key, gears]) => {
         return a.concat(Object.entries(gears).map(([key, gear]) => ({ key, gear })));
       }, [])
       .filter(({ gear }) => {
@@ -266,13 +266,16 @@ const LoadoutGears = (props) => {
 const LoadoutEquipped = (props) => {
   const { act, data } = useBackend<Data>();
   const { setTweakedGear } = props;
-  const selectedGears = Object.entries(data.gears).reduce((a, [categoryKey, categoryItems]) => {
-    const selectedInCategory = Object.entries(categoryItems)
-      .filter(([gearKey]) => Object.keys(data.selected_gears).includes(gearKey))
-      .map(([gearKey, gear]) => ({ key: gearKey, ...gear }));
+  const selectedGears = Object.entries(data.gears).reduce<(Gear & { key: string })[]>(
+    (a, [categoryKey, categoryItems]) => {
+      const selectedInCategory = Object.entries(categoryItems)
+        .filter(([gearKey]) => Object.keys(data.selected_gears).includes(gearKey))
+        .map(([gearKey, gear]) => ({ key: gearKey, ...gear }));
 
-    return a.concat(selectedInCategory);
-  }, []);
+      return a.concat(selectedInCategory);
+    },
+    []
+  );
 
   return (
     <Stack fill vertical>

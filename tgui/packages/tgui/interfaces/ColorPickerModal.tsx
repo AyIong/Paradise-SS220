@@ -311,8 +311,8 @@ interface ColorInputBaseProps {
 }
 
 export class ColorInput extends Component {
-  props: ColorInputBaseProps;
-  state: { localValue: string };
+  declare props: ColorInputBaseProps;
+  declare state: { localValue: string };
 
   constructor(props: ColorInputBaseProps) {
     super(props);

@@ -26,7 +26,7 @@ export const CheckboxListInputModal = (props) => {
 
   const windowHeight = 330 + Math.ceil(message.length / 3);
 
-  const onClick = (new_item: CheckboxData | null = null) => {
+  const onClick = (new_item: CheckboxData) => {
     let updatedItems = [...edittedItems];
     updatedItems = updatedItems.map((item) =>
       item.key === new_item.key ? { ...item, checked: !new_item.checked } : item

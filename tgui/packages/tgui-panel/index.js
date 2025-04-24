@@ -16,18 +16,19 @@ import { combineReducers } from 'common/redux';
 import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
 import { setupGlobalEvents } from 'tgui/events';
 import { captureExternalLinks } from 'tgui/links';
-import { createRenderer } from 'tgui/renderer';
+import { render } from 'tgui/renderer';
 import { configureStore } from 'tgui/store';
 import { audioMiddleware, audioReducer } from './audio';
 import { chatMiddleware, chatReducer } from './chat';
 import { gameMiddleware, gameReducer } from './game';
+import { Panel } from './Panel';
 import { setupPanelFocusHacks } from './panelFocus';
 import { pingMiddleware, pingReducer } from './ping';
 import { settingsMiddleware, settingsReducer } from './settings';
 import { telemetryMiddleware } from './telemetry';
 import { setGlobalStore } from 'tgui/backend';
 
-perf.mark('inception', window.performance?.timing?.navigationStart);
+perf.mark('inception', window.performance?.timeOrigin);
 perf.mark('init');
 
 const store = configureStore({
@@ -43,28 +44,24 @@ const store = configureStore({
   },
 });
 
-const renderApp = createRenderer(() => {
-  setGlobalStore(store);
-
-  const { Panel } = require('./Panel');
-  return <Panel />;
-});
-
-const setupApp = () => {
+function setupApp() {
   // Delay setup
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupApp);
     return;
   }
 
+  setGlobalStore(store);
+
   setupGlobalEvents({
     ignoreWindowFocus: true,
   });
+
   setupPanelFocusHacks();
   captureExternalLinks();
 
   // Re-render UI on store updates
-  store.subscribe(renderApp);
+  store.subscribe(() => render(<Panel />));
 
   // Dispatch incoming messages as store actions
   Byond.subscribe((type, payload) => store.dispatch({ type, payload }));
@@ -87,10 +84,10 @@ const setupApp = () => {
     module.hot.accept(
       ['./audio', './chat', './game', './Notifications', './Panel', './ping', './settings', './telemetry'],
       () => {
-        renderApp();
+        render(<Panel />);
       }
     );
   }
-};
+}
 
 setupApp();

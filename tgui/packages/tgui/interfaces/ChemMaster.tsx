@@ -354,7 +354,7 @@ const ChemMasterProductionTabs = (props: {}) => {
 };
 
 interface ChemMasterNameInputProps {
-  placeholder: string;
+  placeholder?: string;
   onMouseUp?: (MouseEvent) => void;
 }
 
@@ -369,7 +369,7 @@ class ChemMasterNameInput extends Component<ChemMasterNameInputProps & BoxProps>
 
     // Middle-click button
     if (e.button === 1) {
-      target.value = placeholder;
+      target.value = placeholder || '';
       target.select();
     }
 
@@ -482,7 +482,7 @@ const ChemMasterCustomization = (props: {}) => {
           height: style_button_size.height,
         }}
         onClick={() => act('set_container_style', { style: color })}
-        icon={selected && 'check'}
+        icon={selected ? 'check' : ''}
         iconStyle={{
           position: 'relative',
           'z-index': 1,
