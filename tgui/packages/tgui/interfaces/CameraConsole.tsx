@@ -1,7 +1,6 @@
-import { filter, sortBy } from 'common/collections';
+import { filter, sort } from 'common/collections';
 import { useState } from 'react';
 import { Button, ByondUi, Input, Section, Stack } from 'tgui-core/components';
-import { flow } from 'tgui-core/fp';
 import { classes } from 'tgui-core/react';
 import { createSearch } from 'tgui-core/string';
 
@@ -14,15 +13,25 @@ import { Window } from '../layouts';
  * as the focus does not shift to the button using overflow.
  * Please, delete that shit if there's a better way.
  */
-String.prototype.trimLongStr = function (length) {
+String.prototype.trimLongStr = function (length: number) {
   return this.length > length ? this.substring(0, length) + '...' : this;
+};
+
+type Data = {
+  mapRef: string;
+  activeCamera: Camera;
+  cameras: Camera[];
+};
+
+type Camera = {
+  name: string;
 };
 
 /**
  * Returns previous and next camera names relative to the currently
  * active camera.
  */
-const prevNextCamera = (cameras, activeCamera) => {
+const prevNextCamera = (cameras: Camera[], activeCamera: Camera) => {
   if (!activeCamera) {
     return [];
   }
@@ -35,20 +44,19 @@ const prevNextCamera = (cameras, activeCamera) => {
  *
  * Filters cameras, applies search terms and sorts the alphabetically.
  */
-const selectCameras = (cameras, searchText = '') => {
-  const testSearch = createSearch(searchText, (camera) => camera.name);
-  return flow([
-    // Null camera filter
-    filter((camera) => camera?.name),
-    // Optional search term
-    searchText && filter(testSearch),
-    // Slightly expensive, but way better than sorting in BYOND
-    sortBy((camera) => camera.name),
-  ])(cameras);
+const selectCameras = (cameras: Camera[], searchText = ''): Camera[] => {
+  let queriedCameras = filter(cameras, (camera: Camera) => !!camera.name);
+  if (searchText) {
+    const testSearch = createSearch(searchText, (camera: Camera) => camera.name);
+    queriedCameras = filter(queriedCameras, testSearch);
+  }
+  queriedCameras = sort(queriedCameras);
+
+  return queriedCameras;
 };
 
 export const CameraConsole = (props) => {
-  const { act, data, config } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { mapRef, activeCamera } = data;
   const cameras = selectCameras(data.cameras);
   const [prevCameraName, nextCameraName] = prevNextCamera(cameras, activeCamera);
@@ -99,7 +107,7 @@ export const CameraConsole = (props) => {
 };
 
 export const CameraConsoleContent = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const [searchText, setSearchText] = useState('');
   const { activeCamera } = data;
   const cameras = selectCameras(data.cameras, searchText);
