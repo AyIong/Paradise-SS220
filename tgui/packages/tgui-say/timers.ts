@@ -7,5 +7,5 @@ export const byondMessages = {
   // Debounce: Prevents spamming the server
   channelIncrementMsg: debounce((visible: boolean) => Byond.sendMessage('thinking', { visible }), 0.4 * SECONDS),
   // Throttle: Prevents spamming the server
-  typingMsg: throttle(() => Byond.sendMessage('typing'), 4 * SECONDS),
+  typingMsg: throttle((isMeChannel: boolean) => Byond.sendMessage('typing', { isMeChannel }), 4 * SECONDS),
 } as const;

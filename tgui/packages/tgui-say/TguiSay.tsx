@@ -160,7 +160,7 @@ export function TguiSay() {
 
     // Handles typing indicators
     if (channelIterator.current.isVisible() && newPrefix !== ':b ') {
-      messages.current.typingMsg();
+      messages.current.typingMsg(iterator.isMe());
     }
 
     setValue(newValue);

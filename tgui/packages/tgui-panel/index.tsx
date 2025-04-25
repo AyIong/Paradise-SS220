@@ -7,6 +7,9 @@
 // Themes
 import './styles/main.scss';
 import './styles/themes/light.scss';
+import './styles/themes/ntos.scss';
+import './styles/themes/syndicate.scss';
+import './styles/themes/paradise.scss';
 
 import { perf } from 'common/perf';
 import { combineReducers } from 'common/redux';
@@ -65,13 +68,13 @@ function setupApp() {
   Byond.subscribe((type, payload) => store.dispatch({ type, payload }));
 
   // Unhide the panel
-  Byond.winset('output_selector.legacy_output_selector', {
+  Byond.winset('legacy_output_selector', {
     left: 'output_browser',
   });
 
   // Resize the panel to match the non-browser output
   Byond.winget('output').then((output: { size: string }) => {
-    Byond.winset('browseroutput', {
+    Byond.winset('chat_panel', {
       size: output.size,
     });
   });

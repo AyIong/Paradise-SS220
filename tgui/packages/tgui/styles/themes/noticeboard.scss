@@ -1,46 +1,9 @@
-@use 'sass:color';
-@use 'sass:meta';
-
-$window-color: #2b0f0c;
-$background-color: #824b28;
-$paper-color: #f2f2f2;
-
-@use '../base.scss' with (
-  $color-bg: $window-color,
-  $color-bg-grad-spread: 0%
-);
-
 .theme-noticeboard {
-  // Atomic classes
-  @include meta.load-css('../atomic/color.scss');
-
-  // Components
-  @include meta.load-css('../components/Section.scss', $with: ('background-color': $paper-color));
-
-  // Layouts
-  @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css(
-    '../layouts/TitleBar.scss',
-    $with: ('background-color': $window-color, 'shadow-color': $window-color, 'shadow-color-core': $window-color)
-  );
-
-  .Layout,
-  .Layout * {
-    scrollbar-base-color: $paper-color;
-    scrollbar-face-color: #e1e1e1;
-    scrollbar-3dlight-color: $paper-color;
-    scrollbar-highlight-color: #c8c8c8;
-    scrollbar-track-color: $paper-color;
-    scrollbar-arrow-color: #969696;
-    scrollbar-shadow-color: $paper-color;
-  }
-
   .Layout__content {
     background-image: none;
   }
 
   .Window__contentPadding {
-    background-color: $background-color;
     box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
     border-radius: 1em;
   }

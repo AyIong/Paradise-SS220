@@ -13,7 +13,6 @@ import './styles/themes/hackerman.scss';
 import './styles/themes/hydroponics.scss';
 import './styles/themes/malfunction.scss';
 import './styles/themes/ntos.scss';
-import './styles/themes/paper.scss';
 import './styles/themes/retro.scss';
 import './styles/themes/safe.scss';
 import './styles/themes/securestorage.scss';
@@ -51,6 +50,7 @@ function setupApp() {
   setupHotKeys();
   captureExternalLinks();
 
+  // Re-render UI on store updates
   store.subscribe(() => render(<App />));
 
   // Dispatch incoming messages as store actions

@@ -63,7 +63,7 @@ class HubStorageBackend implements StorageBackend {
   }
 
   async get(key: string): Promise<any> {
-    const value = await window.hubStorage.getItem(key);
+    const value = await window.hubStorage.getItem('paradise-' + key);
     if (typeof value === 'string') {
       return JSON.parse(value);
     }
@@ -71,11 +71,11 @@ class HubStorageBackend implements StorageBackend {
   }
 
   async set(key: string, value: any): Promise<void> {
-    window.hubStorage.setItem(key, JSON.stringify(value));
+    window.hubStorage.setItem('paradise-' + key, JSON.stringify(value));
   }
 
   async remove(key: string): Promise<void> {
-    window.hubStorage.removeItem(key);
+    window.hubStorage.removeItem('paradise-' + key);
   }
 
   async clear(): Promise<void> {

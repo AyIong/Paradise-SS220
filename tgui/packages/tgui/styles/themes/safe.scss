@@ -1,30 +1,4 @@
-@use 'sass:color';
-@use 'sass:meta';
-
-@use '../colors.scss' with (
-  $primary: #3d566b,
-  $fg-map-keys: (),
-  $bg-map-keys: ()
-);
-@use '../base.scss' with (
-  $color-bg: #222b3a,
-  $color-bg-grad-spread: 1%
-);
-
 .theme-safe {
-  // Atomic classes
-  @include meta.load-css('../atomic/color.scss');
-
-  // Components
-  @include meta.load-css('../components/Section.scss', $with: ('background-color': #b2ae74));
-
-  // Layouts
-  @include meta.load-css('../layouts/Window.scss');
-  @include meta.load-css('../layouts/TitleBar.scss', $with: ('background-color': #35435a));
-
-  // Interfaces
-  @include meta.load-css('../interfaces/Safe.scss');
-
   .Layout__content {
     background-image: none;
   }

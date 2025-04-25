@@ -4,11 +4,8 @@
 
 // Core styles
 @include meta.load-css('~tgui/styles/reset.scss');
-// External styles
-@include meta.load-css('~tgui/styles/components/TextArea.scss');
 // Local styles
 @include meta.load-css('./styles.scss');
-//@include meta.load-css('./dragzone.scss');
 
 @each $channel, $color in colors.$channel-map {
   $darkened: color.adjust($color, $lightness: -20%, $space: hsl);
@@ -29,16 +26,5 @@
 
   .window-#{$channel} {
     background-color: $color;
-  }
-
-  .shine-#{$channel} {
-    background: radial-gradient(
-      circle,
-      color.adjust($color, $lightness: 5%, $space: hsl),
-      color.adjust($color, $lightness: -15%, $space: hsl),
-      color.adjust($color, $lightness: 15%, $space: hsl),
-      color.adjust($color, $lightness: -15%, $space: hsl),
-      color.adjust($color, $lightness: 5%, $space: hsl)
-    );
   }
 }
