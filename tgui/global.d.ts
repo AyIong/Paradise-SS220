@@ -200,3 +200,8 @@ interface Window {
   domainStorage: Storage;
   serverStorage: Storage;
 }
+
+declare interface String {
+  trimLongStr(length: number): string;
+}
+

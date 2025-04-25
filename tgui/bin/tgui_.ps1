@@ -101,9 +101,13 @@ function task-validate-build {
 
 ## Installs merge drivers and git hooks
 function task-install-git-hooks () {
-    Set-Location $global:basedir
-    git config --replace-all merge.tgui-merge-bundle.driver "tgui/bin/tgui --merge=bundle %P %A"
-    Write-Output "tgui: Merge drivers have been successfully installed!"
+  Set-Location $global:basedir
+  git config --replace-all merge.tgui-merge-bundle.driver "tgui/bin/tgui --merge=bundle %P %A"
+  Write-Output "tgui: Merge drivers have been successfully installed!"
+}
+
+function task-editor-sdk () {
+  yarn dlx @yarnpkg/sdks vscode
 }
 
 ## Main
@@ -173,6 +177,11 @@ if ($Args.Length -gt 0) {
   if ($Args[0] -eq "--prettier") {
     $Rest = $Args | Select-Object -Skip 1
     task-prettier --write
+    exit 0
+  }
+
+  if ($Args[0] -eq "--sdks") {
+    task-editor-sdk
     exit 0
   }
 }
