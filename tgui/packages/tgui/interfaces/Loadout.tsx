@@ -1,19 +1,20 @@
-import { createSearch } from 'common/string';
 import { useState } from 'react';
-import { useBackend } from '../backend';
 import {
   Box,
+  Button,
   Dimmer,
   Dropdown,
   ImageButton,
-  Button,
   Input,
-  Section,
-  Tabs,
-  ProgressBar,
-  Stack,
   LabeledList,
-} from '../components';
+  ProgressBar,
+  Section,
+  Stack,
+  Tabs,
+} from 'tgui-core/components';
+import { createSearch } from 'tgui-core/string';
+
+import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type Data = {
@@ -157,12 +158,7 @@ const LoadoutGears = (props) => {
           </Stack.Item>
           {search && (
             <Stack.Item>
-              <Input
-                width={20}
-                placeholder="Search..."
-                value={searchText}
-                onInput={(e) => setSearchText(e.target.value)}
-              />
+              <Input width={20} placeholder="Search..." value={searchText} onChange={setSearchText} />
             </Stack.Item>
           )}
           <Stack.Item>
@@ -303,16 +299,9 @@ const LoadoutEquipped = (props) => {
               buttons={
                 <>
                   {Object.entries(gear.tweaks).length > 0 && (
-                    <Button
-                      translucent
-                      icon="gears"
-                      iconColor="gray"
-                      width="33px"
-                      onClick={() => setTweakedGear(gear)}
-                    />
+                    <Button icon="gears" iconColor="gray" width="33px" onClick={() => setTweakedGear(gear)} />
                   )}
                   <Button
-                    translucent
                     icon="times"
                     iconColor="red"
                     width="32px"

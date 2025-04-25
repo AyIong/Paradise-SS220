@@ -4,10 +4,11 @@
  * @license MIT
  */
 
-import { Window } from './layouts';
+import { Icon, Stack } from 'tgui-core/components';
+
 import { useBackend } from './backend';
 import { useDebug } from './debug';
-import { Stack, Icon } from './components';
+import { Window } from './layouts';
 
 const requireInterface = require.context('./interfaces');
 
@@ -59,10 +60,10 @@ function RefreshingWindow() {
 export function getRoutedComponent() {
   const { suspended, config } = useBackend();
   const { kitchenSink = false } = useDebug();
+
   if (suspended) {
     return SuspendedWindow;
   }
-
   if (config?.refreshing) {
     return RefreshingWindow;
   }
@@ -74,14 +75,12 @@ export function getRoutedComponent() {
     }
   }
 
-  const name = config?.interface;
+  const name = config?.interface?.name;
   const interfacePathBuilders = [
     (name: string) => `./${name}.tsx`,
     (name: string) => `./${name}.jsx`,
-    (name: string) => `./${name}.js`,
     (name: string) => `./${name}/index.tsx`,
     (name: string) => `./${name}/index.jsx`,
-    (name: string) => `./${name}/index.js`,
   ];
 
   let esModule;

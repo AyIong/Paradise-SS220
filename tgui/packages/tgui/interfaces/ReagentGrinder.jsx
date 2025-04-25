@@ -1,5 +1,6 @@
+import { Box, Button, Section, Stack, Table } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Box, Button, Section, Table, Stack } from '../components';
 import { Window } from '../layouts';
 import { BeakerContents } from './common/BeakerContents';
 import { Operating } from './common/Operating';

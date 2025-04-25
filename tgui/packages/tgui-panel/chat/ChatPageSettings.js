@@ -5,7 +5,8 @@
  */
 
 import { useDispatch, useSelector } from 'tgui/backend';
-import { Button, Collapsible, Divider, Input, Section, Stack } from 'tgui/components';
+import { Button, Collapsible, Divider, Input, Section, Stack } from 'tgui-core/components';
+
 import { moveChatPageLeft, moveChatPageRight, removeChatPage, toggleAcceptedType, updateChatPage } from './actions';
 import { MESSAGE_TYPES } from './constants';
 import { selectCurrentChatPage } from './selectors';

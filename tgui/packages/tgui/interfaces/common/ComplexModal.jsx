@@ -1,5 +1,6 @@
+import { Box, Button, Dropdown, Input, Modal, Stack } from 'tgui-core/components';
+
 import { useBackend } from '../../backend';
-import { Box, Button, Dropdown, Stack, Input, Modal } from '../../components';
 
 let bodyOverrides = {};
 

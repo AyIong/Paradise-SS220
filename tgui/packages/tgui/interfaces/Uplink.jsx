@@ -1,9 +1,10 @@
 import { filter, sortBy } from 'common/collections';
-import { flow } from 'common/fp';
-import { createSearch, decodeHtmlEntities } from 'common/string';
 import { useState } from 'react';
+import { Box, Button, Input, LabeledList, Section, Stack, Tabs } from 'tgui-core/components';
+import { flow } from 'tgui-core/fp';
+import { createSearch, decodeHtmlEntities } from 'tgui-core/string';
+
 import { useBackend } from '../backend';
-import { Box, Button, Input, Section, Stack, Tabs, LabeledList } from '../components';
 import { Window } from '../layouts';
 import { ComplexModal } from './common/ComplexModal';
 
@@ -133,7 +134,7 @@ const ItemsPage = (_properties) => {
             <Input
               fluid
               placeholder="Search Equipment"
-              onInput={(e, value) => {
+              onChange={(value) => {
                 handleSearch(value);
               }}
               value={searchText}
@@ -377,7 +378,7 @@ const ExploitableInfoPage = (_properties) => {
     <Stack fill>
       <Stack.Item width="30%">
         <Section fill scrollable title="Exploitable Records">
-          <Input fluid mb={1} placeholder="Search Crew" onInput={(e, value) => setSearchText(value)} />
+          <Input fluid mb={1} placeholder="Search Crew" onChange={(value) => setSearchText(value)} />
           <Tabs vertical>
             {crew.map((r) => (
               <Tabs.Tab

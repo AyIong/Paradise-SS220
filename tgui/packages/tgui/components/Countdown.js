@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Box } from './Box';
+import { Box } from 'tgui-core/components';
 
 export class Countdown extends Component {
   constructor(props) {

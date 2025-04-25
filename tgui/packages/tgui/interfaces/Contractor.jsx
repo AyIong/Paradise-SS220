@@ -1,9 +1,10 @@
 import { rad2deg } from 'common/math';
 import { Component, Fragment } from 'react';
 import { useState } from 'react';
+import { Box, Button, Flex, Icon, LabeledList, Modal, Section, Tabs } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Box, Button, Flex, Icon, LabeledList, Modal, Section, Tabs } from '../components';
-import { Countdown } from '../components/Countdown';
+import { Countdown } from '../components';
 import { Window } from '../layouts';
 
 const contractStatuses = {

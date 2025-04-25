@@ -4,17 +4,19 @@
  * @license MIT
  */
 
-import { Loader } from './common/Loader';
-import { useBackend } from '../backend';
-import { Autofocus, Box, Flex, Section, Stack, Pointer, NumberInput, Tooltip } from '../components';
-import { Window } from '../layouts';
-import { clamp } from 'common/math';
 import { hexToHsva, HsvaColor, hsvaToHex, hsvaToHslString, hsvaToRgba, rgbaToHsva, validHex } from 'common/color';
-import { Interaction, Interactive } from 'tgui/components/Interactive';
-import { classes } from 'common/react';
-import { useState, Component, FocusEvent, FormEvent, ReactNode } from 'react';
+import { Component, FocusEvent, FormEvent, ReactNode, useState } from 'react';
 import { logger } from 'tgui/logging';
+import { Autofocus, Box, Flex, NumberInput, Section, Stack, Tooltip } from 'tgui-core/components';
+import { clamp } from 'tgui-core/math';
+import { classes } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
+import { Pointer } from '../components';
+import { Interaction, Interactive } from '../components/Interactive';
+import { Window } from '../layouts';
 import { InputButtons } from './common/InputButtons';
+import { Loader } from './common/Loader';
 
 type ColorPickerData = {
   autofocus: boolean;
@@ -61,10 +63,15 @@ export const ColorPickerModal = (_) => {
   );
 };
 
-export const ColorSelector = (
-  { color, setColor, defaultColor }: { color: HsvaColor; setColor; defaultColor: string },
-  context
-) => {
+export const ColorSelector = ({
+  color,
+  setColor,
+  defaultColor,
+}: {
+  color: HsvaColor;
+  setColor;
+  defaultColor: string;
+}) => {
   const handleChange = (params: Partial<HsvaColor>) => {
     setColor((current: HsvaColor) => {
       return Object.assign({}, current, params);

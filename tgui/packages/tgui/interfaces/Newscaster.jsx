@@ -1,7 +1,8 @@
-import { classes } from 'common/react';
 import { useState } from 'react';
+import { Box, Button, Divider, Dropdown, Icon, Input, LabeledList, Modal, Section, Stack } from 'tgui-core/components';
+import { classes } from 'tgui-core/react';
+
 import { useBackend } from '../backend';
-import { Box, Button, Divider, Dropdown, Icon, Input, LabeledList, Modal, Section, Stack } from '../components';
 import { timeAgo } from '../constants';
 import { Window } from '../layouts';
 import { ComplexModal, modalAnswer, modalClose, modalOpen, modalRegisterBodyOverride } from './common/ComplexModal';

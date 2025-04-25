@@ -1,7 +1,4 @@
-import { classes } from 'common/react';
-import { createSearch } from 'common/string';
 import { useState } from 'react';
-import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -9,14 +6,18 @@ import {
   Dropdown,
   Icon,
   Input,
+  LabeledList,
+  Modal,
   ProgressBar,
   Section,
   Stack,
   Table,
-  Modal,
-  LabeledList,
-} from '../components';
-import { Countdown } from '../components/Countdown';
+} from 'tgui-core/components';
+import { classes } from 'tgui-core/react';
+import { createSearch } from 'tgui-core/string';
+
+import { useBackend } from '../backend';
+import { Countdown } from '../components';
 import { Window } from '../layouts';
 
 // __DEFINES/construction.dm, L73

@@ -1,11 +1,11 @@
-import { Loader } from './common/Loader';
-import { InputButtons } from './common/InputButtons';
-import { Button, Section, Stack } from '../components';
 import { useState } from 'react';
+import { Button, Section, Stack } from 'tgui-core/components';
+import { BooleanLike } from 'tgui-core/react';
+
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { createLogger } from '../logging';
-import { BooleanLike } from 'common/react';
+import { InputButtons } from './common/InputButtons';
+import { Loader } from './common/Loader';
 
 type ListInputData = {
   init_value: string;
@@ -61,7 +61,7 @@ const ListDisplay = (props) => {
   const { filteredItems, onClick } = props;
 
   return (
-    <Section fill scrollable tabIndex={0}>
+    <Section fill scrollable>
       {filteredItems.map((item, index) => {
         return (
           <Button.Checkbox

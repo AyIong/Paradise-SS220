@@ -1,5 +1,6 @@
+import { Button, Section, Stack, Table } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Button, Section, Table, Stack, Icon, Dimmer } from '../components';
 import { Window } from '../layouts';
 import { Operating } from './common/Operating';
 

@@ -1,10 +1,11 @@
 import { filter, sortBy } from 'common/collections';
-import { flow } from 'common/fp';
-import { classes } from 'common/react';
-import { createSearch } from 'common/string';
 import { useState } from 'react';
+import { Button, ByondUi, Input, Section, Stack } from 'tgui-core/components';
+import { flow } from 'tgui-core/fp';
+import { classes } from 'tgui-core/react';
+import { createSearch } from 'tgui-core/string';
+
 import { useBackend } from '../backend';
-import { Button, ByondUi, Input, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 /**
@@ -105,7 +106,7 @@ export const CameraConsoleContent = (props) => {
   return (
     <Stack fill vertical>
       <Stack.Item>
-        <Input fluid placeholder="Search for a camera" onInput={(e, value) => setSearchText(value)} />
+        <Input fluid placeholder="Search for a camera" onChange={(value) => setSearchText(value)} />
       </Stack.Item>
       <Stack.Item grow m={0}>
         <Section fill scrollable>

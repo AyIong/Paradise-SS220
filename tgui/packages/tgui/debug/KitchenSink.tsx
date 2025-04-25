@@ -5,7 +5,7 @@
  */
 
 import { useState } from 'react';
-import { Section, Stack, Tabs } from '../components';
+import { Section, Stack, Tabs } from 'tgui-core/components';
 
 import { Pane, Window } from '../layouts';
 
