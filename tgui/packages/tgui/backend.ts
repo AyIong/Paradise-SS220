@@ -367,10 +367,7 @@ type BackendState<TData> = {
   config: {
     title: string;
     status: number;
-    interface: {
-      name: string;
-      layout: string;
-    };
+    interface: string;
     refreshing: BooleanLike;
     window: {
       key: string;

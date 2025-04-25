@@ -75,7 +75,7 @@ export function getRoutedComponent() {
     }
   }
 
-  const name = config?.interface?.name;
+  const name = config?.interface;
   const interfacePathBuilders = [
     (name: string) => `./${name}.tsx`,
     (name: string) => `./${name}.jsx`,
