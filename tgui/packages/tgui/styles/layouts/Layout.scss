@@ -4,13 +4,12 @@
  */
 
 .Layout__content {
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
   position: absolute;
   inset: 0;
 }
 
 .Layout__content--scrollable {
-  overflow-y: scroll;
+  overflow-y: auto;
   margin-bottom: 0;
 }
