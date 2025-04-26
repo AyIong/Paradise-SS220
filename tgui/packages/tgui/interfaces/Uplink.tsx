@@ -2,13 +2,69 @@ import { filter, sortBy } from 'common/collections';
 import { useState } from 'react';
 import { Box, Button, Input, LabeledList, Section, Stack, Tabs } from 'tgui-core/components';
 import { flow } from 'tgui-core/fp';
+import { BooleanLike } from 'tgui-core/react';
 import { createSearch, decodeHtmlEntities } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { ComplexModal } from './common/ComplexModal';
 
-const PickTab = (index) => {
+type DatacoreRecord = {
+  name: string;
+  has_photos: BooleanLike;
+  photos: string[];
+  age: number;
+  fingerprint: string;
+  rank: string;
+  sex: string;
+  species: string;
+  nt_relation: string;
+};
+
+type UplinkData = {
+  cart: Cart;
+  selected_record: DatacoreRecord;
+  exploitable: Exploitable[];
+};
+
+type Cart = UplinkItem[];
+
+type UplinkItem = {
+  name: string;
+  desc: string;
+  cost: number;
+  hijack_only: BooleanLike;
+  obj_path: string;
+  amount: number;
+  limit: number;
+  category: string;
+};
+
+type UplinkItemsPage = {
+  crystals: number;
+  cart: Cart;
+  cart_price: number;
+  cats: UplinkCategory[];
+  exploitable: Exploitable[];
+  lucky_numbers: LuckyNumber[];
+};
+
+type LuckyNumber = {
+  cat: number;
+  item: number;
+};
+
+type Exploitable = {
+  name: string;
+  uid_gen: string;
+};
+
+type UplinkCategory = {
+  cat: string;
+  items: UplinkItem[];
+};
+
+const PickTab = (index: number) => {
   switch (index) {
     case 0:
       return <ItemsPage />;
@@ -22,7 +78,7 @@ const PickTab = (index) => {
 };
 
 export const Uplink = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<UplinkData>();
   const { cart } = data;
 
   const [tabIndex, setTabIndex] = useState(0);
@@ -86,32 +142,35 @@ export const Uplink = (props) => {
 };
 
 const ItemsPage = (_properties) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<UplinkItemsPage>();
   const { crystals, cats } = data;
   // Default to first
   const [uplinkItems, setUplinkItems] = useState(cats[0].items);
 
   const [searchText, setSearchText] = useState('');
-  const SelectEquipment = (cat, searchText = '') => {
-    const EquipmentSearch = createSearch(searchText, (item) => {
+  const SelectEquipment = (items: UplinkItem[], searchText = '') => {
+    const EquipmentSearch = createSearch(searchText, (item: UplinkItem) => {
       let is_hijack = item.hijack_only === 1 ? '|' + 'hijack' : '';
       return item.name + '|' + item.desc + '|' + item.cost + 'tc' + is_hijack;
     });
     return flow([
-      filter((item) => item?.name), // Make sure it has a name
-      searchText && filter(EquipmentSearch), // Search for anything
-      sortBy((item) => item?.name), // Sort by name
-    ])(cat);
+      // Make sure it has a name
+      (items: UplinkItem[]) => filter(items, (item) => !!item.name),
+      // Search for anything
+      (items: UplinkItem[]) => searchText && filter(items, EquipmentSearch),
+      // Sort by name
+      (items: UplinkItem[]) => sortBy(items, (item) => !!item.name),
+    ])(items);
   };
   const handleSearch = (value) => {
     setSearchText(value);
     if (value === '') {
       return setUplinkItems(cats[0].items);
     }
-    setUplinkItems(SelectEquipment(cats.map((category) => category.items).flat(), value));
+    setUplinkItems(SelectEquipment(cats.map((category: UplinkCategory) => category.items).flat(), value));
   };
 
-  const [showDesc, setShowDesc] = useState(1);
+  const [showDesc, setShowDesc] = useState<BooleanLike>(1);
 
   return (
     <Stack fill vertical>
@@ -148,7 +207,7 @@ const ItemsPage = (_properties) => {
             <Tabs vertical>
               {cats.map((c) => (
                 <Tabs.Tab
-                  key={c}
+                  key={c.cat}
                   selected={searchText !== '' ? false : c.items === uplinkItems}
                   onClick={() => {
                     setUplinkItems(c.items);
@@ -178,10 +237,10 @@ const ItemsPage = (_properties) => {
 };
 
 const CartPage = (_properties) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<UplinkItemsPage>();
   const { cart, crystals, cart_price } = data;
 
-  const [showDesc, setShowDesc] = useState(0);
+  const [showDesc, setShowDesc] = useState<BooleanLike>(0);
 
   return (
     <Stack fill vertical>
@@ -221,7 +280,7 @@ const CartPage = (_properties) => {
   );
 };
 const Advert = (_properties) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<UplinkItemsPage>();
   const { cats, lucky_numbers } = data;
 
   return (
@@ -247,18 +306,23 @@ const Advert = (_properties) => {
   );
 };
 
+type UplinkItemProps = {
+  i: number;
+  showDecription: BooleanLike;
+};
+
 const UplinkItem = (props) => {
   const { i, showDecription = 1, buttons = <UplinkItemButtons i={i} /> } = props;
 
   return (
-    <Section title={decodeHtmlEntities(i.name)} showBottom={showDecription} buttons={buttons}>
+    <Section title={decodeHtmlEntities(i.name)} buttons={buttons}>
       {showDecription ? <Box italic>{decodeHtmlEntities(i.desc)}</Box> : null}
     </Section>
   );
 };
 
 const UplinkItemButtons = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<UplinkItemsPage>();
   const { i } = props;
   const { crystals } = data;
 
@@ -293,8 +357,12 @@ const UplinkItemButtons = (props) => {
   );
 };
 
-const CartButtons = (props) => {
-  const { act, data } = useBackend();
+type CartButtonProps = {
+  i: UplinkItem;
+};
+
+const CartButtons = (props: CartButtonProps) => {
+  const { act, data } = useBackend<UplinkData>();
   const { i } = props;
   const { exploitable } = data;
 
@@ -324,11 +392,11 @@ const CartButtons = (props) => {
         disabled={i.amount <= 0}
       />
       <Button.Input
-        content={i.amount}
+        value={`${i.amount}`}
         width="45px"
         tooltipPosition="bottom-end"
         tooltip={i.limit === 0 && 'Discount already redeemed!'}
-        onCommit={(e, value) =>
+        onCommit={(value) =>
           act('set_cart_item_quantity', {
             item: i.obj_path,
             quantity: value,
@@ -354,22 +422,22 @@ const CartButtons = (props) => {
 };
 
 const ExploitableInfoPage = (_properties) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<UplinkData>();
   const { exploitable, selected_record } = data;
   // Default to first
 
   const [searchText, setSearchText] = useState('');
 
   // Search for peeps
-  const SelectMembers = (people, searchText = '') => {
-    const MemberSearch = createSearch(searchText, (member) => member.name);
+  const SelectMembers = (people: Exploitable[], searchText = ''): Exploitable[] => {
+    const MemberSearch = createSearch(searchText, (member: Exploitable) => member.name);
     return flow([
       // Null member filter
-      filter((member) => member?.name),
+      (members: Exploitable[]) => filter(members, (member) => !!member.name),
       // Optional search term
-      searchText && filter(MemberSearch),
+      (members: Exploitable[]) => searchText && filter(members, MemberSearch),
       // Slightly expensive, but way better than sorting in BYOND
-      sortBy((member) => member.name),
+      (members: Exploitable[]) => sortBy(members, (member) => member.name),
     ])(people);
   };
 
@@ -380,15 +448,16 @@ const ExploitableInfoPage = (_properties) => {
         <Section fill scrollable title="Exploitable Records">
           <Input fluid mb={1} placeholder="Search Crew" onChange={(value) => setSearchText(value)} />
           <Tabs vertical>
-            {crew.map((r) => (
-              <Tabs.Tab
-                key={r}
-                selected={r.name === selected_record.name}
-                onClick={() => act('view_record', { uid_gen: r.uid_gen })}
-              >
-                {r.name}
-              </Tabs.Tab>
-            ))}
+            {crew &&
+              crew.map((r: Exploitable) => (
+                <Tabs.Tab
+                  key={r.uid_gen}
+                  selected={r.name === selected_record.name}
+                  onClick={() => act('view_record', { uid_gen: r.uid_gen })}
+                >
+                  {r.name}
+                </Tabs.Tab>
+              ))}
           </Tabs>
         </Section>
       </Stack.Item>
