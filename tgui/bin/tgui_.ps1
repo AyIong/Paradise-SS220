@@ -40,7 +40,7 @@ function task-install {
   yarn install
 }
 
-## Runs webpack
+## Runs rspack
 function task-rspack {
   yarn run rspack @Args
 }
@@ -77,7 +77,7 @@ function task-clean {
   ## Yarn artifacts
   Remove-Quiet -Recurse -Force ".yarn\cache"
   Remove-Quiet -Recurse -Force ".yarn\unplugged"
-  Remove-Quiet -Recurse -Force ".yarn\webpack"
+  Remove-Quiet -Recurse -Force ".yarn\rspack"
   Remove-Quiet -Force ".yarn\build-state.yml"
   Remove-Quiet -Force ".yarn\install-state.gz"
   Remove-Quiet -Force ".yarn\install-target"
@@ -186,7 +186,7 @@ if ($Args.Length -gt 0) {
   }
 }
 
-## Make a production webpack build
+## Make a production rspack build
 if ($Args.Length -eq 0) {
   task-install
   task-lint --fix
@@ -194,6 +194,6 @@ if ($Args.Length -eq 0) {
   exit 0
 }
 
-## Run webpack with custom flags
+## Run rspack with custom flags
 task-install
 task-rspack @Args

@@ -141,7 +141,8 @@ const MenuButton = (properties) => {
   const { act } = useBackend();
   const { icon = '', iconSpin, selected = false, security = false, onClick, title, children, ...rest } = properties;
   return (
-    <Box
+    <Stack
+      align="center"
       className={classes([
         'Newscaster__menuButton',
         selected && 'Newscaster__menuButton--selected',
@@ -150,11 +151,13 @@ const MenuButton = (properties) => {
       onClick={onClick}
       {...rest}
     >
-      {selected && <Box className="Newscaster__menuButton--selectedBar" />}
-      <Icon name={icon} spin={iconSpin} size="2" />
-      <Box className="Newscaster__menuButton--title">{title}</Box>
+      <Stack.Item>
+        {selected && <Box className="Newscaster__menuButton--selectedBar" />}
+        <Icon name={icon} spin={iconSpin} size="2" />
+      </Stack.Item>
+      <Stack.Item className="Newscaster__menuButton--title">{title}</Stack.Item>
       {children}
-    </Box>
+    </Stack>
   );
 };
 
@@ -260,6 +263,7 @@ const NewscasterJobs = (properties) => {
       <Section
         fill
         scrollable
+        m={0}
         title={
           <>
             <Icon name="briefcase" mr="0.5rem" />

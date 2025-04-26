@@ -14,9 +14,15 @@ export const ReagentGrinder = (props) => {
       <Window.Content>
         <Stack fill vertical>
           <Operating operating={operating} name={title} />
-          <GrinderControls />
-          <GrinderContents />
-          <GrinderReagents />
+          <Stack.Item>
+            <GrinderControls />
+          </Stack.Item>
+          <Stack.Item grow>
+            <GrinderContents />
+          </Stack.Item>
+          <Stack.Item height="30%">
+            <GrinderReagents />
+          </Stack.Item>
         </Stack>
       </Window.Content>
     </Window>
@@ -30,7 +36,7 @@ const GrinderControls = (props) => {
   return (
     <Section title="Controls">
       <Stack>
-        <Stack.Item width="50%">
+        <Stack.Item grow>
           <Button
             fluid
             textAlign="center"
@@ -42,7 +48,7 @@ const GrinderControls = (props) => {
             onClick={() => act('grind')}
           />
         </Stack.Item>
-        <Stack.Item width="50%">
+        <Stack.Item grow>
           <Button
             fluid
             textAlign="center"
@@ -65,9 +71,9 @@ const GrinderContents = (props) => {
 
   return (
     <Section
-      title="Contents"
       fill
       scrollable
+      title="Contents"
       buttons={
         <Box>
           <Box inline color="label" mr={2}>
@@ -107,10 +113,9 @@ const GrinderReagents = (props) => {
 
   return (
     <Section
-      title="Beaker"
       fill
       scrollable
-      height="40%"
+      title="Beaker"
       buttons={
         !!beaker_loaded && (
           <Box>

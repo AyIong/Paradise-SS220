@@ -45,7 +45,7 @@ task-install() {
   yarn install
 }
 
-## Runs webpack
+## Runs rspack
 task-rspack() {
   cd "${base_dir}"
   yarn run rspack "${@}"
@@ -223,7 +223,7 @@ if [[ ${1} == '--prettier' ]]; then
   exit 0
 fi
 
-## Make a production webpack build
+## Make a production rspack build
 if [[ -z ${1} ]]; then
   task-install
   task-lint --fix
@@ -231,6 +231,6 @@ if [[ -z ${1} ]]; then
   exit 0
 fi
 
-## Run webpack with custom flags
+## Run rspack with custom flags
 task-install
 task-rspack "${@}"

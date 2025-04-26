@@ -74,7 +74,7 @@ export const CameraConsole = (props) => {
           <b>Camera: </b>
           {(activeCamera && activeCamera.name) || '—'}
         </div>
-        <div className="CameraConsole__toolbarRight">
+        <div className={classes(['CameraConsole__toolbar', 'CameraConsole__toolbar--right'])}>
           <Button
             icon="chevron-left"
             disabled={!prevCameraName}

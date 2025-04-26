@@ -97,7 +97,7 @@ will need these:
 Run `yarn install` once to install tgui dependencies.
 
 - `yarn tgui:build` - Build tgui in production mode.
-  - `yarn tgui:build [options]` - Build tgui with custom webpack options.
+  - `yarn tgui:build [options]` - Build tgui with custom rspack options.
 - `yarn tgui:dev` - Launch a development server.
   - `yarn tgui:dev --reload` - Reload byond cache once.
   - `yarn tgui:dev --debug` - Run server with debug logging enabled.
@@ -123,11 +123,6 @@ possible, because maintainers will beat you with a ruler and force you to
 address them anyway (unless it's a false positive or something unfixable).
 
 ## Troubleshooting
-
-**Development server isn't attaching to the game**
-
-Make sure that you have a tgui window open before you run the dev server. Then,
-once it's running, you may need to press F5 to refresh the page.
 
 **Development server is crashing**
 

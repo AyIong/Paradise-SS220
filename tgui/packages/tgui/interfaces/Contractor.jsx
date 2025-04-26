@@ -181,17 +181,10 @@ const Contracts = (properties) => {
       title="Available Contracts"
       overflow="auto"
       buttons={
-        <Button
-          disabled={!can_extract || extractionCooldown}
-          icon="parachute-box"
-          content={[
-            'Call Extraction',
-            extractionCooldown && (
-              <Countdown timeLeft={activeContract.time_left} format={(v, f) => ' (' + f.substr(3) + ')'} />
-            ),
-          ]}
-          onClick={() => act('extract')}
-        />
+        <Button disabled={!can_extract || extractionCooldown} icon="parachute-box" onClick={() => act('extract')}>
+          Call Extraction{' '}
+          {extractionCooldown && <Countdown timeEnd={activeContract.time_left} format={(v, f) => f.substr(3)} />}
+        </Button>
       }
       {...properties}
     >

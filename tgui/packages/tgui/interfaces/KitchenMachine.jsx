@@ -48,7 +48,7 @@ const KitchenTop = (props) => {
   return (
     <Section title="Controls">
       <Stack>
-        <Stack.Item width="50%">
+        <Stack.Item grow>
           <Button
             fluid
             textAlign="center"
@@ -60,7 +60,7 @@ const KitchenTop = (props) => {
             onClick={() => act('cook')}
           />
         </Stack.Item>
-        <Stack.Item width="50%">
+        <Stack.Item grow>
           <Button
             fluid
             textAlign="center"
